@@ -1,0 +1,15 @@
+/* A single strings file, whose title is specified in your preferences schema. The strings files provide the localized content to display to the user for each of your preferences. */
+
+"load_earlier_messages" = "Load Earlier Messages";
+
+"send" = "Send";
+
+"new_message" = "New Message";
+
+"text_message_accessibility_label" = "%@: %@";
+
+"media_message_accessibility_label" = "%@: media message";
+
+"accessory_button_accessibility_label" = "Share media";
+
+"new_message_received_accessibility_announcement" = "New message received";
