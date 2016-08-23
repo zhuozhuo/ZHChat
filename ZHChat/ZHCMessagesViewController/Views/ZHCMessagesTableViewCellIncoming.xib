@@ -63,13 +63,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFt-sQ-v6q">
-                        <rect key="frame" x="51" y="62" width="231" height="75"/>
+                        <rect key="frame" x="51" y="62" width="231" height="73"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sbx-FP-qUK">
-                                <rect key="frame" x="0.0" y="0.0" width="231" height="75"/>
+                                <rect key="frame" x="0.0" y="0.0" width="231" height="73"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6I0-MX-RPY" customClass="ZHCMessagesCellTextView">
-                                <rect key="frame" x="13" y="0.0" width="218" height="75"/>
+                                <rect key="frame" x="13" y="0.0" width="218" height="73"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -106,7 +106,7 @@
                     <constraint firstItem="AtY-PM-nfv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-7" id="Jyb-aJ-y1c"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Fic-Hc-208" secondAttribute="trailing" constant="-8" id="LIe-Yu-USL"/>
                     <constraint firstAttribute="trailingMargin" secondItem="AtY-PM-nfv" secondAttribute="trailing" constant="-8" id="Nre-sd-PFr"/>
-                    <constraint firstItem="qk1-EK-aBJ" firstAttribute="top" secondItem="WFt-sQ-v6q" secondAttribute="bottom" constant="-2" id="OVM-2M-cF0"/>
+                    <constraint firstItem="qk1-EK-aBJ" firstAttribute="top" secondItem="WFt-sQ-v6q" secondAttribute="bottom" id="OVM-2M-cF0"/>
                     <constraint firstItem="WFt-sQ-v6q" firstAttribute="leading" secondItem="QkL-sf-hMh" secondAttribute="trailing" constant="8" id="PLC-Py-OSa"/>
                     <constraint firstItem="qk1-EK-aBJ" firstAttribute="top" secondItem="QkL-sf-hMh" secondAttribute="bottom" id="PqG-Xt-w1a"/>
                     <constraint firstItem="WFt-sQ-v6q" firstAttribute="top" secondItem="Fic-Hc-208" secondAttribute="bottom" id="QdV-TT-57M"/>

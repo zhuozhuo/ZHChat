@@ -103,7 +103,12 @@
     [self.delegate tableView:self performAction:action forcellAtIndexPath:indexPath withSender:sender];
 }
 
-
+-(ZHCMessagesTableViewCell *)messageTableViewDequeueReusableCellWithIndexPath:(NSIndexPath *)indexPath
+{
+ 
+    return [self.dataSource messageTableViewDequeueReusableCellWithIndexPath:indexPath];
+    
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

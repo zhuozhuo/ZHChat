@@ -34,5 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  The layout used to organize the tableView’s cells.
  */
 @property (strong, nonatomic) ZHCMessagesTableviewLayoutAttributes *tableViewLayout;
+
+-(ZHCMessagesTableViewCell *)messageTableViewDequeueReusableCellWithIndexPath:(NSIndexPath *)indexPath;
 @end
 NS_ASSUME_NONNULL_END

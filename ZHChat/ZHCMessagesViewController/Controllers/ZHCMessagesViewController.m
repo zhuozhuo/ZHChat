@@ -104,6 +104,8 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputViewBottomLayoutGuide;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPathForMenu;
 
+@property (nonatomic, strong) ZHCMessagesTableViewCell *dequeueReuseCell;
+
 @property (strong, nonatomic) UIView *inputAccessoryView;
 @end
 
@@ -162,7 +164,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     self.outgoingCellIdentifier = [ZHCMessagesTableViewCellOutcoming cellReuseIdentifier];
     self.incomingMediaCellIdentifier = [ZHCMessagesTableViewCellIncoming mediaCellReuseIdentifier];
     self.outgoingMediaCellIdentifier = [ZHCMessagesTableViewCellOutcoming mediaCellReuseIdentifier];
-    
+    //self.messageTableView.estimatedRowHeight = 100.0;
     
     // NOTE: let this behavior be opt-in for now
     
@@ -227,7 +229,6 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.messageTableView.estimatedRowHeight = 100.0f;
 }
 
 
@@ -452,8 +453,6 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 }
 
 
-
-
 -(UITableViewCell *)tableView:(ZHCMessagesTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   
@@ -536,6 +535,31 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     
     return cell;
 }
+
+-(ZHCMessagesTableViewCell *)messageTableViewDequeueReusableCellWithIndexPath:(NSIndexPath *)indexPath
+{
+    id<ZHCMessageData> messagecell = [self.messageTableView.dataSource tableView:self.messageTableView messageDataForCellAtIndexPath:indexPath];
+    NSParameterAssert(messagecell != nil);
+    BOOL isOutgoingMessage = [self isOutgoingMessage:messagecell];
+    BOOL isMediaMessage = [messagecell isMediaMessage];
+    
+    NSString *cellIdentifier = nil;
+    if (isMediaMessage) {
+        cellIdentifier = isOutgoingMessage ? self.outgoingMediaCellIdentifier : self.incomingMediaCellIdentifier;
+    }
+    else {
+        cellIdentifier = isOutgoingMessage ? self.outgoingCellIdentifier : self.incomingCellIdentifier;
+    }
+    
+    ZHCMessagesTableViewCell *cell = [self.messageTableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!isMediaMessage) {
+        cell.textView.text = [messagecell text];
+        NSParameterAssert(cell.textView.text != nil);
+    }
+    return cell;
+    
+}
+
 
 
 #pragma mark - TableView delegate
@@ -677,7 +701,9 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     
 }
 
+
 #pragma mark - Public Methods
+
 -(void)textViewresignFirstResponder
 {
     CGFloat animationDuration = 0.25f;
@@ -882,10 +908,10 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
                                                      name:UIKeyboardWillChangeFrameNotification
                                                    object:nil];
         
-//        [[NSNotificationCenter defaultCenter] addObserver:self
-//                                                 selector:@selector(didReceiveMenuWillShowNotification:)
-//                                                     name:UIMenuControllerWillShowMenuNotification
-//                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didReceiveMenuWillShowNotification:)
+                                                     name:UIMenuControllerWillShowMenuNotification
+                                                   object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(didReceiveMenuWillHideNotification:)

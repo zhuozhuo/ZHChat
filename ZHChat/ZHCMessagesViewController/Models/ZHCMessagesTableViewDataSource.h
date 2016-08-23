@@ -102,6 +102,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable id<ZHCMessageAvatarImageDataSource>)tableView:(ZHCMessagesTableView *)tableView avatarImageDataForCellAtIndexPath:(NSIndexPath *)indexPath;
 
+/**
+ *  Ask the dataSource of the dequeueReusable cell
+ *
+ *  @param indexPath the indexpath
+ *
+ *  @return 'ZHCMessagesTableViewCell' object
+ */
+-(ZHCMessagesTableViewCell *)messageTableViewDequeueReusableCellWithIndexPath:(NSIndexPath *)indexPath;
+
 @optional
 
 
@@ -184,6 +193,9 @@ NS_ASSUME_NONNULL_BEGIN
  *  @see ZHCMessagestableViewCell.
  */
 - (nullable NSAttributedString *)tableView:(ZHCMessagesTableView *)tableView attributedTextForCellBottomLabelAtIndexPath:(NSIndexPath *)indexPath;
+
+
+
 @end
 
 NS_ASSUME_NONNULL_END

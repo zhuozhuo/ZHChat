@@ -9,6 +9,7 @@
 #import "ZHCMessagesBubbleCalculator.h"
 #import "UIImage+ZHCMessages.h"
 #import "ZHCMessagesTableviewLayoutAttributes.h"
+#import "ZHCMessagesTableViewCell.h"
 
 @interface ZHCMessagesBubbleCalculator()
 @property (strong, nonatomic, readonly) NSCache *cache;
@@ -92,7 +93,14 @@
         CGFloat maxTextViewWidth = 0.0;
         maxTextViewWidth = bubbleWidth - (textViewHorizontallySpaceWithAvatar + attributes.textViewTextContainerInsets.left + attributes.textViewTextContainerInsets.right);
        
-        CGRect stringRect = [[messageData text]boundingRectWithSize:CGSizeMake(maxTextViewWidth, CGFLOAT_MAX) options:(NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin) attributes:@{ NSFontAttributeName : attributes.messageBubbleFont } context:nil];
+      CGRect stringRect = [[messageData text]boundingRectWithSize:CGSizeMake(maxTextViewWidth, CGFLOAT_MAX) options:(NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin) attributes:@{ NSFontAttributeName : attributes.messageBubbleFont } context:nil];
+        
+//        ZHCMessagesTableViewCell *cell = [tableView messageTableViewDequeueReusableCellWithIndexPath:indexPath];
+//        cell.textView.font = attributes.messageBubbleFont;
+//        CGSize stringSize = [cell.textView sizeThatFits:CGSizeMake(maxTextViewWidth, CGFLOAT_MAX)];
+//        stringSize.height = cell.textView.contentSize.height;
+//        NSLog(@"stringSize:%f",stringSize.height);
+        
         
         CGSize stringSize = CGRectIntegral(stringRect).size;
         

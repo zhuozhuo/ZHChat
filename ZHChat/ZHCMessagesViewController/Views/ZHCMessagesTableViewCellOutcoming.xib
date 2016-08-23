@@ -73,13 +73,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFt-sQ-v6q">
-                        <rect key="frame" x="32" y="61" width="231" height="76"/>
+                        <rect key="frame" x="32" y="61" width="231" height="74"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sbx-FP-qUK">
-                                <rect key="frame" x="0.0" y="0.0" width="231" height="76"/>
+                                <rect key="frame" x="0.0" y="0.0" width="231" height="74"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6I0-MX-RPY" customClass="ZHCMessagesCellTextView">
-                                <rect key="frame" x="0.0" y="0.0" width="218" height="76"/>
+                                <rect key="frame" x="0.0" y="0.0" width="218" height="74"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -104,7 +104,7 @@
                     <constraint firstAttribute="trailingMargin" secondItem="QkL-sf-hMh" secondAttribute="trailing" id="4nm-Lx-jUt"/>
                     <constraint firstAttribute="bottomMargin" secondItem="qk1-EK-aBJ" secondAttribute="bottom" constant="-9" id="6tR-l9-BGh"/>
                     <constraint firstItem="HX7-0h-z6r" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="F7S-on-62s"/>
-                    <constraint firstItem="qk1-EK-aBJ" firstAttribute="top" secondItem="WFt-sQ-v6q" secondAttribute="bottom" constant="-2" id="LSt-oe-3aT"/>
+                    <constraint firstItem="qk1-EK-aBJ" firstAttribute="top" secondItem="WFt-sQ-v6q" secondAttribute="bottom" id="LSt-oe-3aT"/>
                     <constraint firstItem="qk1-EK-aBJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="Nxl-eq-nfs"/>
                     <constraint firstItem="QkL-sf-hMh" firstAttribute="leading" secondItem="WFt-sQ-v6q" secondAttribute="trailing" constant="14" id="WEb-Er-3X4"/>
                     <constraint firstItem="WFt-sQ-v6q" firstAttribute="top" secondItem="Fic-Hc-208" secondAttribute="bottom" id="XFT-e0-CWM"/>
