@@ -41,7 +41,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    __weak ZHCMessagesTableView *weakView = self.messageTableView;
+//    __weak ZHCMessagesTableView *weakView = self.messageTableView;
 //    [self.demoData addLocationMediaMessageCompletion:^{
 //        [weakView reloadData];
 //    }];

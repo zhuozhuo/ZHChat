@@ -162,7 +162,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     self.outgoingCellIdentifier = [ZHCMessagesTableViewCellOutcoming cellReuseIdentifier];
     self.incomingMediaCellIdentifier = [ZHCMessagesTableViewCellIncoming mediaCellReuseIdentifier];
     self.outgoingMediaCellIdentifier = [ZHCMessagesTableViewCellOutcoming mediaCellReuseIdentifier];
-    self.messageTableView.estimatedRowHeight = 100.0f;
+    
     
     // NOTE: let this behavior be opt-in for now
     
@@ -227,6 +227,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    self.messageTableView.estimatedRowHeight = 100.0f;
 }
 
 
@@ -348,10 +349,11 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     if ([self.messageTableView numberOfSections] == 0) {
         return;
     }
-   
-    NSIndexPath *lastCell = [NSIndexPath indexPathForItem:([self.messageTableView numberOfRowsInSection:0] - 1) inSection:0];
-    NSLog(@"lastCell:%@",lastCell);
-    [self scrollToIndexPath:lastCell animated:animated];
+    NSInteger rows = [self.messageTableView numberOfRowsInSection:0];
+    NSLog(@"rows:%ld",rows);
+    NSIndexPath *lastCellIndexPath = [NSIndexPath indexPathForItem:(rows - 1) inSection:0];
+    
+    [self scrollToIndexPath:lastCellIndexPath animated:animated];
 }
 
 
@@ -361,35 +363,36 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
         return;
     }
     
-//    NSInteger numberOfItems = [self.messageTableView numberOfRowsInSection:indexPath.section];
-//    if (numberOfItems == 0) {
-//        return;
-//    }
-//    
-//    CGFloat tableViewContentHeight = [self.messageTableView contentSize].height;
-//    BOOL isContentTooSmall = (tableViewContentHeight < CGRectGetHeight(self.messageTableView.bounds));
-//    if (isContentTooSmall) {
-//        //  workaround for the first few messages not scrolling
-//        //  when the collection view content size is too small, `scrollToItemAtIndexPath:` doesn't work properly
-//        //  this seems to be a UIKit bug, see #256 on GitHub
-//        [self.messageTableView scrollRectToVisible:CGRectMake(0.0, tableViewContentHeight - 1.0f, 1.0f, 1.0f)
-//                                        animated:animated];
-//        return;
-//    }
-//    NSInteger row = MAX(MIN(indexPath.row, numberOfItems - 1), 0);
-//    indexPath = [NSIndexPath indexPathForRow:row inSection:0];
-//    //  workaround for really long messages not scrolling
-//    //  if last message is too long, use scroll position bottom for better appearance, else use top
-//    //  possibly a UIKit bug, see #480 on GitHub
-//    CGFloat cellHeight = [self tableView:self.messageTableView heightForRowAtIndexPath:indexPath];
-//    CGFloat maxHeightForVisibleMessage = CGRectGetHeight(self.messageTableView.bounds)
-//    - self.messageTableView.contentInset.top
-//    - self.messageTableView.contentInset.bottom
-//    - CGRectGetHeight(self.inputMessageBarView.bounds);
-//     UITableViewScrollPosition scrollPosition = (cellHeight > maxHeightForVisibleMessage) ? UITableViewScrollPositionBottom : UITableViewScrollPositionTop;
-//
+    NSInteger numberOfItems = [self.messageTableView numberOfRowsInSection:indexPath.section];
+    if (numberOfItems == 0) {
+        return;
+    }
+    
+    CGFloat tableViewContentHeight = self.messageTableView.contentSize.height;
+    CGFloat tableViewHeight = CGRectGetHeight(self.messageTableView.bounds);
+    BOOL isContentTooSmall = (tableViewContentHeight < tableViewHeight);
+    if (isContentTooSmall) {
+        //  workaround for the first few messages not scrolling
+        //  when the collection view content size is too small, `scrollToItemAtIndexPath:` doesn't work properly
+        //  this seems to be a UIKit bug, see #256 on GitHub
+        [self.messageTableView scrollRectToVisible:CGRectMake(0.0, tableViewContentHeight - 1.0f, 1.0f, 1.0f)
+                                        animated:animated];
+        return;
+    }
+    NSInteger row = MAX(MIN(indexPath.row, numberOfItems - 1), 0);
+    indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    //  workaround for really long messages not scrolling
+    //  if last message is too long, use scroll position bottom for better appearance, else use top
+    //  possibly a UIKit bug, see #480 on GitHub
+    CGFloat cellHeight = [self tableView:self.messageTableView heightForRowAtIndexPath:indexPath];
+    CGFloat maxHeightForVisibleMessage = CGRectGetHeight(self.messageTableView.bounds)
+    - self.messageTableView.contentInset.top
+    - self.messageTableView.contentInset.bottom
+    - CGRectGetHeight(self.inputMessageBarView.bounds);
+     UITableViewScrollPosition scrollPosition = (cellHeight > maxHeightForVisibleMessage) ? UITableViewScrollPositionBottom : UITableViewScrollPositionTop;
 
-    [self.messageTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:animated];
+
+    [self.messageTableView scrollToRowAtIndexPath:indexPath atScrollPosition:scrollPosition animated:animated];
 
 }
 
@@ -719,9 +722,10 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
 - (void)zhc_setTableViewInsetsTopValue:(CGFloat)top bottomValue:(CGFloat)bottom
 {
-//    UIEdgeInsets insets = UIEdgeInsetsMake(top, 0.0f, bottom, 0.0f);
-//    self.messageTableView.contentInset = insets;
-//    self.messageTableView.scrollIndicatorInsets = insets;
+    bottom = bottom +20;
+    UIEdgeInsets insets = UIEdgeInsetsMake(top, 0.0f, bottom, 0.0f);
+    self.messageTableView.contentInset = insets;
+    self.messageTableView.scrollIndicatorInsets = insets;
 }
 
 - (BOOL)zhc_isMenuVisible
@@ -931,8 +935,8 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
                         options:animationCurveOption
                      animations:^{
                          [self zhc_updateInputViewBottomConstraint:size.height];
-//                         [self zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
-//                                                  bottomValue:self.inputMessageBarView.preferredDefaultHeight+size.height];
+                         [self zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
+                                                  bottomValue:self.inputMessageBarView.preferredDefaultHeight+size.height];
                            [self.view layoutIfNeeded];
                          
                      }
@@ -961,8 +965,8 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
                         options:animationCurveOption
                      animations:^{
                          [self zhc_updateInputViewBottomConstraint:0];
-//                         [self zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
-//                                                  bottomValue:self.inputMessageBarView.preferredDefaultHeight];
+                         [self zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
+                                                  bottomValue:self.inputMessageBarView.preferredDefaultHeight];
                          [self.view layoutIfNeeded];
 
                      }
@@ -989,8 +993,8 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
                         options:animationCurveOption
                      animations:^{
                          [self zhc_updateInputViewBottomConstraint:CGRectGetHeight(keyboardEndFrame)];
-//                         [self zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
-//                                                       bottomValue:CGRectGetHeight(keyboardEndFrame)];
+                         [self zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
+                                                       bottomValue:CGRectGetHeight(keyboardEndFrame)];
                          [self.view layoutIfNeeded];
                      }
                      completion:nil];

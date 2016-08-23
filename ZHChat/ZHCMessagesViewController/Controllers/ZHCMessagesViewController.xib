@@ -19,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hcn-J0-AYf" customClass="ZHCMessagesTableView">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="Zs6-xN-6ok"/>
@@ -34,17 +34,17 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="6fi-Eo-nLP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7d9-Qc-dQC"/>
+                <constraint firstAttribute="bottom" secondItem="Hcn-J0-AYf" secondAttribute="bottom" id="FLJ-hv-4EC"/>
                 <constraint firstItem="Hcn-J0-AYf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="No2-Pw-KHm"/>
                 <constraint firstAttribute="trailing" secondItem="6fi-Eo-nLP" secondAttribute="trailing" id="OWx-m0-qk3"/>
                 <constraint firstAttribute="bottom" secondItem="6fi-Eo-nLP" secondAttribute="bottom" id="T92-E3-yMO"/>
                 <constraint firstItem="Hcn-J0-AYf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="e0b-ip-qMv"/>
                 <constraint firstItem="6fi-Eo-nLP" firstAttribute="top" secondItem="Hcn-J0-AYf" secondAttribute="bottom" id="im0-yN-njA"/>
                 <constraint firstAttribute="trailing" secondItem="Hcn-J0-AYf" secondAttribute="trailing" id="nrf-6t-FxS"/>
-                <constraint firstAttribute="bottom" secondItem="Hcn-J0-AYf" secondAttribute="bottom" id="rPi-sc-HnU"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">
-                    <exclude reference="rPi-sc-HnU"/>
+                    <exclude reference="im0-yN-njA"/>
                 </mask>
             </variation>
         </view>

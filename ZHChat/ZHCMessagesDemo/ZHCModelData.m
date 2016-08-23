@@ -24,9 +24,9 @@
         self.messages = [NSMutableArray new];
         [self loadMessages];
         
-//        [self addPhotoMediaMessage];
-//        [self addVideoMediaMessage];
-//        [self addAudioMediaMessage];
+        [self addPhotoMediaMessage];
+        [self addVideoMediaMessage];
+        [self addAudioMediaMessage];
     }
     return self;
 }
