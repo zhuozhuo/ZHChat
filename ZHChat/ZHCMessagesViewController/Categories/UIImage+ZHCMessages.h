@@ -90,4 +90,10 @@
  */
 +(UIImage *)zhc_highlightedPressVoiceImage;
 
+
+/**
+ *  @return The specified image .
+ */
++(UIImage *)zhc_getImageWithImageName:(NSString *)imgName;
+
 @end

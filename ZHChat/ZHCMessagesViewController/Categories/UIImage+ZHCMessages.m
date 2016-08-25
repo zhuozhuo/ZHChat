@@ -118,6 +118,12 @@
     return stretchImage;
 }
 
++(UIImage *)zhc_getImageWithImageName:(NSString *)imgName
+{
+    UIImage *image = [UIImage zhc_bubbleImageFromBundleWithName:imgName];
+    return image;
+}
+
 +(UIImage *)zhc_stretchableImageFromImage:(UIImage *)image withCapInsets:(UIEdgeInsets)capInsets
 {
     return [image resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
