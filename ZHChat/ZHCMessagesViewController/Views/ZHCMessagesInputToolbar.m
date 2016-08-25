@@ -51,7 +51,10 @@ static void * kZHCMessagesInputToolbarKeyValueObservingContext = &kZHCMessagesIn
     self.contentView.middleBarButtonItem = [toolbarButtonFactory defaultInputViewBarMiddelButtonItem];
     self.contentView.longPressButton = [toolbarButtonFactory defaultInputViewVoiceLongPressButtonItem];
     self.contentView.longPressButton.hidden = YES;
-    
+
+    [self.contentView.longPressButton addTarget:self action:@selector(zhc_startRecordVoice:) forControlEvents:UIControlEventTouchDown];
+     [self.contentView.longPressButton addTarget:self action:@selector(zhc_cancelRecordVoice:) forControlEvents:UIControlEventTouchUpOutside];
+    [self.contentView.longPressButton addTarget:self action:@selector(zhc_confirmRecordVoice:) forControlEvents:UIControlEventTouchCancel];
     [self toggleSendButtonEnabled];
    
 
@@ -82,6 +85,21 @@ static void * kZHCMessagesInputToolbarKeyValueObservingContext = &kZHCMessagesIn
 
 
 #pragma mark - Actions
+
+-(void)zhc_startRecordVoice:(UIButton *)sender
+{
+    sender.highlighted = YES;
+}
+
+-(void)zhc_cancelRecordVoice:(UIButton *)sender
+{
+    sender.highlighted = NO;
+}
+
+-(void)zhc_confirmRecordVoice:(UIButton *)sender
+{
+     sender.highlighted = NO;
+}
 
 - (void)zhc_leftBarButtonPressed:(UIButton *)sender
 {

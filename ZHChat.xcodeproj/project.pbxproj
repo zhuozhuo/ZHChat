@@ -58,7 +58,8 @@
 		9EC8D5CF1D6C23400020C40B /* ZHCRootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC8D5CB1D6C23400020C40B /* ZHCRootTableViewController.m */; };
 		9EC8D5D51D6D44290020C40B /* ZHCTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC8D5D31D6D44290020C40B /* ZHCTestViewController.m */; };
 		9EC8D5D61D6D44290020C40B /* ZHCTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EC8D5D41D6D44290020C40B /* ZHCTestViewController.xib */; };
-		9EC8D5D81D6D78130020C40B /* ZHCMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9EC8D5D71D6D78130020C40B /* ZHCMessagesAssets.bundle */; };
+		9EC8D5DB1D6ED56B0020C40B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9EC8D5DD1D6ED56B0020C40B /* Localizable.strings */; };
+		9EC8D5E21D6ED5BF0020C40B /* ZHCMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9EC8D5E11D6ED5BF0020C40B /* ZHCMessagesAssets.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,7 +183,11 @@
 		9EC8D5D21D6D44290020C40B /* ZHCTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCTestViewController.h; sourceTree = "<group>"; };
 		9EC8D5D31D6D44290020C40B /* ZHCTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCTestViewController.m; sourceTree = "<group>"; };
 		9EC8D5D41D6D44290020C40B /* ZHCTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHCTestViewController.xib; sourceTree = "<group>"; };
-		9EC8D5D71D6D78130020C40B /* ZHCMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZHCMessagesAssets.bundle; sourceTree = "<group>"; };
+		9EC8D5DC1D6ED56B0020C40B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9EC8D5DE1D6ED56E0020C40B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9EC8D5DF1D6ED57E0020C40B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9EC8D5E01D6ED5860020C40B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9EC8D5E11D6ED5BF0020C40B /* ZHCMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZHCMessagesAssets.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +244,7 @@
 				9E92B2CE1D58219F00736447 /* AppDelegate.m */,
 				9E92B2D31D58219F00736447 /* Main.storyboard */,
 				9E92B2D61D58219F00736447 /* Assets.xcassets */,
+				9EC8D5DD1D6ED56B0020C40B /* Localizable.strings */,
 				9E92B2D81D58219F00736447 /* LaunchScreen.storyboard */,
 				9E92B2DB1D58219F00736447 /* Info.plist */,
 				9E92B2CA1D58219F00736447 /* Supporting Files */,
@@ -290,7 +296,7 @@
 		9E92B31C1D5861A000736447 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				9EC8D5D71D6D78130020C40B /* ZHCMessagesAssets.bundle */,
+				9EC8D5E11D6ED5BF0020C40B /* ZHCMessagesAssets.bundle */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -535,6 +541,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 9E92B2BE1D58219F00736447;
 			productRefGroup = 9E92B2C81D58219F00736447 /* Products */;
@@ -554,13 +562,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EC8D5D61D6D44290020C40B /* ZHCTestViewController.xib in Resources */,
+				9EC8D5DB1D6ED56B0020C40B /* Localizable.strings in Resources */,
 				9E92B2DA1D58219F00736447 /* LaunchScreen.storyboard in Resources */,
 				9E4A376A1D66AB0A00410EE6 /* ZHCMessagesToolbarContentView.xib in Resources */,
 				9E97EC741D5ACB67009B7482 /* data.json in Resources */,
 				9E97ECB51D5DD4B4009B7482 /* ZHCMessagesViewController.xib in Resources */,
-				9EC8D5D81D6D78130020C40B /* ZHCMessagesAssets.bundle in Resources */,
 				9E92B2D71D58219F00736447 /* Assets.xcassets in Resources */,
 				9E92B2D51D58219F00736447 /* Main.storyboard in Resources */,
+				9EC8D5E21D6ED5BF0020C40B /* ZHCMessagesAssets.bundle in Resources */,
 				9E7A8B7C1D65929800DF6B30 /* jsq_messages_sample.m4a in Resources */,
 				9E97EC631D59D263009B7482 /* ZHCMessagesTableViewCellIncoming.xib in Resources */,
 				9E7A8B551D616DC600DF6B30 /* ZHCMessagesTableViewCellOutcoming.xib in Resources */,
@@ -676,6 +685,18 @@
 				9E92B2D91D58219F00736447 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		9EC8D5DD1D6ED56B0020C40B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9EC8D5DC1D6ED56B0020C40B /* Base */,
+				9EC8D5DE1D6ED56E0020C40B /* en */,
+				9EC8D5DF1D6ED57E0020C40B /* zh-Hans */,
+				9EC8D5E01D6ED5860020C40B /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			path = ZHCMessagesDemo;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -91,11 +91,11 @@
     UIImage *highlightImage = [UIImage zhc_highlightedPressVoiceImage];
     UIButton *longPressButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [longPressButton setBackgroundImage:normalImage forState:UIControlStateNormal];
-    [longPressButton setBackgroundImage:highlightImage forState:UIControlStateSelected];
+    [longPressButton setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
     [longPressButton setTitle:[NSBundle zhc_localizedStringForKey:@"Press_talk"] forState:UIControlStateNormal];
-    [longPressButton setTitle:[NSBundle zhc_localizedStringForKey:@"Send_release"] forState:UIControlStateSelected];
+    [longPressButton setTitle:[NSBundle zhc_localizedStringForKey:@"Send_release"] forState:UIControlStateHighlighted];
     [longPressButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    [longPressButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateSelected];
+    [longPressButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     longPressButton.titleLabel.font = self.buttonFont;
     longPressButton.contentMode = UIViewContentModeScaleAspectFill;
     longPressButton.backgroundColor = [UIColor clearColor];
