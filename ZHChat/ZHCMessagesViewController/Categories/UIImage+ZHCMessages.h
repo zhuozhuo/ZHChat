@@ -47,4 +47,47 @@
  */
 + (UIImage *)zhc_defaultAccessoryImage;
 
+
+/**
+ *  @return The default input toolbar Emotion image.
+ */
++(UIImage *)zhc_defaultEmotionImage;
+
+/**
+ *  @return The highlighted input toolbar Emotion image.
+ */
++(UIImage *)zhc_highlightedEmotionImage;
+
+/**
+ *  @return The default input toolbar Voice image.
+ */
++(UIImage *)zhc_defaultVoiceImage;
+
+
+/**
+ *  @return The default input toolbar Keyboard image.
+ */
++(UIImage *)zhc_defaultKeyboardImage;
+
+/**
+ *  @return The highlighted input toolbar Keyboard image.
+ */
++(UIImage *)zhc_highlightedKeyboardImage;
+
+/**
+ *  @return The default input toolbar More image.
+ */
++(UIImage *)zhc_defaultMoreImage;
+
+/**
+ *  @return The default input toolbar LongPress image.
+ */
++(UIImage *)zhc_defaultLongPressVoiceImage;
+
+
+/**
+ *  @return The highlighted input toolbar LongPress image.
+ */
++(UIImage *)zhc_highlightedPressVoiceImage;
+
 @end

@@ -159,7 +159,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param senderDisplayName The message sender display name.
  *  @param date              The message date.
  */
-- (void)didPressSendButton:(UIButton *)button
+- (void)didPressSendButton:( UIButton * _Nullable )button
            withMessageText:(NSString *)text
                   senderId:(NSString *)senderId
          senderDisplayName:(NSString *)senderDisplayName

@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZHCTestViewController">
             <connections>
+                <outlet property="presButton" destination="zGW-pJ-Clz" id="3K5-6S-E41"/>
                 <outlet property="showImgView" destination="XIC-FL-WIl" id="T7D-Ja-4Rl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,11 +30,20 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zGW-pJ-Clz">
+                    <rect key="frame" x="115" y="404" width="369" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="369" id="pwl-uw-w94"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="zGW-pJ-Clz" firstAttribute="top" secondItem="XIC-FL-WIl" secondAttribute="bottom" constant="87" id="9Vr-Oz-usv"/>
                 <constraint firstItem="XIC-FL-WIl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="189" id="DGc-Aj-Rg5"/>
                 <constraint firstItem="XIC-FL-WIl" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Kam-7T-Fjx"/>
+                <constraint firstItem="zGW-pJ-Clz" firstAttribute="centerX" secondItem="XIC-FL-WIl" secondAttribute="centerX" id="chu-H8-hTI"/>
                 <constraint firstItem="9ap-y6-TX9" firstAttribute="centerX" secondItem="XIC-FL-WIl" secondAttribute="centerX" id="d3O-N7-nLK"/>
                 <constraint firstItem="9ap-y6-TX9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="lCH-lo-qy2"/>
             </constraints>

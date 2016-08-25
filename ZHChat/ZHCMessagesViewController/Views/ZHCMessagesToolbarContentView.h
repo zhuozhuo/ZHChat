@@ -146,6 +146,12 @@ FOUNDATION_EXPORT const CGFloat kZHCMessagesToolbarContentViewHorizontalSpacingD
 @property (weak, nonatomic, readonly, nullable) UIView *middleBarButtonContainerView;
 
 
+/**
+ *  The Voice LongPress Button
+ */
+@property (strong, nonatomic,nullable) UIButton *longPressButton;
+
+
 #pragma mark - Class methods
 
 /**

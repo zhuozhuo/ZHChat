@@ -32,7 +32,6 @@
 		9E92B2F01D58219F00736447 /* ZHChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E92B2EF1D58219F00736447 /* ZHChatUITests.m */; };
 		9E92B3361D5861A000736447 /* UIImage+ZHCMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E92B3261D5861A000736447 /* UIImage+ZHCMessages.m */; };
 		9E92B3391D5861A000736447 /* ZHCMessagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E92B32F1D5861A000736447 /* ZHCMessagesTableViewCell.m */; };
-		9E92B33B1D5861BF00736447 /* ZHCMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9E92B33A1D5861BF00736447 /* ZHCMessagesAssets.bundle */; };
 		9E92B33E1D5862D200736447 /* NSBundle+ZHCMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E92B33D1D5862D200736447 /* NSBundle+ZHCMessages.m */; };
 		9E92B3461D586C3200736447 /* UIColor+ZHCMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E92B3451D586C3200736447 /* UIColor+ZHCMessages.m */; };
 		9E92B34A1D586F2400736447 /* ZHCMessagesBubbleImageFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E92B3491D586F2400736447 /* ZHCMessagesBubbleImageFactory.m */; };
@@ -57,8 +56,9 @@
 		9EC8D5C61D6BF64C0020C40B /* ZHCMessagesInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC8D5C51D6BF64C0020C40B /* ZHCMessagesInputToolbar.m */; };
 		9EC8D5C91D6BFE670020C40B /* ZHCDemoMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC8D5C81D6BFE670020C40B /* ZHCDemoMessagesViewController.m */; };
 		9EC8D5CF1D6C23400020C40B /* ZHCRootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC8D5CB1D6C23400020C40B /* ZHCRootTableViewController.m */; };
-		9EC8D5D01D6C23400020C40B /* ZHCTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC8D5CD1D6C23400020C40B /* ZHCTestViewController.m */; };
-		9EC8D5D11D6C23400020C40B /* ZHCTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EC8D5CE1D6C23400020C40B /* ZHCTestViewController.xib */; };
+		9EC8D5D51D6D44290020C40B /* ZHCTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC8D5D31D6D44290020C40B /* ZHCTestViewController.m */; };
+		9EC8D5D61D6D44290020C40B /* ZHCTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EC8D5D41D6D44290020C40B /* ZHCTestViewController.xib */; };
+		9EC8D5D81D6D78130020C40B /* ZHCMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9EC8D5D71D6D78130020C40B /* ZHCMessagesAssets.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,7 +111,6 @@
 		9E7A8B761D658C3400DF6B30 /* ZHCAudioMediaViewAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCAudioMediaViewAttributes.h; sourceTree = "<group>"; };
 		9E7A8B771D658C3400DF6B30 /* ZHCAudioMediaViewAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCAudioMediaViewAttributes.m; sourceTree = "<group>"; };
 		9E7A8B7B1D65929800DF6B30 /* jsq_messages_sample.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = jsq_messages_sample.m4a; sourceTree = "<group>"; };
-		9E7A8B7D1D65937400DF6B30 /* zhuozhuo.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = zhuozhuo.m4a; sourceTree = "<group>"; };
 		9E92B2C71D58219F00736447 /* ZHChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZHChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E92B2CB1D58219F00736447 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9E92B2CD1D58219F00736447 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -130,7 +129,6 @@
 		9E92B3261D5861A000736447 /* UIImage+ZHCMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ZHCMessages.m"; sourceTree = "<group>"; };
 		9E92B32E1D5861A000736447 /* ZHCMessagesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCMessagesTableViewCell.h; sourceTree = "<group>"; };
 		9E92B32F1D5861A000736447 /* ZHCMessagesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCMessagesTableViewCell.m; sourceTree = "<group>"; };
-		9E92B33A1D5861BF00736447 /* ZHCMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZHCMessagesAssets.bundle; sourceTree = "<group>"; };
 		9E92B33C1D5862D200736447 /* NSBundle+ZHCMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+ZHCMessages.h"; sourceTree = "<group>"; };
 		9E92B33D1D5862D200736447 /* NSBundle+ZHCMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+ZHCMessages.m"; sourceTree = "<group>"; };
 		9E92B3441D586C3200736447 /* UIColor+ZHCMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ZHCMessages.h"; sourceTree = "<group>"; };
@@ -181,9 +179,10 @@
 		9EC8D5C81D6BFE670020C40B /* ZHCDemoMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCDemoMessagesViewController.m; sourceTree = "<group>"; };
 		9EC8D5CA1D6C23400020C40B /* ZHCRootTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCRootTableViewController.h; sourceTree = "<group>"; };
 		9EC8D5CB1D6C23400020C40B /* ZHCRootTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCRootTableViewController.m; sourceTree = "<group>"; };
-		9EC8D5CC1D6C23400020C40B /* ZHCTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCTestViewController.h; sourceTree = "<group>"; };
-		9EC8D5CD1D6C23400020C40B /* ZHCTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCTestViewController.m; sourceTree = "<group>"; };
-		9EC8D5CE1D6C23400020C40B /* ZHCTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHCTestViewController.xib; sourceTree = "<group>"; };
+		9EC8D5D21D6D44290020C40B /* ZHCTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCTestViewController.h; sourceTree = "<group>"; };
+		9EC8D5D31D6D44290020C40B /* ZHCTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCTestViewController.m; sourceTree = "<group>"; };
+		9EC8D5D41D6D44290020C40B /* ZHCTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHCTestViewController.xib; sourceTree = "<group>"; };
+		9EC8D5D71D6D78130020C40B /* ZHCMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZHCMessagesAssets.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,10 +275,10 @@
 		9E92B31B1D5861A000736447 /* ZHCMessagesViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9E92B31C1D5861A000736447 /* Assets */,
 				9E97EC981D5C69B9009B7482 /* Layout */,
 				9E92B3571D588A1D00736447 /* Common */,
 				9E92B3471D586F0900736447 /* Factories */,
-				9E92B31C1D5861A000736447 /* Assets */,
 				9E92B3241D5861A000736447 /* Categories */,
 				9E92B3271D5861A000736447 /* Controllers */,
 				9E92B32C1D5861A000736447 /* Models */,
@@ -291,7 +290,7 @@
 		9E92B31C1D5861A000736447 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				9E92B33A1D5861BF00736447 /* ZHCMessagesAssets.bundle */,
+				9EC8D5D71D6D78130020C40B /* ZHCMessagesAssets.bundle */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -418,11 +417,11 @@
 				9E97EC7A1D5ACF0A009B7482 /* ZHUseFDModel.m */,
 				9EC8D5CA1D6C23400020C40B /* ZHCRootTableViewController.h */,
 				9EC8D5CB1D6C23400020C40B /* ZHCRootTableViewController.m */,
-				9EC8D5CC1D6C23400020C40B /* ZHCTestViewController.h */,
-				9EC8D5CD1D6C23400020C40B /* ZHCTestViewController.m */,
-				9EC8D5CE1D6C23400020C40B /* ZHCTestViewController.xib */,
 				9EC8D5C71D6BFE670020C40B /* ZHCDemoMessagesViewController.h */,
 				9EC8D5C81D6BFE670020C40B /* ZHCDemoMessagesViewController.m */,
+				9EC8D5D21D6D44290020C40B /* ZHCTestViewController.h */,
+				9EC8D5D31D6D44290020C40B /* ZHCTestViewController.m */,
+				9EC8D5D41D6D44290020C40B /* ZHCTestViewController.xib */,
 			);
 			path = ZHCMessagesDemo;
 			sourceTree = "<group>";
@@ -430,7 +429,6 @@
 		9E97EC721D5ACB67009B7482 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				9E7A8B7D1D65937400DF6B30 /* zhuozhuo.m4a */,
 				9E7A8B7B1D65929800DF6B30 /* jsq_messages_sample.m4a */,
 				9E97EC731D5ACB67009B7482 /* data.json */,
 			);
@@ -555,12 +553,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EC8D5D11D6C23400020C40B /* ZHCTestViewController.xib in Resources */,
+				9EC8D5D61D6D44290020C40B /* ZHCTestViewController.xib in Resources */,
 				9E92B2DA1D58219F00736447 /* LaunchScreen.storyboard in Resources */,
 				9E4A376A1D66AB0A00410EE6 /* ZHCMessagesToolbarContentView.xib in Resources */,
 				9E97EC741D5ACB67009B7482 /* data.json in Resources */,
-				9E92B33B1D5861BF00736447 /* ZHCMessagesAssets.bundle in Resources */,
 				9E97ECB51D5DD4B4009B7482 /* ZHCMessagesViewController.xib in Resources */,
+				9EC8D5D81D6D78130020C40B /* ZHCMessagesAssets.bundle in Resources */,
 				9E92B2D71D58219F00736447 /* Assets.xcassets in Resources */,
 				9E92B2D51D58219F00736447 /* Main.storyboard in Resources */,
 				9E7A8B7C1D65929800DF6B30 /* jsq_messages_sample.m4a in Resources */,
@@ -592,7 +590,7 @@
 			files = (
 				9E7A8B6A1D64115000DF6B30 /* ZHCMessagesTimestampFormatter.m in Sources */,
 				9E92B3361D5861A000736447 /* UIImage+ZHCMessages.m in Sources */,
-				9EC8D5D01D6C23400020C40B /* ZHCTestViewController.m in Sources */,
+				9EC8D5D51D6D44290020C40B /* ZHCTestViewController.m in Sources */,
 				9E92B2CF1D58219F00736447 /* AppDelegate.m in Sources */,
 				9E7A8B5B1D61AF1B00DF6B30 /* ZHCMessagesMediaViewBubbleImageMasker.m in Sources */,
 				9E92B3561D5885AA00736447 /* ZHCMessagesAvatarImage.m in Sources */,

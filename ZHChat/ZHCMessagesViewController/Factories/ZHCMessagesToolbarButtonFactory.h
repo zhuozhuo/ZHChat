@@ -52,5 +52,37 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIButton *)defaultSendButtonItem;
 
 
+
+
+/**
+ *  Creates and returns a new button that is styled as the default Left button.
+ *  The button has a paper clip icon image and no text.
+ *  @return A newly created button.
+ */
+-(UIButton *)defaultInputViewBarLeftButtonItem;
+
+
+/**
+ *  Creates and returns a new button that is styled as the default Right button.
+ *  The button has a paper clip icon image and no text.
+ *  @return A newly created button.
+ */
+-(UIButton *)defaultInputViewBarRightButtonItem;
+
+
+/**
+ *  Creates and returns a new button that is styled as the default Middel button.
+ *  The button has a paper clip icon image and no text.
+ *  @return A newly created button.
+ */
+-(UIButton *)defaultInputViewBarMiddelButtonItem;
+
+/**
+ *  Creates and returns a new button that is styled as the default LongPress button.
+ *  The button has a paper clip icon image and no text.
+ *  @return A newly created button.
+ */
+-(UIButton *)defaultInputViewVoiceLongPressButtonItem;
+
 @end
 NS_ASSUME_NONNULL_END

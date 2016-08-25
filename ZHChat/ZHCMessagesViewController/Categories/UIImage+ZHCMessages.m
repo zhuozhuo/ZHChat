@@ -72,5 +72,62 @@
     return [UIImage zhc_bubbleImageFromBundleWithName:@"clip"];
 }
 
++(UIImage *)zhc_defaultEmotionImage
+{
+    return [UIImage zhc_bubbleImageFromBundleWithName:@"ToolViewEmotion"];
+}
 
++(UIImage *)zhc_highlightedEmotionImage
+{
+    return [UIImage zhc_bubbleImageFromBundleWithName:@"ToolViewEmotionHL"];
+}
+
++(UIImage *)zhc_defaultVoiceImage
+{
+    return [UIImage zhc_bubbleImageFromBundleWithName:@"ToolViewInputVoice"];
+}
+
++(UIImage *)zhc_defaultKeyboardImage
+{
+    return [UIImage zhc_bubbleImageFromBundleWithName:@"ToolViewKeyboard"];
+}
+
++(UIImage *)zhc_highlightedKeyboardImage
+{
+     return [UIImage zhc_bubbleImageFromBundleWithName:@"ToolViewKeyboardHL"];
+}
+
++(UIImage *)zhc_defaultMoreImage
+{
+    return [UIImage zhc_bubbleImageFromBundleWithName:@"ToolViewMore"];
+}
+
++(UIImage *)zhc_defaultLongPressVoiceImage
+{
+    UIImage *image = [UIImage zhc_bubbleImageFromBundleWithName:@"VoicePress"];
+    UIEdgeInsets capInsets = [UIImage zhc_centerPointEdgeInsetsForImageSize:image.size];
+    UIImage *stretchImage = [UIImage zhc_stretchableImageFromImage:image withCapInsets:capInsets];
+    return stretchImage;
+}
+
++(UIImage *)zhc_highlightedPressVoiceImage
+{
+    UIImage *image = [UIImage zhc_bubbleImageFromBundleWithName:@"VoicePressHL"];
+    UIEdgeInsets capInsets = [UIImage zhc_centerPointEdgeInsetsForImageSize:image.size];
+    UIImage *stretchImage = [UIImage zhc_stretchableImageFromImage:image withCapInsets:capInsets];
+    return stretchImage;
+}
+
++(UIImage *)zhc_stretchableImageFromImage:(UIImage *)image withCapInsets:(UIEdgeInsets)capInsets
+{
+    return [image resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch];
+}
+
+
+
++(UIEdgeInsets)zhc_centerPointEdgeInsetsForImageSize:(CGSize)imageSize
+{
+    CGPoint center = CGPointMake(imageSize.width/2.0, imageSize.height/2.0);
+    return UIEdgeInsetsMake(center.y, center.x, center.y, center.x);
+}
 @end

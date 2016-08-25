@@ -38,6 +38,72 @@
 }
 
 
+-(UIButton *)defaultInputViewBarLeftButtonItem
+{
+    UIImage *voiceImage = [UIImage zhc_defaultVoiceImage];
+    UIImage *keyboardImage = [UIImage zhc_defaultKeyboardImage];
+    
+    UIButton *voiceButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 34, 32)];
+    [voiceButton setImage:voiceImage forState:UIControlStateNormal];
+    [voiceButton setImage:keyboardImage forState:UIControlStateSelected];
+    voiceButton.contentMode = UIViewContentModeScaleAspectFit;
+    voiceButton.backgroundColor = [UIColor clearColor];
+    voiceButton.tintColor = [UIColor lightGrayColor];
+    voiceButton.titleLabel.font = self.buttonFont;
+    
+    return voiceButton;
+}
+
+-(UIButton *)defaultInputViewBarRightButtonItem
+{
+    UIImage *moreImage = [UIImage zhc_defaultMoreImage];
+    
+    UIButton *moreButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 34, 32)];
+    [moreButton setImage:moreImage forState:UIControlStateNormal];
+    [moreButton setImage:moreImage forState:UIControlStateSelected];
+    moreButton.contentMode = UIViewContentModeScaleAspectFit;
+    moreButton.backgroundColor = [UIColor clearColor];
+    moreButton.tintColor = [UIColor lightGrayColor];
+    moreButton.titleLabel.font = self.buttonFont;
+    return moreButton;
+}
+
+
+-(UIButton *)defaultInputViewBarMiddelButtonItem
+{
+    UIImage *emotionImage = [UIImage zhc_defaultEmotionImage];
+    UIImage *keyboardImage = [UIImage zhc_defaultKeyboardImage];
+    
+    UIButton *emotionButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 34, 32)];
+    [emotionButton setBackgroundImage:emotionImage forState:UIControlStateNormal];
+    [emotionButton setBackgroundImage:keyboardImage forState:UIControlStateSelected];
+    emotionButton.contentMode = UIViewContentModeScaleAspectFit;
+    emotionButton.backgroundColor = [UIColor clearColor];
+    emotionButton.tintColor = [UIColor lightGrayColor];
+    emotionButton.titleLabel.font = self.buttonFont;
+    return emotionButton;
+
+}
+
+-(UIButton *)defaultInputViewVoiceLongPressButtonItem
+{
+    UIImage *normalImage = [UIImage zhc_defaultLongPressVoiceImage];
+    UIImage *highlightImage = [UIImage zhc_highlightedPressVoiceImage];
+    UIButton *longPressButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [longPressButton setBackgroundImage:normalImage forState:UIControlStateNormal];
+    [longPressButton setBackgroundImage:highlightImage forState:UIControlStateSelected];
+    [longPressButton setTitle:[NSBundle zhc_localizedStringForKey:@"Press_talk"] forState:UIControlStateNormal];
+    [longPressButton setTitle:[NSBundle zhc_localizedStringForKey:@"Send_release"] forState:UIControlStateSelected];
+    [longPressButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [longPressButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateSelected];
+    longPressButton.titleLabel.font = self.buttonFont;
+    longPressButton.contentMode = UIViewContentModeScaleAspectFill;
+    longPressButton.backgroundColor = [UIColor clearColor];
+    return longPressButton;
+    
+}
+
+
 - (UIButton *)defaultAccessoryButtonItem
 {
     UIImage *accessoryImage = [UIImage zhc_defaultAccessoryImage];

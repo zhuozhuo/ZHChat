@@ -19,15 +19,16 @@
         _username = dictionary[@"username"];
         _time = dictionary[@"time"];
         _imageName = dictionary[@"imageName"];
-        
     }
     return self;
 }
+
 
 - (NSString *)uniqueIdentifier
 {
     static NSInteger counter = 0;
     return [NSString stringWithFormat:@"unique-id-%@", @(counter++)];
 }
+
 
 @end

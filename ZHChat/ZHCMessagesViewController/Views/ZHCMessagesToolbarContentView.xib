@@ -11,14 +11,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3K6-tC-y9x">
-                    <rect key="frame" x="8" y="6" width="34" height="32"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="34" id="UCB-B7-9Gg"/>
-                        <constraint firstAttribute="height" constant="32" id="a9Y-i5-ZAC"/>
-                    </constraints>
-                </view>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wJP-Cy-tqp" customClass="ZHCMessagesComposerTextView">
                     <rect key="frame" x="50" y="7" width="178" height="30"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -44,6 +36,14 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="j6S-MS-nd2"/>
                         <constraint firstAttribute="width" constant="34" id="lYR-KK-YAj"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3K6-tC-y9x">
+                    <rect key="frame" x="8" y="6" width="34" height="32"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="34" id="UCB-B7-9Gg"/>
+                        <constraint firstAttribute="height" constant="32" id="a9Y-i5-ZAC"/>
                     </constraints>
                 </view>
             </subviews>

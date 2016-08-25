@@ -8,6 +8,7 @@
 
 #import "ZHCMessagesToolbarContentView.h"
 #import "UIView+ZHCMessages.h"
+#import "ZHCMessagesToolbarButtonFactory.h"
 
 const CGFloat kZHCMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
 
@@ -94,6 +95,7 @@ const CGFloat kZHCMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
     [self.leftBarButtonContainerView zhc_pinAllEdgesOfSubview:leftBarButtonItem];
     [self setNeedsUpdateConstraints];
     
+    
     _leftBarButtonItem = leftBarButtonItem;
 }
 
@@ -134,12 +136,61 @@ const CGFloat kZHCMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
     _middleBarButtonItem = middleBarButtonItem;
 }
 
+
+-(void)setLongPressButton:(UIButton *)longPressButton
+{
+    if (_longPressButton) {
+        [_longPressButton removeFromSuperview];
+    }
+    if (!longPressButton) {
+        _longPressButton = nil;
+        return;
+    }
+    if (CGRectEqualToRect(longPressButton.frame, CGRectZero)) {
+        longPressButton.frame = self.textView.bounds;
+    }
+    longPressButton.hidden = NO;
+    longPressButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:longPressButton];
+    
+    [self setLongPressConstraintswithView:longPressButton];
+    [self setNeedsUpdateConstraints];
+    _longPressButton = longPressButton;
+}
+
+
+-(void)setLongPressConstraintswithView:(UIView *)longpressView
+{
+    CGFloat top = 0.0f,bottom = 0.0f,left = 0.0f,right=0.0f;
+    
+    for (NSLayoutConstraint *constraint in self.constraints) {
+        if (constraint.firstItem == _textView || constraint.secondItem == _textView) {
+            if (constraint.firstAttribute == NSLayoutAttributeTop) {
+                top = constraint.constant;
+            }else if (constraint.secondAttribute == NSLayoutAttributeBottom){
+                bottom = constraint.constant;
+            }else if (constraint.firstAttribute == NSLayoutAttributeLeading && constraint.firstItem == _textView){
+                left = constraint.constant;
+            }else if (constraint.secondAttribute == NSLayoutAttributeTrailing && constraint.secondItem == _textView){
+                right = constraint.constant;
+            }
+        }
+        
+    }
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:longpressView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1 constant:top]];
+     [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:longpressView attribute:NSLayoutAttributeBottom multiplier:1 constant:bottom]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:longpressView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_leftBarButtonContainerView attribute:NSLayoutAttributeTrailing multiplier:1 constant:left]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_middleBarButtonContainerView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:longpressView attribute:NSLayoutAttributeTrailing multiplier:1 constant:right]];
+
+    
+}
+
+
 - (void)setMiddleBarButtonItemWidth:(CGFloat)middleBarButtonItemWidth
 {
     self.middleBarButtonContainerViewWidthConstraint.constant = middleBarButtonItemWidth;
     [self setNeedsUpdateConstraints];
 }
-
 
 
 
@@ -178,6 +229,37 @@ const CGFloat kZHCMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
 {
     self.rightBarButtonContainerViewWidthConstraint.constant = rightBarButtonItemWidth;
     [self setNeedsUpdateConstraints];
+}
+
+
+#pragma mark - Getters
+
+- (CGFloat)leftBarButtonItemWidth
+{
+    return self.leftBarButtonContainerViewWidthConstraint.constant;
+}
+
+- (CGFloat)rightBarButtonItemWidth
+{
+    return self.rightBarButtonContainerViewWidthConstraint.constant;
+}
+
+- (CGFloat)rightContentPadding
+{
+    return self.rightHorizontalSpacingConstraint.constant;
+}
+
+- (CGFloat)leftContentPadding
+{
+    return self.leftHorizontalSpacingConstraint.constant;
+}
+
+#pragma mark - UIView overrides
+
+- (void)setNeedsDisplay
+{
+    [super setNeedsDisplay];
+    [self.textView setNeedsDisplay];
 }
 
 /*

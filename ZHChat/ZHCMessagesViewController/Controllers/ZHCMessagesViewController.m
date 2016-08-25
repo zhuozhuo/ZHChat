@@ -765,31 +765,32 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
 #pragma mark - Input toolbar delegate
 - (void)messagesInputToolbar:(ZHCMessagesInputToolbar *)toolbar didPressRightBarButton:(UIButton *)sender{
-    if (toolbar.sendButtonOnRight) {
-        [self didPressSendButton:sender
-                 withMessageText:[self zhc_currentlyComposedMessageText]
-                        senderId:[self.messageTableView.dataSource senderId]
-               senderDisplayName:[self.messageTableView.dataSource senderDisplayName]
-                            date:[NSDate date]];
-    }
-    else {
-        [self didPressAccessoryButton:sender];
-    }
+  
+//    if (toolbar.sendButtonOnRight) {
+//        [self didPressSendButton:sender
+//                 withMessageText:[self zhc_currentlyComposedMessageText]
+//                        senderId:[self.messageTableView.dataSource senderId]
+//               senderDisplayName:[self.messageTableView.dataSource senderDisplayName]
+//                            date:[NSDate date]];
+//    }
+//    else {
+//        [self didPressAccessoryButton:sender];
+//    }
 
 }
 
 - (void)messagesInputToolbar:(ZHCMessagesInputToolbar *)toolbar didPressLeftBarButton:(UIButton *)sender
 {
-    if (toolbar.sendButtonOnRight) {
-        [self didPressAccessoryButton:sender];
-    }
-    else {
-        [self didPressSendButton:sender
-                 withMessageText:[self zhc_currentlyComposedMessageText]
-                        senderId:[self.messageTableView.dataSource senderId]
-               senderDisplayName:[self.messageTableView.dataSource senderDisplayName]
-                            date:[NSDate date]];
-    }
+//    if (toolbar.sendButtonOnRight) {
+//        [self didPressAccessoryButton:sender];
+//    }
+//    else {
+//        [self didPressSendButton:sender
+//                 withMessageText:[self zhc_currentlyComposedMessageText]
+//                        senderId:[self.messageTableView.dataSource senderId]
+//               senderDisplayName:[self.messageTableView.dataSource senderDisplayName]
+//                            date:[NSDate date]];
+//    }
 
 }
 
@@ -852,6 +853,22 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     }
     
     [textView resignFirstResponder];
+}
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if ([text isEqualToString:@"\n"]) {
+        if ([textView.text zhc_stringByTrimingWhitespace].length>0) {
+            [self didPressSendButton:nil
+                              withMessageText:[self zhc_currentlyComposedMessageText]
+                                     senderId:[self.messageTableView.dataSource senderId]
+                            senderDisplayName:[self.messageTableView.dataSource senderDisplayName]
+                                         date:[NSDate date]];
+        }
+        
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - Notifications

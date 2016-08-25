@@ -10,8 +10,11 @@
 #import "UIImage+ZHCMessages.h"
 #import "UIColor+ZHCMessages.h"
 #import "UIView+ZHCMessages.h"
+#import "ZHCMessagesToolbarButtonFactory.h"
+
 
 @interface ZHCTestViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *presButton;
 
 @end
 
@@ -42,6 +45,12 @@
     testView.translatesAutoresizingMaskIntoConstraints = NO;
      CGRect frame = CGRectMake(50, 100, 150, 150);
     [self.view zhc_pinFrameOfSubView:testView withFrame:frame];
+    
+    UIImage *normalImage = [UIImage zhc_defaultLongPressVoiceImage];
+    UIImage *highlightImage = [normalImage zhc_imageMaskedWithColor:[UIColor darkGrayColor]];
+    [self.presButton setBackgroundImage:normalImage forState:UIControlStateNormal];
+    [self.presButton setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
+    
     
     
     // Do any additional setup after loading the view from its nib.
