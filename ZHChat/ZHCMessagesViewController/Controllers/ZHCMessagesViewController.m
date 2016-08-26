@@ -15,18 +15,12 @@
 #import "ZHCMessageAvatarImageDataSource.h"
 #import "ZHCMessagesTableviewLayoutAttributes.h"
 #import "ZHCMessagesCommonParameter.h"
-
-
 #import "ZHCMessagesComposerTextView.h"
 #import "ZHCMessagesToolbarContentView.h"
-
-
 
 #import "NSBundle+ZHCMessages.h"
 #import "NSString+ZHCMessages.h"
 #import "UIColor+ZHCMessages.h"
-#import "ZHCMessagesMoreView.h"
-
 
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <objc/runtime.h>
@@ -105,7 +99,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputViewBottomLayoutGuide;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPathForMenu;
-
+@property (strong, nonatomic) NSLayoutConstraint *messagesMoreViewBottomConstraint;
 
 @end
 
@@ -164,7 +158,9 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     self.outgoingCellIdentifier = [ZHCMessagesTableViewCellOutcoming cellReuseIdentifier];
     self.incomingMediaCellIdentifier = [ZHCMessagesTableViewCellIncoming mediaCellReuseIdentifier];
     self.outgoingMediaCellIdentifier = [ZHCMessagesTableViewCellOutcoming mediaCellReuseIdentifier];
-    //self.messageTableView.estimatedRowHeight = 100.0;
+    //self.messageTableView.estimatedRowHeight = 100.0;//This can't set
+    
+    
     
     // NOTE: let this behavior be opt-in for now
     
@@ -192,6 +188,8 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     _topContentAdditionalInset = topContentAdditionalInset;
     [self zhc_updateTableViewInsets];
 }
+
+
 
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
@@ -764,33 +762,15 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
 
 #pragma mark - Input toolbar delegate
-- (void)messagesInputToolbar:(ZHCMessagesInputToolbar *)toolbar didPressRightBarButton:(UIButton *)sender{
+- (void)messagesInputToolbar:(ZHCMessagesInputToolbar *)toolbar didPressRightBarButton:(UIButton *)sender
+{
   
-//    if (toolbar.sendButtonOnRight) {
-//        [self didPressSendButton:sender
-//                 withMessageText:[self zhc_currentlyComposedMessageText]
-//                        senderId:[self.messageTableView.dataSource senderId]
-//               senderDisplayName:[self.messageTableView.dataSource senderDisplayName]
-//                            date:[NSDate date]];
-//    }
-//    else {
-//        [self didPressAccessoryButton:sender];
-//    }
 
 }
 
 - (void)messagesInputToolbar:(ZHCMessagesInputToolbar *)toolbar didPressLeftBarButton:(UIButton *)sender
 {
-//    if (toolbar.sendButtonOnRight) {
-//        [self didPressAccessoryButton:sender];
-//    }
-//    else {
-//        [self didPressSendButton:sender
-//                 withMessageText:[self zhc_currentlyComposedMessageText]
-//                        senderId:[self.messageTableView.dataSource senderId]
-//               senderDisplayName:[self.messageTableView.dataSource senderDisplayName]
-//                            date:[NSDate date]];
-//    }
+    
 
 }
 
@@ -810,7 +790,9 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 }
 
 #pragma mark - Input
-
+/**
+ *  This can't set
+ */
 //- (UIView *)inputAccessoryView
 //{
 //    return self.inputMessageBarView;
@@ -820,6 +802,25 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 //{
 //    return YES;
 //}
+
+#pragma mark - ZHCMessagesMoreViewDataSource
+-(void)messagesMoreView:(ZHCMessagesMoreView *)moreView selectedMoreViewItemWithIndex:(NSInteger)index
+{
+    NSAssert(NO, @"ERROR: required method not implemented: %s", __PRETTY_FUNCTION__);
+}
+
+-(NSArray *)messagesMoreViewTitles:(ZHCMessagesMoreView *)moreView
+{
+    NSAssert(NO, @"ERROR: required method not implemented: %s", __PRETTY_FUNCTION__);
+    return nil;
+}
+
+
+-(NSArray *)messagesMoreViewImgNames:(ZHCMessagesMoreView *)moreView
+{
+    NSAssert(NO, @"ERROR: required method not implemented: %s", __PRETTY_FUNCTION__);
+    return nil;
+}
 
 
 #pragma mark - Text view delegate

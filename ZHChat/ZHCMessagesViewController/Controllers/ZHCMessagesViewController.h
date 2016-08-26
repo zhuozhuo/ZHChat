@@ -14,10 +14,10 @@
 #import "ZHCMessagesTableViewCellOutcoming.h"
 #import "ZHCMessage.h"
 #import "ZHCMessagesInputToolbar.h"
-
+#import "ZHCMessagesMoreView.h"
 
 NS_ASSUME_NONNULL_BEGIN
-@interface ZHCMessagesViewController : UIViewController<ZHCMessagesTableViewDataSource,ZHCMessagesTableViewDelegate>
+@interface ZHCMessagesViewController : UIViewController<ZHCMessagesTableViewDataSource,ZHCMessagesTableViewDelegate,ZHCMessagesMoreViewDelegate,ZHCMessagesMoreViewDataSource>
 
 
 /**
@@ -31,6 +31,11 @@ NS_ASSUME_NONNULL_BEGIN
  *  This view controller is the toolbar's delegate.
  */
 @property (strong, nonatomic, readonly) ZHCMessagesInputToolbar *inputMessageBarView;
+
+/**
+ *  Returns the More view object managed by this view controller.
+ */
+@property (strong, nonatomic, readonly) ZHCMessagesMoreView *messageMoreView;
 
 /**
  *  Specifies whether or not the view controller should automatically scroll to the most recent message
