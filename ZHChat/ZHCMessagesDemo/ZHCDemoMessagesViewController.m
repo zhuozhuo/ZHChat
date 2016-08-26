@@ -76,7 +76,7 @@
 
 -(void)tableView:(ZHCMessagesTableView *)tableView didDeleteMessageAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"didDeleteMessageAtIndexPath:%ld",indexPath.row);
+    NSLog(@"didDeleteMessageAtIndexPath:%ld",(long)indexPath.row);
     [self.demoData.messages removeObjectAtIndex:indexPath.row];
 }
 
@@ -234,14 +234,14 @@
 -(void)tableView:(ZHCMessagesTableView *)tableView didTapAvatarImageView:(UIImageView *)avatarImageView atIndexPath:(NSIndexPath *)indexPath
 {
     [super tableView:tableView didTapAvatarImageView:avatarImageView atIndexPath:indexPath];
-    NSLog(@"didTapAvatarImageViewIndexPath:%ld",indexPath.row);
+    NSLog(@"didTapAvatarImageViewIndexPath:%ld",(long)indexPath.row);
 }
 
 
 -(void)tableView:(ZHCMessagesTableView *)tableView didTapMessageBubbleAtIndexPath:(NSIndexPath *)indexPath
 {
     [super tableView:tableView didTapMessageBubbleAtIndexPath:indexPath];
-    NSLog(@"didTapMessageBubbleAtIndexPath:%ld",indexPath.row);
+    NSLog(@"didTapMessageBubbleAtIndexPath:%ld",(long)indexPath.row);
     
 }
 
@@ -249,7 +249,7 @@
 -(void)tableView:(ZHCMessagesTableView *)tableView didTapCellAtIndexPath:(NSIndexPath *)indexPath touchLocation:(CGPoint)touchLocation
 {
     [super tableView:tableView didTapCellAtIndexPath:indexPath touchLocation:touchLocation];
-    NSLog(@"didTapCellAtIndexPath:%ld",indexPath.row);
+    NSLog(@"didTapCellAtIndexPath:%ld",(long)indexPath.row);
 }
 
 
@@ -257,7 +257,7 @@
 {
     [super tableView:tableView performAction:action forcellAtIndexPath:indexPath withSender:sender];
     
-    NSLog(@"performAction:%ld",indexPath.row);
+    NSLog(@"performAction:%ld",(long)indexPath.row);
 }
 
 
@@ -345,7 +345,7 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"click ActionSheet Button At index :%ld",buttonIndex);
+    NSLog(@"click ActionSheet Button At index :%ld",(long)buttonIndex);
 }
 /*
 #pragma mark - Navigation

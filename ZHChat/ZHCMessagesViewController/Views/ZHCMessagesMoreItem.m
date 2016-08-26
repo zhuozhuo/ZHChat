@@ -9,6 +9,7 @@
 #import "ZHCMessagesMoreItem.h"
 #import "UIImage+ZHCMessages.h"
 #import "NSBundle+ZHCMessages.h"
+#import "UIView+ZHCMessages.h"
 
 
 
@@ -36,6 +37,21 @@
     [self initialSubViews];
 }
 
+-(void)updateConstraints
+{
+    [super updateConstraints];
+    self.button.translatesAutoresizingMaskIntoConstraints = NO;
+    self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self zhc_pinSubview:self.button toEdge:NSLayoutAttributeTop withConstant:4.0f];
+    [self zhc_pinSubview:self.button toEdge:NSLayoutAttributeCenterX withConstant:0.0f];
+    [self.button zhc_pinSelfToEdge:NSLayoutAttributeWidth withConstant:50.0f];
+    [self.button zhc_pinSelfToEdge:NSLayoutAttributeHeight withConstant:50.0f];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.button attribute:NSLayoutAttributeBottom multiplier:1.0 constant:3.0]];
+     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0f]];
+}
+
+
 #pragma mark - Private Methods
 -(void)initialSubViews
 {
@@ -48,10 +64,13 @@
 -(void)setViewWithTitle:(NSString *)title imgName:(NSString *)imgName
 {
     self.titleLabel.text = title;
-    UIImage *img = [UIImage zhc_getImageWithImageName:imgName];
+    NSParameterAssert(imgName != nil);
+    UIImage *img = [UIImage imageNamed:imgName];
     [self.button setBackgroundImage:img forState:UIControlStateNormal];
     [self updateConstraintsIfNeeded];
 }
+
+
 
 #pragma mark - Getters
 -(UIButton *)button

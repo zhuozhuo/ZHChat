@@ -25,6 +25,8 @@
 #import "NSBundle+ZHCMessages.h"
 #import "NSString+ZHCMessages.h"
 #import "UIColor+ZHCMessages.h"
+#import "ZHCMessagesMoreView.h"
+
 
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <objc/runtime.h>
@@ -104,9 +106,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputViewBottomLayoutGuide;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPathForMenu;
 
-@property (nonatomic, strong) ZHCMessagesTableViewCell *dequeueReuseCell;
 
-@property (strong, nonatomic) UIView *inputAccessoryView;
 @end
 
 @implementation ZHCMessagesViewController
@@ -351,7 +351,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
         return;
     }
     NSInteger rows = [self.messageTableView numberOfRowsInSection:0];
-    NSLog(@"rows:%ld",rows);
+    NSLog(@"rows:%ld",(long)rows);
     NSIndexPath *lastCellIndexPath = [NSIndexPath indexPathForItem:(rows - 1) inSection:0];
     
     [self scrollToIndexPath:lastCellIndexPath animated:animated];

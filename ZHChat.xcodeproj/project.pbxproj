@@ -54,6 +54,16 @@
 		9E97ECB41D5DD4B4009B7482 /* ZHCMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E97ECB21D5DD4B4009B7482 /* ZHCMessagesViewController.m */; };
 		9E97ECB51D5DD4B4009B7482 /* ZHCMessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E97ECB31D5DD4B4009B7482 /* ZHCMessagesViewController.xib */; };
 		9EB3718D1D6F156F00FDFF1B /* ZHCMessagesMoreItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB3718C1D6F156F00FDFF1B /* ZHCMessagesMoreItem.m */; };
+		9EB371901D6FE30800FDFF1B /* ZHCMessagesMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB3718F1D6FE30800FDFF1B /* ZHCMessagesMoreView.m */; };
+		9EB371D41D704CF000FDFF1B /* chat_bar_icons_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EB371CB1D704CF000FDFF1B /* chat_bar_icons_camera.png */; };
+		9EB371D51D704CF000FDFF1B /* chat_bar_icons_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EB371CC1D704CF000FDFF1B /* chat_bar_icons_camera@2x.png */; };
+		9EB371D61D704CF000FDFF1B /* chat_bar_icons_camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EB371CD1D704CF000FDFF1B /* chat_bar_icons_camera@3x.png */; };
+		9EB371D71D704CF000FDFF1B /* chat_bar_icons_location.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EB371CE1D704CF000FDFF1B /* chat_bar_icons_location.png */; };
+		9EB371D81D704CF000FDFF1B /* chat_bar_icons_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EB371CF1D704CF000FDFF1B /* chat_bar_icons_location@2x.png */; };
+		9EB371D91D704CF000FDFF1B /* chat_bar_icons_location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EB371D01D704CF000FDFF1B /* chat_bar_icons_location@3x.png */; };
+		9EB371DA1D704CF000FDFF1B /* chat_bar_icons_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EB371D11D704CF000FDFF1B /* chat_bar_icons_pic.png */; };
+		9EB371DB1D704CF000FDFF1B /* chat_bar_icons_pic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EB371D21D704CF000FDFF1B /* chat_bar_icons_pic@2x.png */; };
+		9EB371DC1D704CF000FDFF1B /* chat_bar_icons_pic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EB371D31D704CF000FDFF1B /* chat_bar_icons_pic@3x.png */; };
 		9EC8D5C61D6BF64C0020C40B /* ZHCMessagesInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC8D5C51D6BF64C0020C40B /* ZHCMessagesInputToolbar.m */; };
 		9EC8D5C91D6BFE670020C40B /* ZHCDemoMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC8D5C81D6BFE670020C40B /* ZHCDemoMessagesViewController.m */; };
 		9EC8D5CF1D6C23400020C40B /* ZHCRootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC8D5CB1D6C23400020C40B /* ZHCRootTableViewController.m */; };
@@ -177,6 +187,17 @@
 		9E97ECB31D5DD4B4009B7482 /* ZHCMessagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHCMessagesViewController.xib; sourceTree = "<group>"; };
 		9EB3718B1D6F156F00FDFF1B /* ZHCMessagesMoreItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCMessagesMoreItem.h; sourceTree = "<group>"; };
 		9EB3718C1D6F156F00FDFF1B /* ZHCMessagesMoreItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCMessagesMoreItem.m; sourceTree = "<group>"; };
+		9EB3718E1D6FE30800FDFF1B /* ZHCMessagesMoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCMessagesMoreView.h; sourceTree = "<group>"; };
+		9EB3718F1D6FE30800FDFF1B /* ZHCMessagesMoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCMessagesMoreView.m; sourceTree = "<group>"; };
+		9EB371CB1D704CF000FDFF1B /* chat_bar_icons_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_bar_icons_camera.png; sourceTree = "<group>"; };
+		9EB371CC1D704CF000FDFF1B /* chat_bar_icons_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_bar_icons_camera@2x.png"; sourceTree = "<group>"; };
+		9EB371CD1D704CF000FDFF1B /* chat_bar_icons_camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_bar_icons_camera@3x.png"; sourceTree = "<group>"; };
+		9EB371CE1D704CF000FDFF1B /* chat_bar_icons_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_bar_icons_location.png; sourceTree = "<group>"; };
+		9EB371CF1D704CF000FDFF1B /* chat_bar_icons_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_bar_icons_location@2x.png"; sourceTree = "<group>"; };
+		9EB371D01D704CF000FDFF1B /* chat_bar_icons_location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_bar_icons_location@3x.png"; sourceTree = "<group>"; };
+		9EB371D11D704CF000FDFF1B /* chat_bar_icons_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_bar_icons_pic.png; sourceTree = "<group>"; };
+		9EB371D21D704CF000FDFF1B /* chat_bar_icons_pic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_bar_icons_pic@2x.png"; sourceTree = "<group>"; };
+		9EB371D31D704CF000FDFF1B /* chat_bar_icons_pic@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_bar_icons_pic@3x.png"; sourceTree = "<group>"; };
 		9EC8D5C41D6BF64C0020C40B /* ZHCMessagesInputToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCMessagesInputToolbar.h; sourceTree = "<group>"; };
 		9EC8D5C51D6BF64C0020C40B /* ZHCMessagesInputToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCMessagesInputToolbar.m; sourceTree = "<group>"; };
 		9EC8D5C71D6BFE670020C40B /* ZHCDemoMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCDemoMessagesViewController.h; sourceTree = "<group>"; };
@@ -388,6 +409,8 @@
 				9EC8D5C51D6BF64C0020C40B /* ZHCMessagesInputToolbar.m */,
 				9EB3718B1D6F156F00FDFF1B /* ZHCMessagesMoreItem.h */,
 				9EB3718C1D6F156F00FDFF1B /* ZHCMessagesMoreItem.m */,
+				9EB3718E1D6FE30800FDFF1B /* ZHCMessagesMoreView.h */,
+				9EB3718F1D6FE30800FDFF1B /* ZHCMessagesMoreView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -421,6 +444,7 @@
 		9E97EC711D5ACB67009B7482 /* ZHCMessagesDemo */ = {
 			isa = PBXGroup;
 			children = (
+				9EB371C91D704CF000FDFF1B /* Resources */,
 				9E97EC721D5ACB67009B7482 /* Data */,
 				9E97EC751D5ACB99009B7482 /* ZHCModelData.h */,
 				9E97EC761D5ACB99009B7482 /* ZHCModelData.m */,
@@ -457,6 +481,30 @@
 				9E7A8B771D658C3400DF6B30 /* ZHCAudioMediaViewAttributes.m */,
 			);
 			path = Layout;
+			sourceTree = "<group>";
+		};
+		9EB371C91D704CF000FDFF1B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9EB371CA1D704CF000FDFF1B /* Imgs */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9EB371CA1D704CF000FDFF1B /* Imgs */ = {
+			isa = PBXGroup;
+			children = (
+				9EB371CB1D704CF000FDFF1B /* chat_bar_icons_camera.png */,
+				9EB371CC1D704CF000FDFF1B /* chat_bar_icons_camera@2x.png */,
+				9EB371CD1D704CF000FDFF1B /* chat_bar_icons_camera@3x.png */,
+				9EB371CE1D704CF000FDFF1B /* chat_bar_icons_location.png */,
+				9EB371CF1D704CF000FDFF1B /* chat_bar_icons_location@2x.png */,
+				9EB371D01D704CF000FDFF1B /* chat_bar_icons_location@3x.png */,
+				9EB371D11D704CF000FDFF1B /* chat_bar_icons_pic.png */,
+				9EB371D21D704CF000FDFF1B /* chat_bar_icons_pic@2x.png */,
+				9EB371D31D704CF000FDFF1B /* chat_bar_icons_pic@3x.png */,
+			);
+			path = Imgs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -566,17 +614,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EB371D51D704CF000FDFF1B /* chat_bar_icons_camera@2x.png in Resources */,
 				9EC8D5D61D6D44290020C40B /* ZHCTestViewController.xib in Resources */,
 				9EC8D5DB1D6ED56B0020C40B /* Localizable.strings in Resources */,
 				9E92B2DA1D58219F00736447 /* LaunchScreen.storyboard in Resources */,
+				9EB371DB1D704CF000FDFF1B /* chat_bar_icons_pic@2x.png in Resources */,
+				9EB371D61D704CF000FDFF1B /* chat_bar_icons_camera@3x.png in Resources */,
+				9EB371DC1D704CF000FDFF1B /* chat_bar_icons_pic@3x.png in Resources */,
+				9EB371D91D704CF000FDFF1B /* chat_bar_icons_location@3x.png in Resources */,
+				9EB371DA1D704CF000FDFF1B /* chat_bar_icons_pic.png in Resources */,
+				9EB371D71D704CF000FDFF1B /* chat_bar_icons_location.png in Resources */,
 				9E4A376A1D66AB0A00410EE6 /* ZHCMessagesToolbarContentView.xib in Resources */,
 				9E97EC741D5ACB67009B7482 /* data.json in Resources */,
 				9E97ECB51D5DD4B4009B7482 /* ZHCMessagesViewController.xib in Resources */,
+				9EB371D41D704CF000FDFF1B /* chat_bar_icons_camera.png in Resources */,
 				9E92B2D71D58219F00736447 /* Assets.xcassets in Resources */,
 				9E92B2D51D58219F00736447 /* Main.storyboard in Resources */,
 				9EC8D5E21D6ED5BF0020C40B /* ZHCMessagesAssets.bundle in Resources */,
 				9E7A8B7C1D65929800DF6B30 /* jsq_messages_sample.m4a in Resources */,
 				9E97EC631D59D263009B7482 /* ZHCMessagesTableViewCellIncoming.xib in Resources */,
+				9EB371D81D704CF000FDFF1B /* chat_bar_icons_location@2x.png in Resources */,
 				9E7A8B551D616DC600DF6B30 /* ZHCMessagesTableViewCellOutcoming.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -605,6 +662,7 @@
 				9E7A8B6A1D64115000DF6B30 /* ZHCMessagesTimestampFormatter.m in Sources */,
 				9E92B3361D5861A000736447 /* UIImage+ZHCMessages.m in Sources */,
 				9EC8D5D51D6D44290020C40B /* ZHCTestViewController.m in Sources */,
+				9EB371901D6FE30800FDFF1B /* ZHCMessagesMoreView.m in Sources */,
 				9E92B2CF1D58219F00736447 /* AppDelegate.m in Sources */,
 				9E7A8B5B1D61AF1B00DF6B30 /* ZHCMessagesMediaViewBubbleImageMasker.m in Sources */,
 				9E92B3561D5885AA00736447 /* ZHCMessagesAvatarImage.m in Sources */,

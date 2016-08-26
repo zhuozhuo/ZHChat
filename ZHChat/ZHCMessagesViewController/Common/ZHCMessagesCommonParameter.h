@@ -34,5 +34,11 @@
 #define kZHCMessagesTableViewCellSpaceDefault  30.0f
 #endif
 
+/**
+ *  A constant that describes the default Height for Show View in 'ZHCMessagesViewController'.
+ */
+#ifndef kZHCMessagesFunctionViewHeight
+#define kZHCMessagesFunctionViewHeight 210.0f
+#endif
 
 #endif /* ZHCMessagesCommonParameter_h */
