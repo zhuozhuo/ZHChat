@@ -12,6 +12,7 @@
 		9E4A376D1D66AE4A00410EE6 /* ZHCMessagesComposerTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4A376C1D66AE4A00410EE6 /* ZHCMessagesComposerTextView.m */; };
 		9E4A37701D66AEF300410EE6 /* NSString+ZHCMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4A376F1D66AEF300410EE6 /* NSString+ZHCMessages.m */; };
 		9E4A37731D66B93D00410EE6 /* ZHCMessagesToolbarButtonFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4A37721D66B93D00410EE6 /* ZHCMessagesToolbarButtonFactory.m */; };
+		9E648D801D73E26C0064701F /* ZHCMessagesEmojiFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E648D7F1D73E26C0064701F /* ZHCMessagesEmojiFactory.m */; };
 		9E7A8B541D616DC600DF6B30 /* ZHCMessagesTableViewCellOutcoming.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E7A8B521D616DC600DF6B30 /* ZHCMessagesTableViewCellOutcoming.m */; };
 		9E7A8B551D616DC600DF6B30 /* ZHCMessagesTableViewCellOutcoming.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E7A8B531D616DC600DF6B30 /* ZHCMessagesTableViewCellOutcoming.xib */; };
 		9E7A8B581D61A98500DF6B30 /* ZHCMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E7A8B571D61A98500DF6B30 /* ZHCMediaItem.m */; };
@@ -40,6 +41,8 @@
 		9E92B3561D5885AA00736447 /* ZHCMessagesAvatarImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E92B3551D5885AA00736447 /* ZHCMessagesAvatarImage.m */; };
 		9E92B35B1D588E4100736447 /* ZHCMessagesCellTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E92B35A1D588E4100736447 /* ZHCMessagesCellTextView.m */; };
 		9E92B35E1D59CBBC00736447 /* ZHCMessagesLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E92B35D1D59CBBC00736447 /* ZHCMessagesLabel.m */; };
+		9E93FB331D741B33002654AD /* NSArray+ZHCMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E93FB321D741B33002654AD /* NSArray+ZHCMessages.m */; };
+		9E93FB361D741CC4002654AD /* ZHCMessagesEmojiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E93FB351D741CC4002654AD /* ZHCMessagesEmojiView.m */; };
 		9E97EC621D59D263009B7482 /* ZHCMessagesTableViewCellIncoming.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E97EC601D59D263009B7482 /* ZHCMessagesTableViewCellIncoming.m */; };
 		9E97EC631D59D263009B7482 /* ZHCMessagesTableViewCellIncoming.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E97EC611D59D263009B7482 /* ZHCMessagesTableViewCellIncoming.xib */; };
 		9E97EC691D59E69E009B7482 /* UIView+ZHCMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E97EC681D59E69E009B7482 /* UIView+ZHCMessages.m */; };
@@ -100,6 +103,8 @@
 		9E4A376F1D66AEF300410EE6 /* NSString+ZHCMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZHCMessages.m"; sourceTree = "<group>"; };
 		9E4A37711D66B93D00410EE6 /* ZHCMessagesToolbarButtonFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCMessagesToolbarButtonFactory.h; sourceTree = "<group>"; };
 		9E4A37721D66B93D00410EE6 /* ZHCMessagesToolbarButtonFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCMessagesToolbarButtonFactory.m; sourceTree = "<group>"; };
+		9E648D7E1D73E26C0064701F /* ZHCMessagesEmojiFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCMessagesEmojiFactory.h; sourceTree = "<group>"; };
+		9E648D7F1D73E26C0064701F /* ZHCMessagesEmojiFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCMessagesEmojiFactory.m; sourceTree = "<group>"; };
 		9E7A8B511D616DC600DF6B30 /* ZHCMessagesTableViewCellOutcoming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCMessagesTableViewCellOutcoming.h; sourceTree = "<group>"; };
 		9E7A8B521D616DC600DF6B30 /* ZHCMessagesTableViewCellOutcoming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCMessagesTableViewCellOutcoming.m; sourceTree = "<group>"; };
 		9E7A8B531D616DC600DF6B30 /* ZHCMessagesTableViewCellOutcoming.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHCMessagesTableViewCellOutcoming.xib; sourceTree = "<group>"; };
@@ -158,6 +163,10 @@
 		9E92B35A1D588E4100736447 /* ZHCMessagesCellTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCMessagesCellTextView.m; sourceTree = "<group>"; };
 		9E92B35C1D59CBBC00736447 /* ZHCMessagesLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCMessagesLabel.h; sourceTree = "<group>"; };
 		9E92B35D1D59CBBC00736447 /* ZHCMessagesLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCMessagesLabel.m; sourceTree = "<group>"; };
+		9E93FB311D741B33002654AD /* NSArray+ZHCMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ZHCMessages.h"; sourceTree = "<group>"; };
+		9E93FB321D741B33002654AD /* NSArray+ZHCMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ZHCMessages.m"; sourceTree = "<group>"; };
+		9E93FB341D741CC4002654AD /* ZHCMessagesEmojiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCMessagesEmojiView.h; sourceTree = "<group>"; };
+		9E93FB351D741CC4002654AD /* ZHCMessagesEmojiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCMessagesEmojiView.m; sourceTree = "<group>"; };
 		9E97EC5F1D59D263009B7482 /* ZHCMessagesTableViewCellIncoming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCMessagesTableViewCellIncoming.h; sourceTree = "<group>"; };
 		9E97EC601D59D263009B7482 /* ZHCMessagesTableViewCellIncoming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCMessagesTableViewCellIncoming.m; sourceTree = "<group>"; };
 		9E97EC611D59D263009B7482 /* ZHCMessagesTableViewCellIncoming.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHCMessagesTableViewCellIncoming.xib; sourceTree = "<group>"; };
@@ -338,6 +347,8 @@
 				9E97EC681D59E69E009B7482 /* UIView+ZHCMessages.m */,
 				9E4A376E1D66AEF300410EE6 /* NSString+ZHCMessages.h */,
 				9E4A376F1D66AEF300410EE6 /* NSString+ZHCMessages.m */,
+				9E93FB311D741B33002654AD /* NSArray+ZHCMessages.h */,
+				9E93FB321D741B33002654AD /* NSArray+ZHCMessages.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -411,6 +422,8 @@
 				9EB3718C1D6F156F00FDFF1B /* ZHCMessagesMoreItem.m */,
 				9EB3718E1D6FE30800FDFF1B /* ZHCMessagesMoreView.h */,
 				9EB3718F1D6FE30800FDFF1B /* ZHCMessagesMoreView.m */,
+				9E93FB341D741CC4002654AD /* ZHCMessagesEmojiView.h */,
+				9E93FB351D741CC4002654AD /* ZHCMessagesEmojiView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -428,6 +441,8 @@
 				9E4A37721D66B93D00410EE6 /* ZHCMessagesToolbarButtonFactory.m */,
 				9E7A8B681D64115000DF6B30 /* ZHCMessagesTimestampFormatter.h */,
 				9E7A8B691D64115000DF6B30 /* ZHCMessagesTimestampFormatter.m */,
+				9E648D7E1D73E26C0064701F /* ZHCMessagesEmojiFactory.h */,
+				9E648D7F1D73E26C0064701F /* ZHCMessagesEmojiFactory.m */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -660,6 +675,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E7A8B6A1D64115000DF6B30 /* ZHCMessagesTimestampFormatter.m in Sources */,
+				9E93FB361D741CC4002654AD /* ZHCMessagesEmojiView.m in Sources */,
 				9E92B3361D5861A000736447 /* UIImage+ZHCMessages.m in Sources */,
 				9EC8D5D51D6D44290020C40B /* ZHCTestViewController.m in Sources */,
 				9EB371901D6FE30800FDFF1B /* ZHCMessagesMoreView.m in Sources */,
@@ -668,6 +684,7 @@
 				9E92B3561D5885AA00736447 /* ZHCMessagesAvatarImage.m in Sources */,
 				9E97ECB41D5DD4B4009B7482 /* ZHCMessagesViewController.m in Sources */,
 				9EB3718D1D6F156F00FDFF1B /* ZHCMessagesMoreItem.m in Sources */,
+				9E648D801D73E26C0064701F /* ZHCMessagesEmojiFactory.m in Sources */,
 				9E92B33E1D5862D200736447 /* NSBundle+ZHCMessages.m in Sources */,
 				9E7A8B781D658C3400DF6B30 /* ZHCAudioMediaViewAttributes.m in Sources */,
 				9E97EC9B1D5C69DC009B7482 /* ZHCMessagesTableviewLayoutAttributes.m in Sources */,
@@ -683,6 +700,7 @@
 				9E97ECA11D5C7265009B7482 /* ZHCMessagesBubbleCalculator.m in Sources */,
 				9E7A8B6D1D646DE400DF6B30 /* ZHCLocationMediaItem.m in Sources */,
 				9E92B34D1D58770B00736447 /* ZHCMessagesBubbleImage.m in Sources */,
+				9E93FB331D741B33002654AD /* NSArray+ZHCMessages.m in Sources */,
 				9E7A8B581D61A98500DF6B30 /* ZHCMediaItem.m in Sources */,
 				9E7A8B751D658BEF00DF6B30 /* ZHCAudioMediaItem.m in Sources */,
 				9E92B34A1D586F2400736447 /* ZHCMessagesBubbleImageFactory.m in Sources */,

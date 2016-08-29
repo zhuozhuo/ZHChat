@@ -15,11 +15,14 @@
 
 #import "ZHCMessagesMoreView.h"
 #import "ZHCMessagesCommonParameter.h"
+#import "ZHCMessagesEmojiFactory.h"
+#import "ZHCMessagesEmojiView.h"
 
 
 
-@interface ZHCTestViewController ()<ZHCMessagesMoreViewDelegate,ZHCMessagesMoreViewDataSource>
-@property (weak, nonatomic) IBOutlet UIButton *presButton;
+@interface ZHCTestViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (strong, nonatomic) ZHCMessagesEmojiView *emojiView;
 
 @end
 
@@ -32,20 +35,34 @@
     self.extendedLayoutIncludesOpaqueBars = NO;
     self.automaticallyAdjustsScrollViewInsets=NO;
     
-    ZHCMessagesMoreView *moreView = [[ZHCMessagesMoreView alloc]init];
-    moreView.delegate = self;
-    moreView.dataSource = self;
-    moreView.translatesAutoresizingMaskIntoConstraints = NO;
-    moreView.backgroundColor = [UIColor grayColor];
-    [self.view addSubview:moreView];
-    
-    [self.view zhc_pinSubview:moreView toEdge:NSLayoutAttributeLeading withConstant:0.0f];
-    [self.view zhc_pinSubview:moreView toEdge:NSLayoutAttributeTrailing withConstant:0.0f];
-    [self.view zhc_pinSubview:moreView toEdge:NSLayoutAttributeBottom withConstant:0.0f];
-    [moreView zhc_pinSelfToEdge:NSLayoutAttributeHeight withConstant:kZHCMessagesFunctionViewHeight];
+    [self initialSubViews];
     
     // Do any additional setup after loading the view from its nib.
 }
+
+
+-(void)initialSubViews
+{
+    if (!_emojiView) {
+        [self.view addSubview:self.emojiView];
+        _emojiView.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.view zhc_pinSubview:_emojiView toEdge:NSLayoutAttributeLeading withConstant:0.0f];
+        [self.view zhc_pinSubview:_emojiView toEdge:NSLayoutAttributeTrailing withConstant:0.0f];
+        [self.view zhc_pinSubview:_emojiView toEdge:NSLayoutAttributeBottom withConstant:0.0f];
+        [_emojiView zhc_pinSelfToEdge:NSLayoutAttributeHeight withConstant:kZHCMessagesFunctionViewHeight];
+    }
+    
+}
+
+
+-(ZHCMessagesEmojiView *)emojiView
+{
+    if (!_emojiView) {
+        _emojiView = [[ZHCMessagesEmojiView alloc]init];
+    }
+    return _emojiView;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -53,21 +70,7 @@
 }
 
 
-#pragma mark - ZHCMessagesMoreViewDataSource
--(void)messagesMoreView:(ZHCMessagesMoreView *)moreView selectedMoreViewItemWithIndex:(NSInteger)index
-{
-    NSLog(@"clickItemIndex:%ld",index);
-}
 
--(NSArray *)messagesMoreViewTitles:(ZHCMessagesMoreView *)moreView
-{
-    return @[@"照相",@"位置",@"图片"];
-}
-
--(NSArray *)messagesMoreViewImgNames:(ZHCMessagesMoreView *)moreView
-{
-    return @[@"chat_bar_icons_camera",@"chat_bar_icons_location",@"chat_bar_icons_pic"];
-}
 
 /*
 #pragma mark - Navigation

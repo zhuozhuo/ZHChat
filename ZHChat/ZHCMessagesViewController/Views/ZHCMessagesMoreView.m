@@ -11,10 +11,6 @@
 #import "ZHCMessagesCommonParameter.h"
 #import "UIView+ZHCMessages.h"
 
-#ifndef kZHCTopLineBackGroudColor
-#define kZHCTopLineBackGroudColor [UIColor colorWithRed:184/255.0f green:184/255.0f blue:184/255.0f alpha:1.0f]
-#endif
-
 #ifndef ItemBeginTag 
 #define ItemBeginTag 200
 #endif
@@ -132,7 +128,7 @@
         [self.itemViews addObject:item];
         column ++;
         if (idx == self.titles.count - 1) {
-            [self.scrollView setContentSize:CGSizeMake(width * (page + 1), scrollViewHeight)];
+            [self.scrollView setContentSize:CGSizeMake(scrollViewWidth * (page + 1), scrollViewHeight)];
             self.pageControl.numberOfPages = page + 1;
             *stop = YES;
         }
@@ -197,6 +193,23 @@
     }
     return _pageControl;
 }
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if (scrollView == self.scrollView) {
+        [self.pageControl setCurrentPage:scrollView.contentOffset.x / scrollView.frame.size.width];
+    }
+    
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (scrollView == self.scrollView && !decelerate) {
+        [self.pageControl setCurrentPage:scrollView.contentOffset.x / scrollView.frame.size.width];
+    }
+}
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

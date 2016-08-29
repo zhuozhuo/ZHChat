@@ -41,4 +41,13 @@
 #define kZHCMessagesFunctionViewHeight 210.0f
 #endif
 
+/**
+ *  A color that describes the back color of function View top Line.
+ */
+#ifndef kZHCTopLineBackGroudColor
+#define kZHCTopLineBackGroudColor [UIColor colorWithRed:228.0/255 green:228.0/255 blue:228.0/255 alpha:1.0]
+#endif
+
+
+
 #endif /* ZHCMessagesCommonParameter_h */

@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ZHCTestViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIImageView *showImgView;
+
 
 @end
