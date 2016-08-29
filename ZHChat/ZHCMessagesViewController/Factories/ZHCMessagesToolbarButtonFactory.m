@@ -104,26 +104,6 @@
 }
 
 
-- (UIButton *)defaultAccessoryButtonItem
-{
-    UIImage *accessoryImage = [UIImage zhc_defaultAccessoryImage];
-    UIImage *normalImage = [accessoryImage zhc_imageMaskedWithColor:[UIColor lightGrayColor]];
-    UIImage *highlightedImage = [accessoryImage zhc_imageMaskedWithColor:[UIColor darkGrayColor]];
-    
-    UIButton *accessoryButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, accessoryImage.size.width, 32.0f)];
-    [accessoryButton setImage:normalImage forState:UIControlStateNormal];
-    [accessoryButton setImage:highlightedImage forState:UIControlStateHighlighted];
-    
-    accessoryButton.contentMode = UIViewContentModeScaleAspectFit;
-    accessoryButton.backgroundColor = [UIColor clearColor];
-    accessoryButton.tintColor = [UIColor lightGrayColor];
-    accessoryButton.titleLabel.font = self.buttonFont;
-    
-    accessoryButton.accessibilityLabel = [NSBundle zhc_localizedStringForKey:@"accessory_button_accessibility_label"];
-    
-    return accessoryButton;
-}
-
 - (UIButton *)defaultSendButtonItem
 {
     NSString *sendTitle = [NSBundle zhc_localizedStringForKey:@"send"];

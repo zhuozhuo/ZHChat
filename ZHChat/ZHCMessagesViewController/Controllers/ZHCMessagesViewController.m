@@ -102,6 +102,8 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputViewBottomLayoutGuide;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPathForMenu;
 @property (strong, nonatomic) NSLayoutConstraint *messagesMoreViewBottomConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *messagesEmojiViewBottomContraint;
+
 @property (assign, nonatomic) BOOL showFunctionViewBool;
 
 @end
@@ -181,6 +183,11 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     _messageTableView.delegate = nil;
     _inputMessageBarView.contentView.textView.delegate = nil;
     _inputMessageBarView.delegate = nil;
+    
+    _messageMoreView.dataSource = nil;
+    _messageMoreView.delegate = nil;
+    
+    _messageEmojiView.delegate = nil;
 }
 
 
@@ -205,6 +212,15 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 }
 
 
+-(ZHCMessagesEmojiView *)messageEmojiView
+{
+    if (!_messageEmojiView) {
+        _messageEmojiView = [[ZHCMessagesEmojiView alloc]init];
+        _messageEmojiView.delegate = self;
+    }
+    return _messageEmojiView;
+}
+
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -228,6 +244,18 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
         [_messageMoreView zhc_pinSelfToEdge:NSLayoutAttributeHeight withConstant:kZHCMessagesFunctionViewHeight];
         
         self.messagesMoreViewBottomConstraint = constraint;
+    }
+    
+    if (!_messageEmojiView) {
+        [self.view addSubview:self.messageEmojiView];
+        _messageEmojiView.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.view zhc_pinSubview:_messageEmojiView toEdge:NSLayoutAttributeLeading withConstant:0.0f];
+        [self.view zhc_pinSubview:_messageEmojiView toEdge:NSLayoutAttributeTrailing withConstant:0.0f];
+        NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:_messageEmojiView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:kZHCMessagesFunctionViewHeight];
+        [self.view addConstraint:constraint];
+        [_messageEmojiView zhc_pinSelfToEdge:NSLayoutAttributeHeight withConstant:kZHCMessagesFunctionViewHeight];
+        self.messagesEmojiViewBottomContraint = constraint;
+
     }
 
 }
@@ -732,11 +760,13 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
 
 #pragma mark - Public Methods
-
 -(void)recoverMessageInputToolBar
 {
     if (self.messagesMoreViewBottomConstraint.constant != kZHCMessagesFunctionViewHeight) {
         self.messagesMoreViewBottomConstraint.constant = kZHCMessagesFunctionViewHeight;
+    }
+    if (self.messagesEmojiViewBottomContraint.constant != kZHCMessagesFunctionViewHeight) {
+        self.messagesEmojiViewBottomContraint.constant = kZHCMessagesFunctionViewHeight;
     }
     if ([self.inputMessageBarView.contentView.textView isFirstResponder]) {
         [self.inputMessageBarView.contentView.textView resignFirstResponder];
@@ -753,12 +783,53 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 }
 
 
+
+-(void)showEmojiView
+{
+    self.showFunctionViewBool = YES;
+    self.messagesEmojiViewBottomContraint.constant = 0.0f;
+    [self.view bringSubviewToFront:self.messageEmojiView];
+    self.inputViewBottomLayoutGuide.constant = kZHCMessagesFunctionViewHeight;
+    if (self.messagesMoreViewBottomConstraint.constant != kZHCMessagesFunctionViewHeight) {
+        self.messagesMoreViewBottomConstraint.constant = kZHCMessagesFunctionViewHeight;
+    }
+    [UIView animateWithDuration:0.25
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         [self zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
+                                                  bottomValue:(kZHCMessagesFunctionViewHeight+self.inputMessageBarView.preferredDefaultHeight)];
+                         [self.view layoutIfNeeded];
+                     }
+                     completion:^(BOOL finished){
+                         self.showFunctionViewBool = NO;
+                         [self scrollToBottomAnimated:YES];
+                     }];
+
+}
+
+-(void)hiddenEmojiView
+{
+    if (_messageEmojiView && self.messagesEmojiViewBottomContraint.constant != kZHCMessagesFunctionViewHeight) {
+        self.messagesEmojiViewBottomContraint.constant = kZHCMessagesFunctionViewHeight;
+        [UIView animateWithDuration:0.25 animations:^{
+            [self.view layoutIfNeeded];
+        }];
+    }
+
+}
+
+
+
 -(void)showMoreView
 {
     self.showFunctionViewBool = YES;
     self.messagesMoreViewBottomConstraint.constant = 0.0f;
+    [self.view bringSubviewToFront:self.messageMoreView];
     self.inputViewBottomLayoutGuide.constant = kZHCMessagesFunctionViewHeight;
-  
+    if (self.messagesEmojiViewBottomContraint.constant != kZHCMessagesFunctionViewHeight) {
+        self.messagesEmojiViewBottomContraint.constant = kZHCMessagesFunctionViewHeight;
+    }
     [UIView animateWithDuration:0.25
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
@@ -775,7 +846,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
 -(void)hiddenMoreView
 {
-    if (_messageMoreView && self.messagesMoreViewBottomConstraint) {
+    if (_messageMoreView &&  self.messagesMoreViewBottomConstraint.constant != kZHCMessagesFunctionViewHeight) {
         self.messagesMoreViewBottomConstraint.constant = kZHCMessagesFunctionViewHeight;
         [UIView animateWithDuration:0.25 animations:^{
             [self.view layoutIfNeeded];
@@ -841,14 +912,18 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
 - (void)messagesInputToolbar:(ZHCMessagesInputToolbar *)toolbar didPressLeftBarButton:(UIButton *)sender
 {
-    
-
+    [self recoverMessageInputToolBar];
 }
 
 
 -(void)messagesInputToolbar:(ZHCMessagesInputToolbar *)toolbar didPressMiddelBarButton:(UIButton *)sender
 {
-    
+    if (sender.selected) {
+        [self showEmojiView];
+    }else{
+        [self hiddenEmojiView];
+        [self.inputMessageBarView.contentView.textView becomeFirstResponder];
+    }
 }
 
 - (NSString *)zhc_currentlyComposedMessageText
@@ -874,12 +949,8 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 //    return YES;
 //}
 
-#pragma mark - ZHCMessagesMoreViewDataSource
--(void)messagesMoreView:(ZHCMessagesMoreView *)moreView selectedMoreViewItemWithIndex:(NSInteger)index
-{
-    NSAssert(NO, @"ERROR: required method not implemented: %s", __PRETTY_FUNCTION__);
-}
 
+#pragma mark - ZHCMessagesMoreViewDataSource
 -(NSArray *)messagesMoreViewTitles:(ZHCMessagesMoreView *)moreView
 {
     NSAssert(NO, @"ERROR: required method not implemented: %s", __PRETTY_FUNCTION__);
@@ -892,6 +963,33 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     NSAssert(NO, @"ERROR: required method not implemented: %s", __PRETTY_FUNCTION__);
     return nil;
 }
+
+#pragma mark - ZHCMessagesMoreViewDelegate
+
+-(void)messagesMoreView:(ZHCMessagesMoreView *)moreView selectedMoreViewItemWithIndex:(NSInteger)index
+{
+    NSAssert(NO, @"ERROR: required method not implemented: %s", __PRETTY_FUNCTION__);
+
+}
+
+
+#pragma mark - ZHCEmojiViewDelegate
+-(void)emojiView:(ZHCMessagesEmojiView *)emojiView didSelectEmoji:(NSString *)emoji
+{
+    
+}
+
+
+-(void)emojiView:(ZHCMessagesEmojiView *)emojiView didPressDeleteButton:(UIButton *)deletebutton
+{
+    
+}
+
+-(void)emojiView:(ZHCMessagesEmojiView *)emojiView didPressSendButton:(UIButton *)sendButton
+{
+    
+}
+
 
 
 #pragma mark - Text view delegate

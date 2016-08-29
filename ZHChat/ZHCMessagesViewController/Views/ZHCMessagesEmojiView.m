@@ -10,11 +10,12 @@
 #import "NSArray+ZHCMessages.h"
 #import "ZHCMessagesCommonParameter.h"
 #import "UIView+ZHCMessages.h"
+#import "UIImage+ZHCMessages.h"
 
 
 static const CGFloat EmojiWidth = 50;
 static const CGFloat EmojiHeight = 50;
-static const CGFloat EmojiFontSize = 32;
+static const CGFloat EmojiFontSize = 30;
 
 @interface ZHCMessagesEmojiView ()<UIScrollViewDelegate>
 /**
@@ -134,6 +135,9 @@ static const CGFloat EmojiFontSize = 32;
             // last position of page, add delete button
             
             ZHCEmojiDeleteButton *deleteButton = [ZHCEmojiDeleteButton buttonWithType:UIButtonTypeCustom];
+            UIImage *image = [UIImage zhc_defaultEmptionDeleteImage];
+            [deleteButton  setImage:image forState:UIControlStateNormal];
+            deleteButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
             [deleteButton addTarget:self action:@selector(deleteButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
             deleteButton.frame = currentRect;
             deleteButton.tintColor = [UIColor blackColor];
@@ -235,18 +239,27 @@ static const CGFloat EmojiFontSize = 32;
 
 -(void)sendAction:(UIButton *)sender
 {
-    
+    NSLog(@"send Action");
+    if (self.delegate && [self.delegate respondsToSelector:@selector(emojiView:didPressSendButton:)]) {
+        [self.delegate emojiView:self didPressSendButton:sender];
+    }
 }
 
 
 -(void)deleteButtonPressed:(UIButton *)sender
 {
-    
+    NSLog(@"delete Action");
+    if (self.delegate && [self.delegate respondsToSelector:@selector(emojiView:didPressDeleteButton:)]) {
+        [self.delegate emojiView:self didPressDeleteButton:sender];
+    }
 }
 
 -(void)emojiButtonPressed:(UIButton *)sender
 {
-    
+    NSLog(@"emoji:%@",sender.titleLabel.text);
+    if (self.delegate && [self.delegate respondsToSelector:@selector(emojiView:didSelectEmoji:)]) {
+        [self.delegate emojiView:self didSelectEmoji:sender.titleLabel.text];
+    }
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -278,40 +291,6 @@ static const CGFloat EmojiFontSize = 32;
 
 
 @implementation ZHCEmojiDeleteButton
-
-/**
- *  Draw the delete key
- *
- *  @param rect Context Rect
- */
--(void)drawRect:(CGRect)rect{
-    
-    // Rectangle Drawing
-    UIBezierPath* rectanglePath = UIBezierPath.bezierPath;
-    [rectanglePath moveToPoint: CGPointMake(5, 25.05)];
-    [rectanglePath addLineToPoint: CGPointMake(20.16, 36)];
-    [rectanglePath addLineToPoint: CGPointMake(45.5, 36)];
-    [rectanglePath addLineToPoint: CGPointMake(45.5, 13.5)];
-    [rectanglePath addLineToPoint: CGPointMake(20.16, 13.5)];
-    [rectanglePath addLineToPoint: CGPointMake(5, 25.05)];
-    [rectanglePath closePath];
-    [self.tintColor setStroke];
-    rectanglePath.lineWidth = 1;
-    [rectanglePath stroke];
-    
-    
-    // Bezier Drawing
-    UIBezierPath* bezierPath = UIBezierPath.bezierPath;
-    [bezierPath moveToPoint: CGPointMake(26.5, 20)];
-    [bezierPath addLineToPoint: CGPointMake(36.5, 29.5)];
-    [bezierPath moveToPoint: CGPointMake(36.5, 20)];
-    [bezierPath addLineToPoint: CGPointMake(26.5, 29.5)];
-    [self.tintColor setStroke];
-    bezierPath.lineWidth = 1;
-    [bezierPath stroke];
-}
-
-
 
 
 @end

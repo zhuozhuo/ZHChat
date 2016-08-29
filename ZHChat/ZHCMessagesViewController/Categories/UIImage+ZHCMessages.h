@@ -43,9 +43,9 @@
 + (UIImage *)zhc_defaultPauseImage;
 
 /**
- *  @return The default input toolbar accessory image.
+ *  @return The default Emotion delete image.
  */
-+ (UIImage *)zhc_defaultAccessoryImage;
++ (UIImage *)zhc_defaultEmptionDeleteImage;
 
 
 /**

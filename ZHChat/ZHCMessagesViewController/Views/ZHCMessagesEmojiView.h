@@ -50,6 +50,11 @@
 @interface ZHCMessagesEmojiView : UIView
 
 /**
+ *  The delegate of 'ZHCMessagesEmojiView' instance.
+ */
+@property (nonatomic, weak) id<ZHCEmojiViewDelegate> delegate;
+
+/**
  *  Emoji container used to store all the elements
  */
 @property (nonatomic, strong) UIScrollView *scrollView;

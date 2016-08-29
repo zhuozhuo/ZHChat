@@ -15,9 +15,11 @@
 #import "ZHCMessage.h"
 #import "ZHCMessagesInputToolbar.h"
 #import "ZHCMessagesMoreView.h"
+#import "ZHCMessagesEmojiView.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
-@interface ZHCMessagesViewController : UIViewController<ZHCMessagesTableViewDataSource,ZHCMessagesTableViewDelegate,ZHCMessagesMoreViewDelegate,ZHCMessagesMoreViewDataSource>
+@interface ZHCMessagesViewController : UIViewController<ZHCMessagesTableViewDataSource,ZHCMessagesTableViewDelegate,ZHCMessagesMoreViewDelegate,ZHCMessagesMoreViewDataSource,ZHCEmojiViewDelegate>
 
 
 /**
@@ -36,6 +38,11 @@ NS_ASSUME_NONNULL_BEGIN
  *  Returns the More view object managed by this view controller.
  */
 @property (strong, nonatomic) ZHCMessagesMoreView *messageMoreView;
+
+/**
+ *  Returns the Emoji View managed by this view controller.
+ */
+@property (strong, nonatomic) ZHCMessagesEmojiView *messageEmojiView;
 
 /**
  *  Specifies whether or not the view controller should automatically scroll to the most recent message

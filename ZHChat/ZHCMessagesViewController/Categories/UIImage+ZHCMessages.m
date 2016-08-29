@@ -66,10 +66,9 @@
     return [UIImage zhc_bubbleImageFromBundleWithName:@"pause"];
 }
 
-
-+ (UIImage *)zhc_defaultAccessoryImage
++(UIImage *)zhc_defaultEmptionDeleteImage
 {
-    return [UIImage zhc_bubbleImageFromBundleWithName:@"clip"];
+    return [UIImage zhc_bubbleImageFromBundleWithName:@"delete"];
 }
 
 +(UIImage *)zhc_defaultEmotionImage

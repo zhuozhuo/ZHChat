@@ -35,13 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (instancetype)initWithFont:(UIFont *)font NS_DESIGNATED_INITIALIZER;
 
-/**
- *  Creates and returns a new button that is styled as the default accessory button.
- *  The button has a paper clip icon image and no text.
- *
- *  @return A newly created button.
- */
-- (UIButton *)defaultAccessoryButtonItem;
 
 /**
  *  Creates and returns a new button that is styled as the default send button.
