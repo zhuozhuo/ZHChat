@@ -39,14 +39,8 @@
                 <constraint firstAttribute="trailing" secondItem="6fi-Eo-nLP" secondAttribute="trailing" id="OWx-m0-qk3"/>
                 <constraint firstAttribute="bottom" secondItem="6fi-Eo-nLP" secondAttribute="bottom" id="T92-E3-yMO"/>
                 <constraint firstItem="Hcn-J0-AYf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="e0b-ip-qMv"/>
-                <constraint firstItem="6fi-Eo-nLP" firstAttribute="top" secondItem="Hcn-J0-AYf" secondAttribute="bottom" id="im0-yN-njA"/>
                 <constraint firstAttribute="trailing" secondItem="Hcn-J0-AYf" secondAttribute="trailing" id="nrf-6t-FxS"/>
             </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="im0-yN-njA"/>
-                </mask>
-            </variation>
         </view>
     </objects>
 </document>

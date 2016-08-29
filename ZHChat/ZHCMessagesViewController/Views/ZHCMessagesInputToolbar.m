@@ -107,6 +107,7 @@ static void * kZHCMessagesInputToolbarKeyValueObservingContext = &kZHCMessagesIn
     self.contentView.rightBarButtonItem.selected = NO;
     self.contentView.middleBarButtonItem.selected = NO;
     sender.selected = !sender.selected;
+    [self.delegate messagesInputToolbar:self didPressLeftBarButton:sender];
     if (sender.selected) {
         [self.contentView.textView resignFirstResponder];
         self.contentView.textView.hidden = YES;
@@ -118,7 +119,6 @@ static void * kZHCMessagesInputToolbarKeyValueObservingContext = &kZHCMessagesIn
         self.contentView.longPressButton.hidden = YES;
     }
 
-    [self.delegate messagesInputToolbar:self didPressLeftBarButton:sender];
 }
 
 - (void)zhc_rightBarButtonPressed:(UIButton *)sender
@@ -128,12 +128,13 @@ static void * kZHCMessagesInputToolbarKeyValueObservingContext = &kZHCMessagesIn
     self.contentView.longPressButton.hidden = YES;
     self.contentView.textView.hidden = NO;
     sender.selected = !sender.selected;
+    [self.delegate messagesInputToolbar:self didPressRightBarButton:sender];
     if (sender.selected) {
         [self.contentView.textView resignFirstResponder];
     }else{
         [self.contentView.textView becomeFirstResponder];
     }
-    [self.delegate messagesInputToolbar:self didPressRightBarButton:sender];
+    
 }
 
 -(void)zhc_middelBarButtonPressed:(UIButton *)sender
@@ -143,12 +144,13 @@ static void * kZHCMessagesInputToolbarKeyValueObservingContext = &kZHCMessagesIn
     self.contentView.longPressButton.hidden = YES;
     self.contentView.textView.hidden = NO;
     sender.selected = !sender.selected;
+    [self.delegate messagesInputToolbar:self didPressMiddelBarButton:sender];
     if (sender.selected) {
         [self.contentView.textView resignFirstResponder];
     }else{
         [self.contentView.textView becomeFirstResponder];
     }
-    [self.delegate messagesInputToolbar:self didPressMiddelBarButton:sender];
+    
 }
 
 

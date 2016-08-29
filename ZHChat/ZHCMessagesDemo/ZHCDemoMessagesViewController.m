@@ -341,12 +341,34 @@
 }
 
 
+#pragma mark - ZHCMessagesMoreViewDelegate
+
+-(void)messagesMoreView:(ZHCMessagesMoreView *)moreView selectedMoreViewItemWithIndex:(NSInteger)index
+{
+    NSLog(@"clickItemIndex:%ld",index);
+}
+
+#pragma mark - ZHCMessagesMoreViewDataSource
+-(NSArray *)messagesMoreViewTitles:(ZHCMessagesMoreView *)moreView
+{
+    return @[@"照相",@"位置",@"图片"];
+}
+
+-(NSArray *)messagesMoreViewImgNames:(ZHCMessagesMoreView *)moreView
+{
+    return @[@"chat_bar_icons_camera",@"chat_bar_icons_location",@"chat_bar_icons_pic"];
+}
+
+
+
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSLog(@"click ActionSheet Button At index :%ld",(long)buttonIndex);
 }
+
+
 /*
 #pragma mark - Navigation
 

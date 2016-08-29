@@ -37,6 +37,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor whiteColor];
         [self initialSubViews];
     }
     return self;
@@ -88,8 +89,12 @@
      CGFloat itemWidth = (widthLimit - self.edgeInsets.left - self.edgeInsets.right) / self.numberItemPerLine;
     CGFloat itemHeight = kZHCMessagesFunctionViewHeight / 2;
     self.itemSize = CGSizeMake(itemWidth, itemHeight);
-    self.titles = [self.dataSource messagesMoreViewTitles:self];
-    self.imageNames = [self.dataSource messagesMoreViewImgNames:self];
+    if (self.dataSource && [self.dataSource respondsToSelector:@selector(messagesMoreViewTitles:)]) {
+        self.titles = [self.dataSource messagesMoreViewTitles:self];
+    }
+    if (self.dataSource && [self.dataSource respondsToSelector:@selector(messagesMoreViewImgNames:)]) {
+         self.imageNames = [self.dataSource messagesMoreViewImgNames:self];
+    }
     
     [self.itemViews makeObjectsPerformSelector:@selector(removeFromSuperview) withObject:nil];
     [self.itemViews removeAllObjects];

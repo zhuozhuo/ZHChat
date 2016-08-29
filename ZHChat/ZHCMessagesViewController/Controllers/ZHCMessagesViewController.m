@@ -21,6 +21,8 @@
 #import "NSBundle+ZHCMessages.h"
 #import "NSString+ZHCMessages.h"
 #import "UIColor+ZHCMessages.h"
+#import "UIView+ZHCMessages.h"
+
 
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <objc/runtime.h>
@@ -100,6 +102,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputViewBottomLayoutGuide;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPathForMenu;
 @property (strong, nonatomic) NSLayoutConstraint *messagesMoreViewBottomConstraint;
+@property (assign, nonatomic) BOOL showFunctionViewBool;
 
 @end
 
@@ -133,7 +136,6 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 {
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.modalPresentationCapturesStatusBarAppearance =NO;
     self.extendedLayoutIncludesOpaqueBars = NO;
@@ -144,6 +146,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     self.messageTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.messageTableView.delegate = self;
     self.messageTableView.dataSource = self;
+    self.showFunctionViewBool = NO;
    
     
 
@@ -176,7 +179,6 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     
     _messageTableView.dataSource = nil;
     _messageTableView.delegate = nil;
-    
     _inputMessageBarView.contentView.textView.delegate = nil;
     _inputMessageBarView.delegate = nil;
 }
@@ -190,6 +192,18 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 }
 
 
+-(ZHCMessagesMoreView *)messageMoreView
+{
+    if (!_messageMoreView) {
+        _messageMoreView = [[ZHCMessagesMoreView alloc]init];
+        _messageMoreView.dataSource = self;
+        _messageMoreView.delegate = self;
+        _messageMoreView.numberItemPerLine = 4;
+        _messageMoreView.edgeInsets = UIEdgeInsetsMake(10.0f, 5.0f, 10.0f, 5.0f);
+    }
+    return _messageMoreView;
+}
+
 
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
@@ -197,8 +211,25 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     [[[self class] nib] instantiateWithOwner:self options:nil];
     [self zhc_configureMessagesViewController];
     [self zhc_registerForNotifications:YES];
-    
+    [self initialSubViews];
     // Do any additional setup after loading the view from its nib.
+}
+
+
+-(void)initialSubViews
+{
+    if (!_messageMoreView) {
+        [self.view addSubview:self.messageMoreView];
+        _messageMoreView.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.view zhc_pinSubview:_messageMoreView toEdge:NSLayoutAttributeLeading withConstant:0.0f];
+        [self.view zhc_pinSubview:_messageMoreView toEdge:NSLayoutAttributeTrailing withConstant:0.0f];
+        NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:_messageMoreView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:kZHCMessagesFunctionViewHeight];
+        [self.view addConstraint:constraint];
+        [_messageMoreView zhc_pinSelfToEdge:NSLayoutAttributeHeight withConstant:kZHCMessagesFunctionViewHeight];
+        
+        self.messagesMoreViewBottomConstraint = constraint;
+    }
+
 }
 
 
@@ -675,13 +706,13 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 #pragma mark - ZHCMessagesTableViewDelegate
 -(void)tableView:(ZHCMessagesTableView *)tableView didTapAvatarImageView:(UIImageView *)avatarImageView atIndexPath:(NSIndexPath *)indexPath
 {
-    [self textViewresignFirstResponder];
+    [self recoverMessageInputToolBar];
 }
 
 
 -(void)tableView:(ZHCMessagesTableView *)tableView didTapMessageBubbleAtIndexPath:(NSIndexPath *)indexPath
 {
-     [self textViewresignFirstResponder];
+     [self recoverMessageInputToolBar];
     
 
 }
@@ -689,7 +720,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
 -(void)tableView:(ZHCMessagesTableView *)tableView didTapCellAtIndexPath:(NSIndexPath *)indexPath touchLocation:(CGPoint)touchLocation
 {
-     [self textViewresignFirstResponder];
+     [self recoverMessageInputToolBar];
 }
 
 
@@ -702,30 +733,62 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
 #pragma mark - Public Methods
 
--(void)textViewresignFirstResponder
+-(void)recoverMessageInputToolBar
 {
-    CGFloat animationDuration = 0.25f;
-    [UIView animateWithDuration:animationDuration
-                          delay:0.0
-                        options: UIViewAnimationOptionAllowAnimatedContent
-                     animations:^{
-                         [self zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
-                                                  bottomValue:self.inputMessageBarView.preferredDefaultHeight];
-                     }
-                     completion:nil];
+    if (self.messagesMoreViewBottomConstraint.constant != kZHCMessagesFunctionViewHeight) {
+        self.messagesMoreViewBottomConstraint.constant = kZHCMessagesFunctionViewHeight;
+    }
+    if ([self.inputMessageBarView.contentView.textView isFirstResponder]) {
+        [self.inputMessageBarView.contentView.textView resignFirstResponder];
+    }else{
+        [self zhc_updateInputViewBottomConstraint:0];
+        
+    }
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        [self zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top bottomValue:self.inputMessageBarView.preferredDefaultHeight];
+        [self.view layoutIfNeeded];
+    }];
 
-    
-    
-    [self.inputMessageBarView.contentView.textView resignFirstResponder];
 }
 
+
+-(void)showMoreView
+{
+    self.showFunctionViewBool = YES;
+    self.messagesMoreViewBottomConstraint.constant = 0.0f;
+    self.inputViewBottomLayoutGuide.constant = kZHCMessagesFunctionViewHeight;
+  
+    [UIView animateWithDuration:0.25
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         [self zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
+                                                  bottomValue:(kZHCMessagesFunctionViewHeight+self.inputMessageBarView.preferredDefaultHeight)];
+                            [self.view layoutIfNeeded];
+                     }
+                     completion:^(BOOL finished){
+                         self.showFunctionViewBool = NO;
+                         [self scrollToBottomAnimated:YES];
+                     }];
+}
+
+-(void)hiddenMoreView
+{
+    if (_messageMoreView && self.messagesMoreViewBottomConstraint) {
+        self.messagesMoreViewBottomConstraint.constant = kZHCMessagesFunctionViewHeight;
+        [UIView animateWithDuration:0.25 animations:^{
+            [self.view layoutIfNeeded];
+        }];
+    }
+}
 
 
 #pragma mark ScrollView delegate
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     if (scrollView == self.messageTableView) {
-        [self textViewresignFirstResponder];
+        [self recoverMessageInputToolBar];
     }
 }
 
@@ -746,10 +809,12 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
 - (void)zhc_setTableViewInsetsTopValue:(CGFloat)top bottomValue:(CGFloat)bottom
 {
-    bottom = bottom +20;
+    bottom = bottom +10;
+    NSLog(@"Bottom Value:%f",bottom);
     UIEdgeInsets insets = UIEdgeInsetsMake(top, 0.0f, bottom, 0.0f);
     self.messageTableView.contentInset = insets;
     self.messageTableView.scrollIndicatorInsets = insets;
+    
 }
 
 - (BOOL)zhc_isMenuVisible
@@ -764,7 +829,13 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 #pragma mark - Input toolbar delegate
 - (void)messagesInputToolbar:(ZHCMessagesInputToolbar *)toolbar didPressRightBarButton:(UIButton *)sender
 {
-  
+    if (sender.selected) {
+        [self showMoreView];
+    }else{
+        [self hiddenMoreView];
+        [self.inputMessageBarView.contentView.textView becomeFirstResponder];
+    }
+    
 
 }
 
@@ -991,6 +1062,9 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
 -(void)zhc_keyboardWillHiden:(NSNotification *)notification
 {
+    if (self.showFunctionViewBool) {
+        return;
+    }
     NSDictionary *userInfo = [notification userInfo];
     
     CGRect keyboardEndFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
@@ -999,7 +1073,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
         return;
     }
     
-    UIViewAnimationCurve animationCurve = [userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+   UIViewAnimationCurve animationCurve = [userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
    NSInteger animationCurveOption = (animationCurve << 16);
     
     double animationDuration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
@@ -1019,6 +1093,9 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
 - (void)zhc_didReceiveKeyboardWillChangeFrameNotification:(NSNotification *)notification
 {
+    if (self.showFunctionViewBool) {
+        return;
+    }
     NSDictionary *userInfo = [notification userInfo];
     
     CGRect keyboardEndFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];

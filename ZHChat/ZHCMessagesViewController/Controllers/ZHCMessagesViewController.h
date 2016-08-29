@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Returns the More view object managed by this view controller.
  */
-@property (strong, nonatomic, readonly) ZHCMessagesMoreView *messageMoreView;
+@property (strong, nonatomic) ZHCMessagesMoreView *messageMoreView;
 
 /**
  *  Specifies whether or not the view controller should automatically scroll to the most recent message
