@@ -17,10 +17,15 @@
 #import "ZHCMessagesCommonParameter.h"
 #import "ZHCMessagesEmojiFactory.h"
 #import "ZHCMessagesEmojiView.h"
+#import "ZHCMessagesAudioProgressHUD.h"
+#import "ZHCMessagesAudioPlayer.h"
+#import "ZHCMessagesVoiceRecorder.h"
 
 
 
-@interface ZHCTestViewController ()
+@interface ZHCTestViewController ()<ZHCMessagesVoiceDelegate>{
+    ZHCMessagesVoiceRecorder *recorder;
+}
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (strong, nonatomic) ZHCMessagesEmojiView *emojiView;
 
@@ -34,8 +39,9 @@
     self.modalPresentationCapturesStatusBarAppearance =NO;
     self.extendedLayoutIncludesOpaqueBars = NO;
     self.automaticallyAdjustsScrollViewInsets=NO;
-    
-    [self initialSubViews];
+    recorder = [[ZHCMessagesVoiceRecorder alloc]init];
+    recorder.delegate = self;
+   
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -81,5 +87,32 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)clickAudioAction:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    if (!button.selected) {
+         [ZHCMessagesAudioProgressHUD zhc_show];
+        [recorder zhc_startRecording];
+    }else{
+        [ZHCMessagesAudioProgressHUD zhc_dismissWithMessage:nil];
+        [recorder zhc_stopRecording];
+    }
+    button.selected = !button.selected;
+    
+}
+
+#pragma mark - ZHCMessagesVoiceDelegate
+- (void)zhc_voiceRecorded:(NSString *)recordPath length:(float)recordLength
+{
+    NSLog(@"finishRecorder");
+    [[ZHCMessagesAudioPlayer shareVoicePlayer]playAudioWithUrl:[NSURL URLWithString:recordPath]];
+    
+}
+
+- (void)zhc_failRecord
+{
+    
+}
+
 
 @end

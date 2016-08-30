@@ -43,6 +43,9 @@
 		9E93FB331D741B33002654AD /* NSArray+ZHCMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E93FB321D741B33002654AD /* NSArray+ZHCMessages.m */; };
 		9E93FB361D741CC4002654AD /* ZHCMessagesEmojiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E93FB351D741CC4002654AD /* ZHCMessagesEmojiView.m */; };
 		9E93FB391D7531F7002654AD /* zhc_messages_sample.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9E93FB381D7531F7002654AD /* zhc_messages_sample.m4a */; };
+		9E93FB3C1D755783002654AD /* ZHCMessagesAudioProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E93FB3B1D755783002654AD /* ZHCMessagesAudioProgressHUD.m */; };
+		9E93FB401D756816002654AD /* ZHCMessagesVoiceRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E93FB3F1D756816002654AD /* ZHCMessagesVoiceRecorder.m */; };
+		9E93FB431D757DD2002654AD /* ZHCMessagesAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E93FB421D757DD2002654AD /* ZHCMessagesAudioPlayer.m */; };
 		9E97EC621D59D263009B7482 /* ZHCMessagesTableViewCellIncoming.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E97EC601D59D263009B7482 /* ZHCMessagesTableViewCellIncoming.m */; };
 		9E97EC631D59D263009B7482 /* ZHCMessagesTableViewCellIncoming.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E97EC611D59D263009B7482 /* ZHCMessagesTableViewCellIncoming.xib */; };
 		9E97EC691D59E69E009B7482 /* UIView+ZHCMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E97EC681D59E69E009B7482 /* UIView+ZHCMessages.m */; };
@@ -167,6 +170,12 @@
 		9E93FB341D741CC4002654AD /* ZHCMessagesEmojiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCMessagesEmojiView.h; sourceTree = "<group>"; };
 		9E93FB351D741CC4002654AD /* ZHCMessagesEmojiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCMessagesEmojiView.m; sourceTree = "<group>"; };
 		9E93FB381D7531F7002654AD /* zhc_messages_sample.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = zhc_messages_sample.m4a; sourceTree = "<group>"; };
+		9E93FB3A1D755783002654AD /* ZHCMessagesAudioProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCMessagesAudioProgressHUD.h; sourceTree = "<group>"; };
+		9E93FB3B1D755783002654AD /* ZHCMessagesAudioProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCMessagesAudioProgressHUD.m; sourceTree = "<group>"; };
+		9E93FB3E1D756816002654AD /* ZHCMessagesVoiceRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCMessagesVoiceRecorder.h; sourceTree = "<group>"; };
+		9E93FB3F1D756816002654AD /* ZHCMessagesVoiceRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCMessagesVoiceRecorder.m; sourceTree = "<group>"; };
+		9E93FB411D757DD2002654AD /* ZHCMessagesAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCMessagesAudioPlayer.h; sourceTree = "<group>"; };
+		9E93FB421D757DD2002654AD /* ZHCMessagesAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCMessagesAudioPlayer.m; sourceTree = "<group>"; };
 		9E97EC5F1D59D263009B7482 /* ZHCMessagesTableViewCellIncoming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCMessagesTableViewCellIncoming.h; sourceTree = "<group>"; };
 		9E97EC601D59D263009B7482 /* ZHCMessagesTableViewCellIncoming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCMessagesTableViewCellIncoming.m; sourceTree = "<group>"; };
 		9E97EC611D59D263009B7482 /* ZHCMessagesTableViewCellIncoming.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHCMessagesTableViewCellIncoming.xib; sourceTree = "<group>"; };
@@ -315,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				9E92B31C1D5861A000736447 /* Assets */,
+				9E93FB3D1D75679D002654AD /* Tool */,
 				9E97EC981D5C69B9009B7482 /* Layout */,
 				9E92B3571D588A1D00736447 /* Common */,
 				9E92B3471D586F0900736447 /* Factories */,
@@ -424,6 +434,8 @@
 				9EB3718F1D6FE30800FDFF1B /* ZHCMessagesMoreView.m */,
 				9E93FB341D741CC4002654AD /* ZHCMessagesEmojiView.h */,
 				9E93FB351D741CC4002654AD /* ZHCMessagesEmojiView.m */,
+				9E93FB3A1D755783002654AD /* ZHCMessagesAudioProgressHUD.h */,
+				9E93FB3B1D755783002654AD /* ZHCMessagesAudioProgressHUD.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -454,6 +466,17 @@
 				9E97EC781D5ACC63009B7482 /* ZHCMessages.h */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		9E93FB3D1D75679D002654AD /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				9E93FB411D757DD2002654AD /* ZHCMessagesAudioPlayer.h */,
+				9E93FB421D757DD2002654AD /* ZHCMessagesAudioPlayer.m */,
+				9E93FB3E1D756816002654AD /* ZHCMessagesVoiceRecorder.h */,
+				9E93FB3F1D756816002654AD /* ZHCMessagesVoiceRecorder.m */,
+			);
+			path = Tool;
 			sourceTree = "<group>";
 		};
 		9E97EC711D5ACB67009B7482 /* ZHCMessagesDemo */ = {
@@ -676,6 +699,7 @@
 			files = (
 				9E7A8B6A1D64115000DF6B30 /* ZHCMessagesTimestampFormatter.m in Sources */,
 				9E93FB361D741CC4002654AD /* ZHCMessagesEmojiView.m in Sources */,
+				9E93FB401D756816002654AD /* ZHCMessagesVoiceRecorder.m in Sources */,
 				9E92B3361D5861A000736447 /* UIImage+ZHCMessages.m in Sources */,
 				9EC8D5D51D6D44290020C40B /* ZHCTestViewController.m in Sources */,
 				9EB371901D6FE30800FDFF1B /* ZHCMessagesMoreView.m in Sources */,
@@ -688,6 +712,7 @@
 				9E92B33E1D5862D200736447 /* NSBundle+ZHCMessages.m in Sources */,
 				9E7A8B781D658C3400DF6B30 /* ZHCAudioMediaViewAttributes.m in Sources */,
 				9E97EC9B1D5C69DC009B7482 /* ZHCMessagesTableviewLayoutAttributes.m in Sources */,
+				9E93FB3C1D755783002654AD /* ZHCMessagesAudioProgressHUD.m in Sources */,
 				9E97EC691D59E69E009B7482 /* UIView+ZHCMessages.m in Sources */,
 				9E97EC621D59D263009B7482 /* ZHCMessagesTableViewCellIncoming.m in Sources */,
 				9E97EC6C1D5AC536009B7482 /* ZHCMessage.m in Sources */,
@@ -717,6 +742,7 @@
 				9EC8D5C61D6BF64C0020C40B /* ZHCMessagesInputToolbar.m in Sources */,
 				9E97EC971D5C4CD7009B7482 /* ZHCMessagesMediaPlaceholderView.m in Sources */,
 				9E92B3391D5861A000736447 /* ZHCMessagesTableViewCell.m in Sources */,
+				9E93FB431D757DD2002654AD /* ZHCMessagesAudioPlayer.m in Sources */,
 				9E97EC7B1D5ACF0A009B7482 /* ZHUseFDModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

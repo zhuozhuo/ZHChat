@@ -21,12 +21,24 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nmk-J1-ORT">
+                    <rect key="frame" x="277" y="156" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="Q4W-IC-ttS"/>
+                    </constraints>
+                    <state key="normal" title="Audio"/>
+                    <connections>
+                        <action selector="clickAudioAction:" destination="-1" eventType="touchUpInside" id="ohd-LJ-1eq"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="Nmk-J1-ORT" firstAttribute="centerX" secondItem="8TM-Cf-GAv" secondAttribute="centerX" id="LWQ-kq-KDG"/>
                 <constraint firstAttribute="bottom" secondItem="8TM-Cf-GAv" secondAttribute="bottom" constant="28" id="Wg4-SA-p94"/>
                 <constraint firstItem="8TM-Cf-GAv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="46" id="d3i-Mc-E4d"/>
                 <constraint firstItem="8TM-Cf-GAv" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kNu-1M-AeK"/>
+                <constraint firstItem="Nmk-J1-ORT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="156" id="u5q-WQ-hTc"/>
             </constraints>
             <point key="canvasLocation" x="473" y="408"/>
         </view>

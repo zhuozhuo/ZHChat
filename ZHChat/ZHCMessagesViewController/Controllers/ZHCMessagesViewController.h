@@ -18,8 +18,10 @@
 #import "ZHCMessagesEmojiView.h"
 
 
+
+
 NS_ASSUME_NONNULL_BEGIN
-@interface ZHCMessagesViewController : UIViewController<ZHCMessagesTableViewDataSource,ZHCMessagesTableViewDelegate,ZHCMessagesMoreViewDelegate,ZHCMessagesMoreViewDataSource,ZHCEmojiViewDelegate>
+@interface ZHCMessagesViewController : UIViewController<ZHCMessagesTableViewDataSource,ZHCMessagesTableViewDelegate,ZHCMessagesMoreViewDelegate,ZHCMessagesMoreViewDataSource,ZHCEmojiViewDelegate,ZHCMessagesInputToolbarDelegate>
 
 
 /**

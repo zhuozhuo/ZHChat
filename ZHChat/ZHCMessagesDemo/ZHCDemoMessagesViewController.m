@@ -15,7 +15,6 @@
 
 @implementation ZHCDemoMessagesViewController
 
-
 #pragma mark - life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -312,32 +311,65 @@
 
 }
 
-- (void)didPressAccessoryButton:(UIButton *)sender
+
+#pragma mark - ZHCMessagesInputToolbarDelegate
+-(void)messagesInputToolbar:(ZHCMessagesInputToolbar *)toolbar sendVoice:(NSString *)voiceFilePath seconds:(NSTimeInterval)senconds
 {
-    [self.inputMessageBarView.contentView.textView resignFirstResponder];
+    NSData * audioData = [NSData dataWithContentsOfFile:voiceFilePath];
+    ZHCAudioMediaItem *audioItem = [[ZHCAudioMediaItem alloc] initWithData:audioData];
     
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Media messages", nil)
-                                                       delegate:self
-                                              cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                                         destructiveButtonTitle:nil
-                                              otherButtonTitles:NSLocalizedString(@"Send photo", nil), NSLocalizedString(@"Send location", nil), NSLocalizedString(@"Send video", nil), NSLocalizedString(@"Send audio", nil), nil];
+    ZHCMessage *audioMessage = [ZHCMessage messageWithSenderId:self.senderId
+                                                   displayName:self.senderDisplayName
+                                                         media:audioItem];
+    [self.demoData.messages addObject:audioMessage];
     
-    [sheet showInView:self.view];
+    [self finishSendingMessageAnimated:YES];
 
 }
-
 
 #pragma mark - ZHCMessagesMoreViewDelegate
 
 -(void)messagesMoreView:(ZHCMessagesMoreView *)moreView selectedMoreViewItemWithIndex:(NSInteger)index
 {
-    NSLog(@"clickItemIndex:%ld",index);
+   
+    switch (index) {
+        case 0:{//Camera
+            [self.demoData addVideoMediaMessage];
+            [self.messageTableView reloadData];
+            [self finishSendingMessage];
+        }
+            break;
+            
+        case 1:{//Photos
+            [self.demoData addPhotoMediaMessage];
+            [self.messageTableView reloadData];
+            [self finishSendingMessage];
+        }
+            break;
+            
+        case 2:{//Location
+            typeof(self) __weak weakSelf = self;
+            __weak ZHCMessagesTableView *weakView = self.messageTableView;
+            [self.demoData addLocationMediaMessageCompletion:^{
+                [weakView reloadData];
+                [weakSelf finishSendingMessage];
+                
+            }];
+        }
+
+            break;
+            
+        default:
+            break;
+    }
 }
+
+
 
 #pragma mark - ZHCMessagesMoreViewDataSource
 -(NSArray *)messagesMoreViewTitles:(ZHCMessagesMoreView *)moreView
 {
-    return @[@"照相",@"位置",@"图片"];
+    return @[@"Camera",@"Photos",@"Location"];
 }
 
 -(NSArray *)messagesMoreViewImgNames:(ZHCMessagesMoreView *)moreView

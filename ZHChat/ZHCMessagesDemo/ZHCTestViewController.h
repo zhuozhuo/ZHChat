@@ -10,5 +10,6 @@
 
 @interface ZHCTestViewController : UIViewController
 
+- (IBAction)clickAudioAction:(id)sender;
 
 @end

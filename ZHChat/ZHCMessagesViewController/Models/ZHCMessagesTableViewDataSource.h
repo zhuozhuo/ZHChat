@@ -55,6 +55,8 @@ NS_ASSUME_NONNULL_BEGIN
  *  @return An initialized object that conforms to the `ZHCMessageData` protocol. You must not return `nil` from this method.
  */
 - (id<ZHCMessageData>)tableView:(ZHCMessagesTableView*)tableView messageDataForCellAtIndexPath:(NSIndexPath *)indexPath;
+
+
 /**
  *  Notifies the data source that the cell at indexPath has been deleted.
  *  Implementations of this method should remove the cell from the data source.

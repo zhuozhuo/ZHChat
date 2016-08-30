@@ -108,10 +108,10 @@
     
     ZHCLocationMediaItem *locationItem = [[ZHCLocationMediaItem alloc] init];
     [locationItem setLocation:ferryBuildingInSF withCompletionHandler:completion];
-    locationItem.appliesMediaViewMaskAsOutgoing = NO;
+    locationItem.appliesMediaViewMaskAsOutgoing = YES;
     
-    ZHCMessage *locationMessage = [ZHCMessage messageWithSenderId:kZHCDemoAvatarIdCook
-                                                      displayName:kZHCDemoAvatarDisplayNameCook
+    ZHCMessage *locationMessage = [ZHCMessage messageWithSenderId:kZHCDemoAvatarIdJobs
+                                                      displayName:kZHCDemoAvatarDisplayNameJobs
                                                             media:locationItem];
     [self.messages addObject:locationMessage];
 }
@@ -122,9 +122,9 @@
     NSURL *videoURL = [NSURL URLWithString:@"file://"];
     
     ZHCVideoMediaItem *videoItem = [[ZHCVideoMediaItem alloc] initWithFileURL:videoURL isReadyToPlay:YES];
-    videoItem.appliesMediaViewMaskAsOutgoing = NO;
-    ZHCMessage *videoMessage = [ZHCMessage messageWithSenderId:kZHCDemoAvatarIdCook
-                                                   displayName:kZHCDemoAvatarDisplayNameCook
+    videoItem.appliesMediaViewMaskAsOutgoing = YES;
+    ZHCMessage *videoMessage = [ZHCMessage messageWithSenderId:kZHCDemoAvatarIdJobs
+                                                   displayName:kZHCDemoAvatarDisplayNameJobs
                                                          media:videoItem];
     [self.messages addObject:videoMessage];
 }

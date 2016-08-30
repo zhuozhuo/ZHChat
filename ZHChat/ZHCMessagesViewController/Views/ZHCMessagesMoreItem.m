@@ -10,6 +10,7 @@
 #import "UIImage+ZHCMessages.h"
 #import "NSBundle+ZHCMessages.h"
 #import "UIView+ZHCMessages.h"
+#import "UIColor+ZHCMessages.h"
 
 
 

@@ -17,11 +17,11 @@
 #import "ZHCMessagesCommonParameter.h"
 #import "ZHCMessagesComposerTextView.h"
 #import "ZHCMessagesToolbarContentView.h"
-
 #import "NSBundle+ZHCMessages.h"
 #import "NSString+ZHCMessages.h"
 #import "UIColor+ZHCMessages.h"
 #import "UIView+ZHCMessages.h"
+
 
 
 #import <MobileCoreServices/UTCoreTypes.h>
@@ -94,9 +94,8 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     }
 }
 
-@interface ZHCMessagesViewController ()<UITextViewDelegate,ZHCMessagesInputToolbarDelegate>
+@interface ZHCMessagesViewController ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet ZHCMessagesTableView *messageTableView;
-
 @property (strong, nonatomic) IBOutlet ZHCMessagesInputToolbar *inputMessageBarView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputViewBottomLayoutGuide;
@@ -105,7 +104,6 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 @property (strong, nonatomic) NSLayoutConstraint *messagesEmojiViewBottomContraint;
 
 @property (assign, nonatomic) BOOL showFunctionViewBool;
-
 @end
 
 @implementation ZHCMessagesViewController
@@ -165,9 +163,6 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     self.outgoingMediaCellIdentifier = [ZHCMessagesTableViewCellOutcoming mediaCellReuseIdentifier];
     //self.messageTableView.estimatedRowHeight = 100.0;//This can't set
     
-    
-    
-    // NOTE: let this behavior be opt-in for now
     
 
     self.topContentAdditionalInset = 0.0f;
@@ -897,7 +892,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
 
 
-#pragma mark - Input toolbar delegate
+#pragma mark - ZHCMessagesInputToolbarDelegate
 - (void)messagesInputToolbar:(ZHCMessagesInputToolbar *)toolbar didPressRightBarButton:(UIButton *)sender
 {
     if (sender.selected) {
@@ -924,6 +919,12 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
         [self hiddenEmojiView];
         [self.inputMessageBarView.contentView.textView becomeFirstResponder];
     }
+}
+
+-(void)messagesInputToolbar:(ZHCMessagesInputToolbar *)toolbar sendVoice:(NSString *)voiceFilePath seconds:(NSTimeInterval)senconds
+{
+    
+     NSAssert(NO, @"ERROR: required method not implemented: %s", __PRETTY_FUNCTION__);
 }
 
 - (NSString *)zhc_currentlyComposedMessageText
@@ -976,18 +977,30 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 #pragma mark - ZHCEmojiViewDelegate
 -(void)emojiView:(ZHCMessagesEmojiView *)emojiView didSelectEmoji:(NSString *)emoji
 {
-    
+    self.inputMessageBarView.contentView.textView.text = [self.inputMessageBarView.contentView.textView.text stringByAppendingString:emoji];
 }
 
 
 -(void)emojiView:(ZHCMessagesEmojiView *)emojiView didPressDeleteButton:(UIButton *)deletebutton
 {
-    
+    if (self.inputMessageBarView.contentView.textView.text.length > 0) {
+        NSRange lastRange = [self.inputMessageBarView.contentView.textView.text rangeOfComposedCharacterSequenceAtIndex:(self.inputMessageBarView.contentView.textView.text.length-1)];
+       self.inputMessageBarView.contentView.textView.text = [self.inputMessageBarView.contentView.textView.text substringToIndex:lastRange.location];
+    }
+
 }
 
 -(void)emojiView:(ZHCMessagesEmojiView *)emojiView didPressSendButton:(UIButton *)sendButton
 {
-    
+    if ([self.inputMessageBarView.contentView.textView.text zhc_stringByTrimingWhitespace].length>0) {
+        [self didPressSendButton:nil
+                 withMessageText:[self zhc_currentlyComposedMessageText]
+                        senderId:[self.messageTableView.dataSource senderId]
+               senderDisplayName:[self.messageTableView.dataSource senderDisplayName]
+                            date:[NSDate date]];
+    }
+
+
 }
 
 

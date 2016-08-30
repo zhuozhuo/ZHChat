@@ -12,6 +12,8 @@
 #import "UIColor+ZHCMessages.h"
 #import "UIImage+ZHCMessages.h"
 #import "UIView+ZHCMessages.h"
+#import "NSBundle+ZHCMessages.h"
+
 
 
 static void * kZHCMessagesInputToolbarKeyValueObservingContext = &kZHCMessagesInputToolbarKeyValueObservingContext;
@@ -19,7 +21,7 @@ static void * kZHCMessagesInputToolbarKeyValueObservingContext = &kZHCMessagesIn
 
 @interface ZHCMessagesInputToolbar ()
 @property (assign, nonatomic) BOOL zhc_isObserving;
-
+@property (strong, nonatomic) ZHCMessagesVoiceRecorder *recorder;
 @end
 
 @implementation ZHCMessagesInputToolbar
@@ -36,6 +38,9 @@ static void * kZHCMessagesInputToolbarKeyValueObservingContext = &kZHCMessagesIn
     
     self.preferredDefaultHeight = 44.0f;
     self.maximumHeight = NSNotFound;
+    
+    self.recorder = [[ZHCMessagesVoiceRecorder alloc]init];
+    self.recorder.delegate = self;
     
     ZHCMessagesToolbarContentView *toolbarContentView = [self loadToolbarContentView];
     toolbarContentView.frame = self.frame;
@@ -54,7 +59,11 @@ static void * kZHCMessagesInputToolbarKeyValueObservingContext = &kZHCMessagesIn
 
     [self.contentView.longPressButton addTarget:self action:@selector(zhc_startRecordVoice:) forControlEvents:UIControlEventTouchDown];
      [self.contentView.longPressButton addTarget:self action:@selector(zhc_cancelRecordVoice:) forControlEvents:UIControlEventTouchUpOutside];
-    [self.contentView.longPressButton addTarget:self action:@selector(zhc_confirmRecordVoice:) forControlEvents:UIControlEventTouchCancel];
+    [self.contentView.longPressButton addTarget:self action:@selector(zhc_confirmRecordVoice:) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView.longPressButton addTarget:self action:@selector(zhc_updateCancelRecordVoice) forControlEvents:UIControlEventTouchDragExit];
+    [self.contentView.longPressButton addTarget:self action:@selector(zhc_updateContinueRecordVoice) forControlEvents:UIControlEventTouchDragEnter];
+    
+    
     [self toggleSendButtonEnabled];
    
 
@@ -71,6 +80,7 @@ static void * kZHCMessagesInputToolbarKeyValueObservingContext = &kZHCMessagesIn
 - (void)dealloc
 {
     [self zhc_removeObservers];
+    self.recorder.delegate = nil;
 }
 
 
@@ -86,19 +96,53 @@ static void * kZHCMessagesInputToolbarKeyValueObservingContext = &kZHCMessagesIn
 
 #pragma mark - Actions
 
+/**
+ * Start Record Voice.
+ */
 -(void)zhc_startRecordVoice:(UIButton *)sender
 {
+    NSLog(@"startRecord");
     sender.highlighted = YES;
+    [ZHCMessagesAudioProgressHUD zhc_show];
+    [_recorder zhc_startRecording];
 }
 
+/**
+ * Cancel Record Voice.
+ */
 -(void)zhc_cancelRecordVoice:(UIButton *)sender
 {
+    NSLog(@"cancelRecord");
     sender.highlighted = NO;
+    [ZHCMessagesAudioProgressHUD zhc_dismissWithMessage:[NSBundle zhc_localizedStringForKey:@"Cancel_Recording"]];
+    [_recorder zhc_cancelRecord];
 }
 
+/**
+ * Finish Record Voice.
+ */
 -(void)zhc_confirmRecordVoice:(UIButton *)sender
 {
+     NSLog(@"confirmRecord");
      sender.highlighted = NO;
+    [_recorder zhc_stopRecording];
+}
+
+/**
+ * Update Voice HUD Status.
+ */
+-(void)zhc_updateCancelRecordVoice
+{
+    [ZHCMessagesAudioProgressHUD zhc_changeSubTitle:[NSBundle zhc_localizedStringForKey:@"Release_Cancel_Recording"]];
+    
+}
+
+/**
+ * Update Voice HUD Status.
+ */
+-(void)zhc_updateContinueRecordVoice
+{
+    [ZHCMessagesAudioProgressHUD zhc_changeSubTitle:[NSBundle zhc_localizedStringForKey:@"Slipe_Up_CancelRecording"]];
 }
 
 - (void)zhc_leftBarButtonPressed:(UIButton *)sender
@@ -151,6 +195,31 @@ static void * kZHCMessagesInputToolbarKeyValueObservingContext = &kZHCMessagesIn
         [self.contentView.textView becomeFirstResponder];
     }
     
+}
+
+#pragma mark - ZHCMessagesVoiceDelegate
+- (void)zhc_voiceRecorded:(NSString *)recordPath length:(float)recordLength
+{
+    if (recordPath) {
+        [ZHCMessagesAudioProgressHUD zhc_dismissWithProgressState:ZHCAudioProgressSuccess];
+        [self sendVoiceMessage:recordPath seconds:recordLength];
+    }else{
+        [ZHCMessagesAudioProgressHUD zhc_dismissWithProgressState:ZHCAudioProgressError];
+    }
+}
+
+- (void)zhc_failRecord
+{
+    [ZHCMessagesAudioProgressHUD zhc_dismissWithProgressState:ZHCAudioProgressError];
+}
+
+#pragma mark - Private Methods
+-(void)sendVoiceMessage:(NSString *)voiceFileName seconds:(NSTimeInterval)seconds
+{
+    if ((seconds > 0) && self.delegate && [self.delegate respondsToSelector:@selector(messagesInputToolbar:sendVoice:seconds:)]) {
+        [self.delegate messagesInputToolbar:self sendVoice:voiceFileName seconds:seconds];
+    }
+
 }
 
 

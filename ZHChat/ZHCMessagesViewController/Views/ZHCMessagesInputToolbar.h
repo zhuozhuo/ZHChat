@@ -10,6 +10,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "ZHCMessagesToolbarContentView.h"
+#import "ZHCMessagesAudioPlayer.h"
+#import "ZHCMessagesVoiceRecorder.h"
+#import "ZHCMessagesAudioProgressHUD.h"
+
+
 @class ZHCMessagesInputToolbar;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -50,13 +55,21 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)messagesInputToolbar:(ZHCMessagesInputToolbar *)toolbar
        didPressLeftBarButton:(UIButton *)sender;
 
+/**
+ *  Tells the delegate thart the recording Voice has been finished.
+ *
+ *  @param toolbar The object representing the toolbar sending this information.
+ *  @param voiceFilePath The Voice file path.
+ *  @param senconds      The Voice duration time.
+ */
+- (void)messagesInputToolbar:(ZHCMessagesInputToolbar *)toolbar sendVoice:(NSString *)voiceFilePath seconds:(NSTimeInterval)senconds;
 @end
 
 /**
  *  An instance of `ZHCMessagesInputToolbar` defines the input toolbar for
  *  composing a new message. It is displayed above and follow the movement of the system keyboard.
  */
-@interface ZHCMessagesInputToolbar : UIToolbar
+@interface ZHCMessagesInputToolbar : UIToolbar<ZHCMessagesVoiceDelegate>
 
 
 /**
