@@ -32,9 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Returns a localized version of the string designated by the specified key and residing in the ZHCMessages table.
  *
- *  @param key The key for a string in the JSQMessages table.
+ *  @param key The key for a string in the ZHCMessages table.
  *
- *  @return A localized version of the string designated by key in the JSQMessages table.
+ *  @return A localized version of the string designated by key in the ZHCMessages table.
  */
 + (nullable NSString *)zhc_localizedStringForKey:(NSString *)key;
 

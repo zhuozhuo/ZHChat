@@ -51,7 +51,7 @@
 - (instancetype)init
 {
     NSCache *cache = [NSCache new];
-    cache.name = @"JSQMessagesBubblesSizeCalculator.cache";
+    cache.name = @"ZHCMessagesBubblesSizeCalculator.cache";
     cache.countLimit = 200;
     return [self initWithCache:cache
             minimumBubbleWidth:[UIImage zhc_getBubbleCommpactImage].size.width

@@ -1,13 +1,13 @@
 //
-//  JSQMessages.h
+//  ZHCMessages.h
 //  ZHChat
 //
 //  Created by aimoke on 16/8/10.
 //  Copyright © 2016年 zhuo. All rights reserved.
 //
 
-#ifndef JSQMessages_h
-#define JSQMessages_h
+#ifndef ZHCMessages_h
+#define ZHCMessages_h
 //Views
 #import "ZHCMessagesTableViewCell.h"
 #import "ZHCMessagesCellTextView.h"
@@ -35,4 +35,4 @@
 #import "ZHCMessagesCommonParameter.h"
 
 
-#endif /* JSQMessages_h */
+#endif /* ZHCMessages_h */

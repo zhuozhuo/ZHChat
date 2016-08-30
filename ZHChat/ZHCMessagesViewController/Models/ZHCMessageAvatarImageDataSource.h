@@ -12,10 +12,10 @@
 NS_ASSUME_NONNULL_BEGIN
 /**
  *  The `ZHCMessageAvatarImageDataSource` protocol defines the common interface through which
- *  a `ZHCMessagesViewController` and `ZHCMessagesCollectionView` interact with avatar image model objects.
+ *  a `ZHCMessagesViewController` and `ZHCMessagesTableViewView` interact with avatar image model objects.
  *
  *  It declares the required and optional methods that a class must implement so that instances
- *  of that class can be display properly within a `ZHCMessagesCollectionViewCell`.
+ *  of that class can be display properly within a `ZHCMessagesTableViewCell`.
  *
  *  A concrete class that conforms to this protocol is provided in the library. See `ZHCMessagesAvatarImage`.
  *

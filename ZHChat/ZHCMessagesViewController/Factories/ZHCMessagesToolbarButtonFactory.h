@@ -12,26 +12,26 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- *  `JSQMessagesToolbarButtonFactory` is a factory that provides a means for creating the default
- *  toolbar button items to be displayed in the content view of a `JSQMessagesInputToolbar`.
+ *  `ZHCMessagesToolbarButtonFactory` is a factory that provides a means for creating the default
+ *  toolbar button items to be displayed in the content view of a `ZHCMessagesInputToolbar`.
  */
 @interface ZHCMessagesToolbarButtonFactory : NSObject
 
 /**
- *  Creates and returns a new instance of `JSQMessagesToolbarButtonFactory` that uses
+ *  Creates and returns a new instance of `ZHCMessagesToolbarButtonFactory` that uses
  *  the default font for creating buttons.
  *
- *  @return An initialized `JSQMessagesToolbarButtonFactory` object.
+ *  @return An initialized `ZHCMessagesToolbarButtonFactory` object.
  */
 - (instancetype)init;
 
 /**
- *  Creates and returns a new instance of `JSQMessagesToolbarButtonFactory` that uses
+ *  Creates and returns a new instance of `ZHCMessagesToolbarButtonFactory` that uses
  *  the specified font for creating buttons.
  *
  *  @param A font that will be used for the buttons produced by the factory.
  *
- *  @return An initialized `JSQMessagesToolbarButtonFactory` object.
+ *  @return An initialized `ZHCMessagesToolbarButtonFactory` object.
  */
 - (instancetype)initWithFont:(UIFont *)font NS_DESIGNATED_INITIALIZER;
 

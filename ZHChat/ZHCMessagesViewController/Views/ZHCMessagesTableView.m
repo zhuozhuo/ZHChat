@@ -21,7 +21,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self zhc_configureCollectionView];
+        [self zhc_configureTableView];
     }
     return self;
 }
@@ -30,7 +30,7 @@
 {
     self = [super initWithFrame:frame style:style];
     if (self) {
-        [self zhc_configureCollectionView];
+        [self zhc_configureTableView];
     }
     return self;
 }
@@ -40,10 +40,10 @@
 -(void)awakeFromNib
 {
     [super awakeFromNib];
-    [self zhc_configureCollectionView];
+    [self zhc_configureTableView];
 }
 
-- (void)zhc_configureCollectionView
+- (void)zhc_configureTableView
 {
     //self.translatesAutoresizingMaskIntoConstraints = NO;
     self.backgroundColor = [UIColor whiteColor];

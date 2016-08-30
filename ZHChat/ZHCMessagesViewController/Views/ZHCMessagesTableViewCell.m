@@ -14,7 +14,7 @@
 #import "ZHCMessagesTableView.h"
 #import "ZHCMessagesCommonParameter.h"
 
-static NSMutableSet *zhcMessagesCollectionViewCellActions = nil;
+static NSMutableSet *zhcMessagesTableViewCellActions = nil;
 
 @interface ZHCMessagesTableViewCell()
 @property (weak, nonatomic) IBOutlet ZHCMessagesLabel *cellTopLabel;
@@ -70,7 +70,7 @@ static NSMutableSet *zhcMessagesCollectionViewCellActions = nil;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        zhcMessagesCollectionViewCellActions = [NSMutableSet new];
+        zhcMessagesTableViewCellActions = [NSMutableSet new];
     });
 }
 
@@ -91,7 +91,7 @@ static NSMutableSet *zhcMessagesCollectionViewCellActions = nil;
 
 + (void)registerMenuAction:(SEL)action
 {
-    [zhcMessagesCollectionViewCellActions addObject:NSStringFromSelector(action)];
+    [zhcMessagesTableViewCellActions addObject:NSStringFromSelector(action)];
 }
 
 
@@ -225,7 +225,7 @@ static NSMutableSet *zhcMessagesCollectionViewCellActions = nil;
 #pragma mark - Menu actions
 -(BOOL)respondsToSelector:(SEL)aSelector
 {
-    if ([zhcMessagesCollectionViewCellActions containsObject:NSStringFromSelector(aSelector)]) {
+    if ([zhcMessagesTableViewCellActions containsObject:NSStringFromSelector(aSelector)]) {
         return YES;
     }
     return [super respondsToSelector:aSelector];
@@ -250,7 +250,7 @@ static NSMutableSet *zhcMessagesCollectionViewCellActions = nil;
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation
 {
-    if ([zhcMessagesCollectionViewCellActions containsObject:NSStringFromSelector(anInvocation.selector)]) {
+    if ([zhcMessagesTableViewCellActions containsObject:NSStringFromSelector(anInvocation.selector)]) {
         __unsafe_unretained id sender;
         [anInvocation getArgument:&sender atIndex:0];
         [self.delegate messagesTableViewCell:self didPerformAction:anInvocation.selector withSender:sender];
@@ -262,7 +262,7 @@ static NSMutableSet *zhcMessagesCollectionViewCellActions = nil;
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
 {
-    if ([zhcMessagesCollectionViewCellActions containsObject:NSStringFromSelector(aSelector)]) {
+    if ([zhcMessagesTableViewCellActions containsObject:NSStringFromSelector(aSelector)]) {
         return [NSMethodSignature signatureWithObjCTypes:"v@:@"];
     }
     

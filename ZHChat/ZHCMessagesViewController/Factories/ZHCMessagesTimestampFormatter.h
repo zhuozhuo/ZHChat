@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  An instance of `ZHCMessagesTimestampFormatter` is a singleton object that provides an efficient means
  *  for creating attributed and non-attributed string representations of `NSDate` objects.
- *  It is intended to be used as the method by which you display timestamps in a `ZHCMessagesCollectionView`.
+ *  It is intended to be used as the method by which you display timestamps in a `ZHCMessagesTableViewView`.
  */
 
 @interface ZHCMessagesTimestampFormatter : NSObject

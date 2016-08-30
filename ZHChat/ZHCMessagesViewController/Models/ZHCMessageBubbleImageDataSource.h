@@ -15,11 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  The `ZHCMessageBubbleImageDataSource` protocol defines the common interface through which
- *  a `ZHCMessagesViewController` and `ZHCMessagesCollectionView` interact with
+ *  a `ZHCMessagesViewController` and `ZHCMessagesTableViewView` interact with
  *  message bubble image model objects.
  *
  *  It declares the required and optional methods that a class must implement so that instances
- *  of that class can be display properly within a `ZHCMessagesCollectionViewCell`.
+ *  of that class can be display properly within a `ZHCMessagesTableViewCell`.
  *
  *  A concrete class that conforms to this protocol is provided in the library. See `ZHCMessagesBubbleImage`.
  *

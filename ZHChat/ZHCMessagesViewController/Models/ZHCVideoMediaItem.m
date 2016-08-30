@@ -60,7 +60,7 @@
     _cachedVideoImageView = nil;
 }
 
-#pragma mark - JSQMessageMediaData protocol
+#pragma mark - ZHCMessageMediaData protocol
 
 - (UIView *)mediaView
 {

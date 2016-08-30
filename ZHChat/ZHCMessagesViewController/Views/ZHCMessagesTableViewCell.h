@@ -67,7 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param action The action that has been performed.
  *  @param sender The object that initiated the action.
  *
- *  @see `JSQMessagesTableViewCell`
+ *  @see `ZHCMessagesTableViewCell`
  */
 - (void)messagesTableViewCell:(ZHCMessagesTableViewCell *)cell didPerformAction:(SEL)action withSender:(id)sender;
 

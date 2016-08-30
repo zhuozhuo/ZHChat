@@ -22,10 +22,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- *  @return The frame size for the mediaView when displayed in a `JSQMessagesCollectionViewCell`.
+ *  @return The frame size for the mediaView when displayed in a `ZHCMessagesTableViewCell`.
  *
  *  @discussion You should return an appropriate size value to be set for the mediaView's frame
- *  based on the contents of the view, and the frame and layout of the `JSQMessagesCollectionViewCell`
+ *  based on the contents of the view, and the frame and layout of the `ZHCMessagesTableViewCell`
  *  in which mediaView will be displayed.
  *
  *  @warning You must return a size with non-zero, positive width and height values.
@@ -39,11 +39,11 @@ NS_ASSUME_NONNULL_BEGIN
  *  this placeholder view will be used until mediaView is not `nil`.
  *
  *  @discussion If you do not need support for a placeholder view, then you may simply return the
- *  same value here as mediaView. Otherwise, consider using `JSQMessagesMediaPlaceholderView`.
+ *  same value here as mediaView. Otherwise, consider using `ZHCMessagesMediaPlaceholderView`.
  *
  *  @warning You must not return `nil` from this method.
  *
- *  @see JSQMessagesMediaPlaceholderView.
+ *  @see ZHCMessagesMediaPlaceholderView.
  */
 - (UIView *)mediaPlaceholderView;
 
@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @return An integer that can be used as a table address in a hash table structure.
  *
  *  @discussion This value must be unique for each media item with distinct contents.
- *  This value is used to cache layout information in the collection view.
+ *  This value is used to cache layout information in the TableView view.
  */
 - (NSUInteger)mediaHash;
 

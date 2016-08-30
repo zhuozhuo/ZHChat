@@ -28,9 +28,9 @@
  *  @param image            The regular message bubble image. This value must not be `nil`.
  *  @param highlightedImage The highlighted message bubble image. This value must not be `nil`.
  *
- *  @return An initialized `JSQMessagesBubbleImage` object.
+ *  @return An initialized `ZHCMessagesBubbleImage` object.
  *
- *  @see JSQMessagesBubbleImageFactory.
+ *  @see ZHCMessagesBubbleImageFactory.
  */
 - (instancetype)initWithMessageBubbleImage:(UIImage *)image highlightedImage:(UIImage *)highlightedImage NS_DESIGNATED_INITIALIZER;
 

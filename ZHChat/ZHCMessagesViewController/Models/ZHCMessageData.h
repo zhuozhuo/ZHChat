@@ -69,7 +69,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @return An integer that can be used as a table address in a hash table structure.
  *
  *  @discussion This value must be unique for each message with distinct contents.
- *  This value is used to cache layout information in the collection view.
+ *  This value is used to cache layout information in the TableView view.
  */
 - (NSUInteger)messageHash;
 

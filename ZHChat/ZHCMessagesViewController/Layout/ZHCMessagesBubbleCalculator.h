@@ -23,7 +23,7 @@
 
 /**
  *  Computes and returns the size of the `messageBubbleImageView` property
- *  of a `JSQMessagesCollectionViewCell` for the specified messageData at indexPath.
+ *  of a `ZHCMessagesTableViewCell` for the specified messageData at indexPath.
  *
  *  @param messageData A message data object.
  *  @param indexPath   The index path at which messageData is located.

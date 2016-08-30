@@ -85,7 +85,7 @@
 {
     /**
      *  You may return nil here if you do not want bubbles.
-     *  In this case, you should set the background color of your collection view cell's textView.
+     *  In this case, you should set the background color of your TableView view cell's textView.
      *
      *  Otherwise, return your previously created bubble image data objects.
      */
@@ -105,23 +105,11 @@
 
 - (nullable id<ZHCMessageAvatarImageDataSource>)tableView:(ZHCMessagesTableView *)tableView avatarImageDataForCellAtIndexPath:(NSIndexPath *)indexPath
 {
-    /**
-     *  Return `nil` here if you do not want avatars.
-     *  If you do return `nil`, be sure to do the following in `viewDidLoad`:
-     *
-     *  self.collectionView.collectionViewLayout.incomingAvatarViewSize = CGSizeZero;
-     *  self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
-     *
-     *  It is possible to have only outgoing avatars or only incoming avatars, too.
-     */
     
     /**
      *  Return your previously created avatar image data objects.
      *
      *  Note: these the avatars will be sized according to these values:
-     *
-     *  self.collectionView.collectionViewLayout.incomingAvatarViewSize
-     *  self.collectionView.collectionViewLayout.outgoingAvatarViewSize
      *
      *  Override the defaults in `viewDidLoad`
      */
@@ -309,11 +297,9 @@
      *  Sending a message. Your implementation of this method should do *at least* the following:
      *
      *  1. Play sound (optional)
-     *  2. Add new id<JSQMessageData> object to your data source
+     *  2. Add new id<ZHCMessageData> object to your data source
      *  3. Call `finishSendingMessage`
      */
-    
-    // [JSQSystemSoundPlayer jsq_playMessageSentSound];
     
     ZHCMessage *message = [[ZHCMessage alloc] initWithSenderId:senderId
                                              senderDisplayName:senderDisplayName

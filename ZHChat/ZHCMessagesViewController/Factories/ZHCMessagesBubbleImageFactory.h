@@ -20,10 +20,10 @@
 @property (nonatomic, assign)UIUserInterfaceLayoutDirection layOutDirection;
 
 /**
- *  Creates and returns a new instance of `JSQMessagesBubbleImageFactory` that uses the
+ *  Creates and returns a new instance of `ZHCMessagesBubbleImageFactory` that uses the
  *  default bubble image assets, cap insets, and layout direction.
  *
- *  @return An initialized `JSQMessagesBubbleImageFactory` object.
+ *  @return An initialized `ZHCMessagesBubbleImageFactory` object.
  */
 - (instancetype)init;
 

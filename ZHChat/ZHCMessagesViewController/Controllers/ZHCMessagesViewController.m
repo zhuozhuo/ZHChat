@@ -431,7 +431,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     BOOL isContentTooSmall = (tableViewContentHeight < tableViewHeight);
     if (isContentTooSmall) {
         //  workaround for the first few messages not scrolling
-        //  when the collection view content size is too small, `scrollToItemAtIndexPath:` doesn't work properly
+        //  when the TableView view content size is too small, `scrollToItemAtIndexPath:` doesn't work properly
         //  this seems to be a UIKit bug, see #256 on GitHub
         [self.messageTableView scrollRectToVisible:CGRectMake(0.0, tableViewContentHeight - 1.0f, 1.0f, 1.0f)
                                         animated:animated];
