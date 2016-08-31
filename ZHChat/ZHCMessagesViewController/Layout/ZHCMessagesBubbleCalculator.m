@@ -43,7 +43,7 @@
         
         // this extra inset value is needed because `boundingRectWithSize:` is slightly off
         // see comment below
-        _additionalInset = 2;
+        _additionalInset = 4;
     }
     return self;
 }
@@ -84,6 +84,7 @@
      CGSize finalSize = CGSizeZero;
     if ([messageData isMediaMessage]) {
         finalSize = [[messageData media] mediaViewDisplaySize];
+        NSLog(@"mediaSize:width:%f---height:%f",finalSize.width,finalSize.height);
     }else{
         ZHCMessagesTableviewLayoutAttributes *attributes = tableView.tableViewLayout;
         
@@ -106,8 +107,9 @@
         
         CGFloat verticalContainerInsets = attributes.textViewTextFrameInsets.top + attributes.textViewTextFrameInsets.bottom  + attributes.textViewTextContainerInsets.bottom + attributes.textViewTextContainerInsets.top;
         
-        CGFloat verticalInsets = verticalContainerInsets + self.additionalInset;
         //  same as above, an extra 2 points of magix
+        CGFloat verticalInsets = verticalContainerInsets + self.additionalInset;
+        
         CGFloat horizontalInsetsTotal = attributes.textViewTextFrameInsets.right + attributes.textViewTextFrameInsets.left + attributes.textViewTextContainerInsets.left + attributes.textViewTextContainerInsets.right;
         
         

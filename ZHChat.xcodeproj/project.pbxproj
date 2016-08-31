@@ -73,8 +73,6 @@
 		9EC8D5C61D6BF64C0020C40B /* ZHCMessagesInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC8D5C51D6BF64C0020C40B /* ZHCMessagesInputToolbar.m */; };
 		9EC8D5C91D6BFE670020C40B /* ZHCDemoMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC8D5C81D6BFE670020C40B /* ZHCDemoMessagesViewController.m */; };
 		9EC8D5CF1D6C23400020C40B /* ZHCRootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC8D5CB1D6C23400020C40B /* ZHCRootTableViewController.m */; };
-		9EC8D5D51D6D44290020C40B /* ZHCTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC8D5D31D6D44290020C40B /* ZHCTestViewController.m */; };
-		9EC8D5D61D6D44290020C40B /* ZHCTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EC8D5D41D6D44290020C40B /* ZHCTestViewController.xib */; };
 		9EC8D5DB1D6ED56B0020C40B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9EC8D5DD1D6ED56B0020C40B /* Localizable.strings */; };
 		9EC8D5E21D6ED5BF0020C40B /* ZHCMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9EC8D5E11D6ED5BF0020C40B /* ZHCMessagesAssets.bundle */; };
 /* End PBXBuildFile section */
@@ -222,9 +220,6 @@
 		9EC8D5C81D6BFE670020C40B /* ZHCDemoMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCDemoMessagesViewController.m; sourceTree = "<group>"; };
 		9EC8D5CA1D6C23400020C40B /* ZHCRootTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCRootTableViewController.h; sourceTree = "<group>"; };
 		9EC8D5CB1D6C23400020C40B /* ZHCRootTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCRootTableViewController.m; sourceTree = "<group>"; };
-		9EC8D5D21D6D44290020C40B /* ZHCTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCTestViewController.h; sourceTree = "<group>"; };
-		9EC8D5D31D6D44290020C40B /* ZHCTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCTestViewController.m; sourceTree = "<group>"; };
-		9EC8D5D41D6D44290020C40B /* ZHCTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHCTestViewController.xib; sourceTree = "<group>"; };
 		9EC8D5DC1D6ED56B0020C40B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9EC8D5DE1D6ED56E0020C40B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9EC8D5DF1D6ED57E0020C40B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -492,9 +487,6 @@
 				9EC8D5CB1D6C23400020C40B /* ZHCRootTableViewController.m */,
 				9EC8D5C71D6BFE670020C40B /* ZHCDemoMessagesViewController.h */,
 				9EC8D5C81D6BFE670020C40B /* ZHCDemoMessagesViewController.m */,
-				9EC8D5D21D6D44290020C40B /* ZHCTestViewController.h */,
-				9EC8D5D31D6D44290020C40B /* ZHCTestViewController.m */,
-				9EC8D5D41D6D44290020C40B /* ZHCTestViewController.xib */,
 			);
 			path = ZHCMessagesDemo;
 			sourceTree = "<group>";
@@ -653,7 +645,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EB371D51D704CF000FDFF1B /* chat_bar_icons_camera@2x.png in Resources */,
-				9EC8D5D61D6D44290020C40B /* ZHCTestViewController.xib in Resources */,
 				9EC8D5DB1D6ED56B0020C40B /* Localizable.strings in Resources */,
 				9E92B2DA1D58219F00736447 /* LaunchScreen.storyboard in Resources */,
 				9EB371DB1D704CF000FDFF1B /* chat_bar_icons_pic@2x.png in Resources */,
@@ -701,7 +692,6 @@
 				9E93FB361D741CC4002654AD /* ZHCMessagesEmojiView.m in Sources */,
 				9E93FB401D756816002654AD /* ZHCMessagesVoiceRecorder.m in Sources */,
 				9E92B3361D5861A000736447 /* UIImage+ZHCMessages.m in Sources */,
-				9EC8D5D51D6D44290020C40B /* ZHCTestViewController.m in Sources */,
 				9EB371901D6FE30800FDFF1B /* ZHCMessagesMoreView.m in Sources */,
 				9E92B2CF1D58219F00736447 /* AppDelegate.m in Sources */,
 				9E7A8B5B1D61AF1B00DF6B30 /* ZHCMessagesMediaViewBubbleImageMasker.m in Sources */,

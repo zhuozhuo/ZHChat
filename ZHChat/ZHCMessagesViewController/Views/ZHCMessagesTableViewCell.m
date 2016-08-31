@@ -99,17 +99,24 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-   // [self setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.cellTopLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.messageBubbleTopLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.cellBottomLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.cellsSpaceLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.messageBubbleContainerView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.messageBubbleImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.textView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.avatarContainerView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.avatarImageView.translatesAutoresizingMaskIntoConstraints = NO;
    
     
-     self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor whiteColor];
     
     self.cellTopLabelHeightConstraint.constant = 0.0f;
     self.messageBubbleTopLabelHeightConstraint.constant = 0.0f;
     self.cellBottomLabelHeightConstraint.constant = 0.0f;
     self.avatarViewSize = CGSizeZero;
-    self.cellsSpaceConstraint.constant = kZHCMessagesTableViewCellSpaceDefault-10;
+    self.cellsSpaceConstraint.constant = kZHCMessagesTableViewCellSpaceDefault;
     self.cellsSpaceLabel.text = nil;
     self.cellTopLabel.textAlignment = NSTextAlignmentCenter;
     self.cellTopLabel.font = [UIFont boldSystemFontOfSize:12.0];
@@ -277,7 +284,9 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
     NSParameterAssert(cellTopLabelHeight >= 0.0f);
     if (cellTopLabelHeight == 0.0f) {
         self.cellTopLabel.text = nil;
-        cellTopLabelHeight = 3.0f;
+    }
+    if (self.cellTopLabelHeightConstraint.constant == cellTopLabelHeight) {
+        return;
     }
     _cellTopLabelHeight = cellTopLabelHeight;
     [self zhc_updateConstraint:self.cellTopLabelHeightConstraint withConstant:cellTopLabelHeight];
@@ -289,7 +298,9 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
     NSParameterAssert(messageBubbleTopLabelHeight >= 0.0f);
     if (messageBubbleTopLabelHeight == 0.0f) {
         self.messageBubbleTopLabel.text = nil;
-        messageBubbleTopLabelHeight = 3.0f;
+    }
+    if (self.messageBubbleTopLabelHeightConstraint.constant == messageBubbleTopLabelHeight) {
+        return;
     }
     _messageBubbleTopLabelHeight = messageBubbleTopLabelHeight;
     [self zhc_updateConstraint:self.messageBubbleTopLabelHeightConstraint withConstant:messageBubbleTopLabelHeight];
@@ -301,8 +312,11 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
     NSParameterAssert(cellBottomLabelHeight >= 0.0f);
     if (cellBottomLabelHeight == 0.0f) {
         self.cellTopLabel.text = nil;
-        cellBottomLabelHeight = 3.0f;
     }
+    if (self.cellBottomLabelHeightConstraint.constant == cellBottomLabelHeight) {
+        return;
+    }
+    
     _cellBottomLabelHeight = cellBottomLabelHeight;
     [self zhc_updateConstraint:self.cellBottomLabelHeightConstraint withConstant:cellBottomLabelHeight];
 }
@@ -330,6 +344,7 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
     }
     [self zhc_updateConstraint:self.avatarContainerViewWidthConstraint withConstant:avatarViewSize.width];
     [self zhc_updateConstraint:self.avatarContainerViewHeightConstraint withConstant:avatarViewSize.height];
+     [self updateConstraints];
 }
 
 -(void)setTextViewFrameInsets:(UIEdgeInsets)textViewFrameInsets
@@ -341,18 +356,26 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
     [self zhc_updateConstraint:self.textViewBottomVerticalSpaceConstraint withConstant:textViewFrameInsets.bottom];
     [self zhc_updateConstraint:self.textViewAvatarHorizontalSpaceConstraint withConstant:textViewFrameInsets.right];
     [self zhc_updateConstraint:self.textViewMarginHorizontalSpaceConstraint withConstant:textViewFrameInsets.left];
+     [self updateConstraints];
 }
 
--(void)setMediaView:(UIView *)mediaView
+-(void)setMediaView:(UIView *)mediaView withisOutgoingMessage:(BOOL )isOutgoingMessage
 {
     [self.messageBubbleImageView removeFromSuperview];
     [self.textView removeFromSuperview];
-    mediaView.frame = self.messageBubbleContainerView.bounds;
-    [self.messageBubbleContainerView addSubview:mediaView];
     
     [mediaView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.messageBubbleContainerView zhc_pinAllEdgesOfSubview:mediaView];
-     _mediaView = mediaView;
+    [self.messageBubbleContainerView addSubview:mediaView];
+    
+    [self.messageBubbleContainerView zhc_pinSubview:mediaView toEdge:NSLayoutAttributeBottom withConstant:-2.0f];
+    [mediaView zhc_pinSelfToEdge:NSLayoutAttributeHeight withConstant:CGRectGetHeight(mediaView.frame)];
+    [mediaView zhc_pinSelfToEdge:NSLayoutAttributeWidth withConstant:CGRectGetWidth(mediaView.frame)];
+    if (isOutgoingMessage) {
+        [self.messageBubbleContainerView zhc_pinSubview:mediaView toEdge:NSLayoutAttributeTrailing withConstant:-2.0f];
+    }else{
+        [self.messageBubbleContainerView zhc_pinSubview:mediaView toEdge:NSLayoutAttributeLeading withConstant:2.0f];
+    }
+    _mediaView = mediaView;
     
     //  because of cell re-use (and caching media views, if using built-in library media item)
     //  we may have dequeued a cell with a media view and add this one on top
@@ -364,6 +387,7 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
             }
         }
     });
+     [self updateConstraints];
 
 }
 

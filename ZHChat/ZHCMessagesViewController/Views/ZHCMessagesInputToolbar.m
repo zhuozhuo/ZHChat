@@ -234,12 +234,6 @@ static void * kZHCMessagesInputToolbarKeyValueObservingContext = &kZHCMessagesIn
         self.contentView.textView.enablesReturnKeyAutomatically = YES;
     }
     
-//    if (self.sendButtonOnRight) {
-//        self.contentView.rightBarButtonItem.enabled = hasText;
-//    }
-//    else {
-//        self.contentView.leftBarButtonItem.enabled = hasText;
-//    }
 }
 
 

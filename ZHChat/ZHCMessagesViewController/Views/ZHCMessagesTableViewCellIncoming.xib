@@ -100,8 +100,6 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="HX7-0h-z6r" firstAttribute="trailing" secondItem="Fic-Hc-208" secondAttribute="trailing" id="1F9-t4-wne"/>
-                    <constraint firstItem="Fic-Hc-208" firstAttribute="leading" secondItem="qk1-EK-aBJ" secondAttribute="leading" id="4Cb-ZE-KsE"/>
                     <constraint firstItem="Fic-Hc-208" firstAttribute="top" secondItem="HX7-0h-z6r" secondAttribute="bottom" id="9Ne-nj-BrF"/>
                     <constraint firstItem="AtY-PM-nfv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-7" id="Jyb-aJ-y1c"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Fic-Hc-208" secondAttribute="trailing" constant="-8" id="LIe-Yu-USL"/>
@@ -113,32 +111,14 @@
                     <constraint firstItem="AtY-PM-nfv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-7" id="Qm5-A5-nRM"/>
                     <constraint firstItem="Fic-Hc-208" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="VEf-Nh-XnF"/>
                     <constraint firstItem="HX7-0h-z6r" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="YYW-8S-XtT"/>
-                    <constraint firstItem="HX7-0h-z6r" firstAttribute="leading" secondItem="Fic-Hc-208" secondAttribute="leading" id="b2F-6N-DnA"/>
                     <constraint firstItem="QkL-sf-hMh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="gF6-27-URa"/>
                     <constraint firstAttribute="bottomMargin" secondItem="qk1-EK-aBJ" secondAttribute="bottom" constant="-9" id="nZX-sW-9uo"/>
                     <constraint firstAttribute="trailing" secondItem="HX7-0h-z6r" secondAttribute="trailing" id="oQg-bq-UL7"/>
                     <constraint firstItem="HX7-0h-z6r" firstAttribute="top" secondItem="AtY-PM-nfv" secondAttribute="bottom" id="p6i-WP-JH6"/>
-                    <constraint firstItem="Fic-Hc-208" firstAttribute="trailing" secondItem="qk1-EK-aBJ" secondAttribute="trailing" id="qi9-e3-imO"/>
                     <constraint firstAttribute="trailingMargin" secondItem="qk1-EK-aBJ" secondAttribute="trailing" constant="-8" id="uMD-h4-iFD"/>
                     <constraint firstItem="qk1-EK-aBJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="yYJ-n8-uBC"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="1F9-t4-wne"/>
-                        <exclude reference="b2F-6N-DnA"/>
-                        <exclude reference="4Cb-ZE-KsE"/>
-                        <exclude reference="qi9-e3-imO"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="qk1-EK-aBJ" secondAttribute="bottom" id="NQ8-gu-tKw"/>
-            </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="NQ8-gu-tKw"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="avatarContainerView" destination="QkL-sf-hMh" id="w4B-Lf-GqN"/>
                 <outlet property="avatarContainerViewHeightConstraint" destination="hm5-Qh-N3m" id="eKg-43-aIo"/>

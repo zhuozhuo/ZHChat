@@ -144,6 +144,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     self.messageTableView.backgroundColor = [UIColor whiteColor];
     self.messageTableView.tableFooterView = [UIView new];
     self.messageTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.messageTableView.rowHeight = UITableViewAutomaticDimension;
     self.messageTableView.delegate = self;
     self.messageTableView.dataSource = self;
     self.showFunctionViewBool = NO;
@@ -162,8 +163,6 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     self.incomingMediaCellIdentifier = [ZHCMessagesTableViewCellIncoming mediaCellReuseIdentifier];
     self.outgoingMediaCellIdentifier = [ZHCMessagesTableViewCellOutcoming mediaCellReuseIdentifier];
     //self.messageTableView.estimatedRowHeight = 100.0;//This can't set
-    
-    
 
     self.topContentAdditionalInset = 0.0f;
     
@@ -481,10 +480,11 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
 -(CGFloat)tableView:(ZHCMessagesTableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     ZHCMessage *message = (ZHCMessage *)[tableView.dataSource tableView:tableView messageDataForCellAtIndexPath:indexPath];
     CGFloat height = 0.0;
     CGSize size = [self.bubbleSizeCalculator messageBubbleSizeForMessageData:message atIndexPath:indexPath withTableView:tableView];
-
+    
     CGFloat avatarHeight = 0.0f;
     BOOL isOutgoingMessage = [self isOutgoingMessage:message];
     if (isOutgoingMessage) {
@@ -499,7 +499,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     CGFloat cellBubbleTopLabelHeight = [tableView.dataSource tableView:tableView  heightForMessageBubbleTopLabelAtIndexPath:indexPath];
     CGFloat cellBottomLabelHeight = [tableView.dataSource tableView:tableView heightForCellBottomLabelAtIndexPath:indexPath];
     
-    height = kZHCMessagesTableViewCellSpaceDefault + cellTopLabelHeight + cellBubbleTopLabelHeight + cellBottomLabelHeight + bubbleHeight + 2.0*[UIScreen mainScreen].scale;\
+    height = kZHCMessagesTableViewCellSpaceDefault + cellTopLabelHeight + cellBubbleTopLabelHeight + cellBottomLabelHeight + bubbleHeight + 2.0*[UIScreen mainScreen].scale;
     return height;
 
 }
@@ -534,8 +534,10 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
         
     }else{
         id<ZHCMessageMediaData> messageMedia = [messagecell media];
-        cell.mediaView = [messageMedia mediaView] ?:[messageMedia mediaPlaceholderView];
+        UIView *view = [messageMedia mediaView] ?:[messageMedia mediaPlaceholderView];
+        [cell setMediaView:view withisOutgoingMessage:isOutgoingMessage];
         NSParameterAssert(cell.mediaView !=nil);
+        
     }
     BOOL needsAvatar = YES;
     if (isOutgoingMessage && CGSizeEqualToSize(tableView.tableViewLayout.outgoingAvatarViewSize, CGSizeZero)) {
@@ -577,14 +579,12 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     }else{
         cell.messageBubbleTopLabel.textInsets = UIEdgeInsetsMake(0.0f, bubbleTopLableInset, 0.0f, 0.0f);
     }
-    
     cell.textView.dataDetectorTypes = UIDataDetectorTypeAll;
     cell.backgroundColor = [UIColor clearColor];
     cell.contentView.backgroundColor = [UIColor whiteColor];
-    
     cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
     cell.layer.shouldRasterize = YES;
-    
+    [cell setNeedsLayout];
     return cell;
 }
 

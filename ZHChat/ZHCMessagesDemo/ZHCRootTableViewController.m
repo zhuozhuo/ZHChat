@@ -8,7 +8,6 @@
 #define CellIdentifier @"RootTableViewControllerCellIdenntifier"
 
 #import "ZHCRootTableViewController.h"
-#import "ZHCTestViewController.h"
 #import "ZHCDemoMessagesViewController.h"
 
 @interface ZHCRootTableViewController (){
@@ -25,7 +24,7 @@
     [super viewDidLoad];
     self.tableView.tableFooterView = [UIView new];
     
-    dataArray = @[@"Push",@"Test"];
+    dataArray = @[@"Push",@"Present"];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -66,12 +65,15 @@
     switch (indexPath.row) {
         case 0:{
             ZHCDemoMessagesViewController *messagesVC = [[ZHCDemoMessagesViewController alloc]init];
+            messagesVC.presentBool = NO;
             [self.navigationController pushViewController:messagesVC animated:YES];
         }
             break;
         case 1:{
-            ZHCTestViewController *testVC = [[ZHCTestViewController alloc]initWithNibName:@"ZHCTestViewController" bundle:[NSBundle mainBundle]];
-            [self.navigationController pushViewController:testVC animated:YES];
+            ZHCDemoMessagesViewController *messagesVC = [[ZHCDemoMessagesViewController alloc]init];
+            messagesVC.presentBool = YES;
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:messagesVC];
+            [self presentViewController:nav animated:YES completion:nil];
         }
             break;
         default:

@@ -38,7 +38,7 @@
         _messageBubbleSpaceWithAvatar = 2.0;
         _messageBubbleHorizontallySpaceWithSuperView = 32.0;
         _messageAvatarHorizontallySpaceWithSuperView = 8.0;
-        _messageBubbleContainerViewWidth = 231;
+        _messageBubbleContainerViewWidth = 244;
     }
     return self;
 }

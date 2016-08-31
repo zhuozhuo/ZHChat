@@ -91,7 +91,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  The object that acts as the delegate for the cell.
  */
-@property (weak, nonatomic, nullable) id<ZHCMessagesTableViewCellDelegate> delegate;
+@property (weak, nonatomic) id<ZHCMessagesTableViewCellDelegate> delegate;
 
 
 /**
@@ -122,26 +122,26 @@ NS_ASSUME_NONNULL_BEGIN
  *  Returns the label that is pinned to the top of the cell.
  *  This label is most commonly used to display message timestamps.
  */
-@property (weak, nonatomic, readonly, nullable) ZHCMessagesLabel *cellTopLabel;
+@property (weak, nonatomic, readonly) ZHCMessagesLabel *cellTopLabel;
 
 /**
  *  Returns the label that is pinned just above the messageBubbleImageView, and below the cellTopLabel.
  *  This label is most commonly used to display the message sender.
  */
-@property (weak, nonatomic, readonly, nullable) ZHCMessagesLabel *messageBubbleTopLabel;
+@property (weak, nonatomic, readonly) ZHCMessagesLabel *messageBubbleTopLabel;
 
 /**
  *  Returns the label that is pinned to the bottom of the cell.
  *  This label is most commonly used to display message delivery status.
  */
-@property (weak, nonatomic, readonly, nullable) ZHCMessagesLabel *cellBottomLabel;
+@property (weak, nonatomic, readonly) ZHCMessagesLabel *cellBottomLabel;
 
 /**
  *  Returns the text view of the cell. This text view contains the message body text.
  *
  *  @warning If mediaView returns a non-nil view, then this value will be `nil`.
  */
-@property (weak, nonatomic, readonly, nullable) ZHCMessagesCellTextView *textView;
+@property (weak, nonatomic, readonly) ZHCMessagesCellTextView *textView;
 
 
 /**
@@ -149,7 +149,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @warning If mediaView returns a non-nil view, then this value will be `nil`.
  */
-@property (weak, nonatomic, readonly, nullable) ZHCMessagesLabel *messageLabel;
+@property (weak, nonatomic, readonly) ZHCMessagesLabel *messageLabel;
 
 
 /**
@@ -157,7 +157,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @warning If mediaView returns a non-nil view, then this value will be `nil`.
  */
-@property (weak, nonatomic, readonly, nullable) UIImageView *messageBubbleImageView;
+@property (weak, nonatomic, readonly) UIImageView *messageBubbleImageView;
 
 /**
  *  Returns the message bubble container view of the cell. This view is the superview of
@@ -170,12 +170,12 @@ NS_ASSUME_NONNULL_BEGIN
  *  its frame, nor should you remove this view from the cell or remove any of its subviews.
  *  Doing so could result in unexpected behavior.
  */
-@property (weak, nonatomic, readonly, nullable) UIView *messageBubbleContainerView;
+@property (weak, nonatomic, readonly) UIView *messageBubbleContainerView;
 
 /**
  *  Returns the avatar image view of the cell that is responsible for displaying avatar images.
  */
-@property (weak, nonatomic, readonly, nullable) UIImageView *avatarImageView;
+@property (weak, nonatomic, readonly) UIImageView *avatarImageView;
 
 
 /**
@@ -188,7 +188,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  its frame, nor should you remove this view from the cell or remove any of its subviews.
  *  Doing so could result in unexpected behavior.
  */
-@property (weak, nonatomic, readonly, nullable) UIView *avatarContainerView;
+@property (weak, nonatomic, readonly) UIView *avatarContainerView;
 
 
 /**
@@ -196,19 +196,28 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @warning If this value is non-nil, then textView and messageBubbleImageView will both be `nil`.
  */
-@property (weak, nonatomic, nullable) UIView *mediaView;
+@property (weak, nonatomic) UIView *mediaView;
 
 
 /**
  *  Returns the underlying gesture recognizer for tap gestures in the avatarImageView of the cell.
  *  This gesture handles the tap event for the avatarImageView and notifies the cell's delegate.
  */
-@property (weak, nonatomic, readonly, nullable) UITapGestureRecognizer *tapGestureRecognizer;
+@property (weak, nonatomic, readonly) UITapGestureRecognizer *tapGestureRecognizer;
 
 /**
  *  Update layout
  */
 -(void)applyLayoutAttributes;
+
+
+/**
+ *  Initial MediaView
+ *
+ *  @param mediaView         The meida view
+ *  @param isOutgoingMessage The message is outgoingMessage or not.
+ */
+-(void)setMediaView:(UIView *)mediaView withisOutgoingMessage:(BOOL )isOutgoingMessage;
 
 #pragma mark - Class methods
 
@@ -217,14 +226,14 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return The initialized `UINib` object.
  */
-+ (nonnull UINib *)nib;
++ (UINib *)nib;
 
 /**
  *  Returns the default string used to identify a reusable cell for text message items.
  *
  *  @return The string used to identify a reusable cell.
  */
-+ (nonnull NSString *)cellReuseIdentifier;
++ (NSString *)cellReuseIdentifier;
 
 
 /**
@@ -232,7 +241,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return The string used to identify a reusable cell.
  */
-+ (nonnull NSString *)mediaCellReuseIdentifier;
++ (NSString *)mediaCellReuseIdentifier;
 
 /**
  *  Registers an action to be available in the cell's menu.
@@ -244,7 +253,9 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @warning Note that all message cells share the all actions registered here.
  */
-+ (void)registerMenuAction:(nonnull SEL)action;
++ (void)registerMenuAction:(SEL)action;
+
+
 
 
 @end

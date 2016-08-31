@@ -31,7 +31,7 @@
  *  A constant that describes the default size for cells space in a `ZHCMessagesTableViewCell`.
  */
 #ifndef kZHCMessagesTableViewCellSpaceDefault
-#define kZHCMessagesTableViewCellSpaceDefault  30.0f
+#define kZHCMessagesTableViewCellSpaceDefault  15.0f
 #endif
 
 /**

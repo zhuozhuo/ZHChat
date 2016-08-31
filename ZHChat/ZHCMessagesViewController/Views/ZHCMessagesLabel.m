@@ -13,7 +13,6 @@
 #pragma mark - Initialization
 -(void)zhc_configureLabel
 {
-    //[self setTranslatesAutoresizingMaskIntoConstraints:NO];
     self.textInsets = UIEdgeInsetsZero;
 }
 

@@ -18,41 +18,36 @@
 #pragma mark - life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewMessages:)];
-    self.navigationItem.rightBarButtonItem = item;
-    
     /**
      *  Load up our fake data for the demo
      */
     self.demoData = [[ZHCModelData alloc] init];
     self.title = @"ZHCMessages";
-    
-
     // Do any additional setup after loading the view.
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (self.presentBool) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
+                                                                                              target:self
+                                                                                              action:@selector(closePressed:)];
+    }
+}
+
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-//    __weak ZHCMessagesTableView *weakView = self.messageTableView;
-//    [self.demoData addLocationMediaMessageCompletion:^{
-//        [weakView reloadData];
-//    }];
 }
-
-
--(void)addNewMessages:(id)sender
-{
-    
-
-}
-
 
 
 #pragma mark - ZHCMessagesTableViewDataSource
@@ -386,7 +381,11 @@
     NSLog(@"click ActionSheet Button At index :%ld",(long)buttonIndex);
 }
 
-
+#pragma mark - PrivateMethods
+-(void)closePressed:(id)sender
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
 /*
 #pragma mark - Navigation
 

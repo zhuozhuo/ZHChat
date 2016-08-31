@@ -50,8 +50,10 @@
     self.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
     self.alwaysBounceVertical = YES;
     self.bounces = YES;
+    
     [self registerNib:[ZHCMessagesTableViewCellIncoming nib] forCellReuseIdentifier:[ZHCMessagesTableViewCellIncoming cellReuseIdentifier]];
     [self registerNib:[ZHCMessagesTableViewCellOutcoming nib] forCellReuseIdentifier:[ZHCMessagesTableViewCellOutcoming cellReuseIdentifier]];
+    
     [self registerNib:[ZHCMessagesTableViewCellIncoming nib] forCellReuseIdentifier:[ZHCMessagesTableViewCellIncoming mediaCellReuseIdentifier]];
     [self registerNib:[ZHCMessagesTableViewCellOutcoming nib] forCellReuseIdentifier:[ZHCMessagesTableViewCellOutcoming mediaCellReuseIdentifier]];
     self.tableViewLayout = [[ZHCMessagesTableviewLayoutAttributes alloc]init];
