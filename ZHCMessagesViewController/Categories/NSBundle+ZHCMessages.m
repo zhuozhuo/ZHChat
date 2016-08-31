@@ -7,12 +7,13 @@
 //
 
 #import "NSBundle+ZHCMessages.h"
-#import "ZHCRootTableViewController.h"
+#import "ZHCMessagesViewController.h"
+
 @implementation NSBundle (ZHCMessages)
 
 + (NSBundle *)zhc_messagesBundle
 {
-    return [NSBundle bundleForClass:[ZHCRootTableViewController class]];
+    return [NSBundle bundleForClass:[ZHCMessagesViewController class]];
 }
 
 
