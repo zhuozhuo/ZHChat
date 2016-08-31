@@ -27,10 +27,12 @@ ZHChat是聊天界面的一个库，可以发送语言，图片，文字，表�
 ## Usage
 ### [CocoaPods](https://cocoapods.org/) (recommended)
 
+pod 'ZHChat', '~> 0.1.1'
 
 ### 复制文件夹ZHCMessagesViewController至你的工程中
 
-
+### Thanks
+Thaks [Jesse Squires](https://github.com/jessesquires/JSQMessagesViewController)架构和资源很多借鉴了JSQMessagesViewController.
 
 ## License
 
