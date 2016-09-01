@@ -8,7 +8,7 @@ ZHChat是聊天界面的一个库，可以发送语言，图片，文字，表�
 ##Features
 * 界面模仿苹果自带消息应用界面。
 * 包含了常用文字，图片，语言，位置，视频消息发送功能。
-* 本库聊天界面是基于UIViewController,更容易理解整个UI架构。
+* 本库聊天界面是基于UITableView,更容易理解整个UI架构。
 
 
 
@@ -23,6 +23,8 @@ ZHChat是聊天界面的一个库，可以发送语言，图片，文字，表�
 
 
 ##Introduce
+
+
 
 ## Usage
 ### [CocoaPods](https://cocoapods.org/) (recommended)
