@@ -1,5 +1,5 @@
 ##ZHChat
-[ZHChat](https://github.com/zhuozhuo/ZHChat)是一个免费开源的UI Library，支持发送语言，图片，文字，表情,位置，视频消息。ZHChat 可以帮助开发者快速集成 IM 服务，轻松实现聊天功能，提供完全自由的授权协议，支持二次开发。欢迎大家pull Request。
+[ZHChat](https://github.com/zhuozhuo/ZHChat)是一个免费开源的UI 聊天组件，支持发送语言，图片，文字，表情,位置，视频消息。ZHChat 可以帮助开发者快速集成 IM 服务，轻松实现聊天功能，提供完全自由的授权协议，支持二次开发。欢迎大家pull Request。
 ![Screenshot0][img0] &nbsp;&nbsp; ![Screenshot1][img1] &nbsp;&nbsp;
 
 ![Screenshot2][img2] &nbsp;&nbsp; ![Screenshot3][img3]
