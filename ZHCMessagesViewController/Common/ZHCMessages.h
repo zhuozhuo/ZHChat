@@ -73,4 +73,7 @@
 #import "ZHCMessagesAudioPlayer.h"
 #import "ZHCMessagesVoiceRecorder.h"
 
+//Controllers
+#import "ZHCMessagesViewController.h"
+
 #endif /* ZHCMessages_h */

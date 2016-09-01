@@ -7,8 +7,6 @@
 //
 
 #import "ZHCDemoMessagesViewController.h"
-#import "ZHCMessages.h"
-
 @interface ZHCDemoMessagesViewController ()
 
 @end

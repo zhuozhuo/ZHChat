@@ -6,8 +6,9 @@
 //  Copyright © 2016年 zhuo. All rights reserved.
 //
 
-#import "ZHCMessagesViewController.h"
+#import "ZHCMessages.h"
 #import "ZHCModelData.h"
+
 
 
 @interface ZHCDemoMessagesViewController : ZHCMessagesViewController<UIActionSheetDelegate>

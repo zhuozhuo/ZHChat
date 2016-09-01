@@ -6,7 +6,6 @@ target 'ZHChat' do
   # use_frameworks!
 
   # Pods for ZHChat
-  pod 'ZHChat', '~> 0.1.1'
   target 'ZHChatTests' do
     inherit! :search_paths
     # Pods for testing
