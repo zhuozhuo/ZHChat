@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "ZHCMessageAvatarImageDataSource.h"
 
-@interface ZHCMessagesAvatarImage : NSObject<NSCopying>
+NS_ASSUME_NONNULL_BEGIN
+@interface ZHCMessagesAvatarImage : NSObject<NSCopying,ZHCMessageAvatarImageDataSource>
 /**
  *  The avatar image for a regular display state.
  */
@@ -24,7 +26,7 @@
 /**
  *  Returns the placeholder image for an avatar to display if avatarImage is `nil`.
  */
-@property (nonatomic, strong, readonly,nullable) UIImage *avatarPlaceholderImage;
+@property (nonatomic, strong, readonly) UIImage *avatarPlaceholderImage;
 
 
 /**
@@ -36,7 +38,7 @@
  *
  *  @return An initialized `ZHCMessagesAvatarImage` object.
  */
-+ (nonnull instancetype)avatarWithImage:(nonnull UIImage *)image;
++ (instancetype)avatarWithImage:(UIImage *)image;
 
 
 /**
@@ -46,7 +48,7 @@
  *
  *  @return An initialized `ZHCMessagesAvatarImage` object.
  */
-+ (nonnull instancetype)avatarImageWithPlaceholder:(nonnull UIImage *)placeholderImage;
++ (instancetype)avatarImageWithPlaceholder:(UIImage *)placeholderImage;
 
 
 /**
@@ -58,13 +60,15 @@
  *
  *  @return An initialized `ZHCMessagesAvatarImage` object.
  */
-- (nonnull instancetype)initWithAvatarImage:(nullable UIImage *)avatarImage
+- (instancetype)initWithAvatarImage:(nullable UIImage *)avatarImage
                    highlightedImage:(nullable UIImage *)highlightedImage
-                   placeholderImage:(nonnull UIImage *)placeholderImage NS_DESIGNATED_INITIALIZER;
+                   placeholderImage:(UIImage *)placeholderImage NS_DESIGNATED_INITIALIZER;
 
 /**
  *  Not a valid initializer.
  */
-- (nonnull id)init NS_UNAVAILABLE;
+- (id)init NS_UNAVAILABLE;
 
 @end
+
+NS_ASSUME_NONNULL_END
