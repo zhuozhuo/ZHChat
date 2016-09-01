@@ -144,7 +144,6 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     self.messageTableView.backgroundColor = [UIColor whiteColor];
     self.messageTableView.tableFooterView = [UIView new];
     self.messageTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.messageTableView.rowHeight = UITableViewAutomaticDimension;
     self.messageTableView.delegate = self;
     self.messageTableView.dataSource = self;
     self.showFunctionViewBool = NO;
@@ -480,7 +479,6 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
 -(CGFloat)tableView:(ZHCMessagesTableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     ZHCMessage *message = (ZHCMessage *)[tableView.dataSource tableView:tableView messageDataForCellAtIndexPath:indexPath];
     CGFloat height = 0.0;
     CGSize size = [self.bubbleSizeCalculator messageBubbleSizeForMessageData:message atIndexPath:indexPath withTableView:tableView];
@@ -492,7 +490,11 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     }else{
         avatarHeight = tableView.tableViewLayout.incomingAvatarViewSize.height;
     }
-    
+    if (size.height<=avatarHeight) {
+        NSLog(@"1111");
+    }else{
+        NSLog(@"0000");
+    }
     CGFloat bubbleHeight = size.height>avatarHeight?size.height:avatarHeight;
     
     CGFloat cellTopLabelHeight = [tableView.dataSource tableView:tableView heightForMessageBubbleTopLabelAtIndexPath:indexPath];
@@ -500,6 +502,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     CGFloat cellBottomLabelHeight = [tableView.dataSource tableView:tableView heightForCellBottomLabelAtIndexPath:indexPath];
     
     height = kZHCMessagesTableViewCellSpaceDefault + cellTopLabelHeight + cellBubbleTopLabelHeight + cellBottomLabelHeight + bubbleHeight + 2.0*[UIScreen mainScreen].scale;
+    NSLog(@"cellHeight:%f",height);
     return height;
 
 }
@@ -584,7 +587,6 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     cell.contentView.backgroundColor = [UIColor whiteColor];
     cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
     cell.layer.shouldRasterize = YES;
-    [cell setNeedsLayout];
     return cell;
 }
 
