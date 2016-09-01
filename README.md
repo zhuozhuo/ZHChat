@@ -3,7 +3,7 @@
 ![Screenshot0][img0] &nbsp;&nbsp; ![Screenshot1][img1] &nbsp;&nbsp;
 
 ![Screenshot2][img2] &nbsp;&nbsp; ![Screenshot3][img3]
-![Screenshot4][img2] &nbsp;&nbsp; ![Gif][gif0] 
+![Screenshot4][img4] &nbsp;&nbsp; ![Gif][gif0] 
 
 ##Features
 * 界面模仿苹果自带消息应用界面。
