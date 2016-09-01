@@ -34,7 +34,6 @@ pod 'ZHChat', '~> 0.1.3'
 See the [Getting Started](https://github.com/zhuozhuo/ZHChat/tree/master/Documentation/getting_started.md) guide!
 
 ## To Do
-* 自动布局中有个警告，很影响心情，不过不影响工程的运行。
 * 增加适配功旋转和横竖屏适配功能。
 
 
