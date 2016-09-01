@@ -11,6 +11,8 @@
 #import "ZHCMessagesCommonParameter.h"
 #import "UIView+ZHCMessages.h"
 #import "UIImage+ZHCMessages.h"
+#import "NSBundle+ZHCMessages.h"
+#import "ZHCMessagesToolbarButtonFactory.h"
 
 
 static const CGFloat EmojiWidth = 50;
@@ -215,18 +217,15 @@ static const CGFloat EmojiFontSize = 30;
         [_bottomView zhc_pinSubview:topLine toEdge:NSLayoutAttributeTrailing withConstant:0.0f];
         [topLine zhc_pinSelfToEdge:NSLayoutAttributeHeight withConstant:1.0f];
         
-        UIButton *sendButton = [[UIButton alloc] init];
+        UIButton *sendButton = [[[ZHCMessagesToolbarButtonFactory alloc]init]defaultSendButtonItem];
         sendButton.translatesAutoresizingMaskIntoConstraints = NO;
-        sendButton.backgroundColor = [UIColor lightGrayColor];
-        [sendButton setTitle:@"发送" forState:UIControlStateNormal];
-        [sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [sendButton addTarget:self action:@selector(sendAction:) forControlEvents:UIControlEventTouchUpInside];
         [_bottomView addSubview:sendButton];
       
         
         [_bottomView zhc_pinSubview:sendButton toEdge:NSLayoutAttributeTop withConstant:2.0f];
         [_bottomView zhc_pinSubview:sendButton toEdge:NSLayoutAttributeBottom withConstant:-2.0f];
-        [_bottomView zhc_pinSubview:sendButton toEdge:NSLayoutAttributeTrailing withConstant:-5.0f];
+        [_bottomView zhc_pinSubview:sendButton toEdge:NSLayoutAttributeTrailing withConstant:0.0f];
         [sendButton zhc_pinSelfToEdge:NSLayoutAttributeWidth withConstant:100.0f];
         self.sendButton = sendButton;
     }

@@ -106,7 +106,7 @@
 
 - (UIButton *)defaultSendButtonItem
 {
-    NSString *sendTitle = [NSBundle zhc_localizedStringForKey:@"send"];
+    NSString *sendTitle = [NSBundle zhc_localizedStringForKey:@"Send"];
     
     UIButton *sendButton = [[UIButton alloc] initWithFrame:CGRectZero];
     [sendButton setTitle:sendTitle forState:UIControlStateNormal];
