@@ -3,10 +3,10 @@
 Pod::Spec.new do |s|
 
  s.name         = "ZHChat"
- s.version      = "0.1.4"
+ s.version      = "0.1.5"
  s.summary      = "An elegant messages UI library for iOS."
- s.homepage     = "https://github.com/zhuozhuo/ZHBLE"
- s.screenshots  = ['http://ac-unmt7l5d.clouddn.com/eedc9f8abb34b096.PNG','http://ac-unmt7l5d.clouddn.com/196afe26dbee82f2.PNG','http://ac-unmt7l5d.clouddn.com/11dc5e2c9bdac647.PNG','http://ac-unmt7l5d.clouddn.com/c7307ef86ad4ddb7.PNG']
+ s.homepage     = "https://github.com/zhuozhuo"
+ s.screenshots  = ['http://ac-unmt7l5d.clouddn.com/39fd9320ae6315b2.PNG','http://ac-unmt7l5d.clouddn.com/e1ed619294a427cc.PNG','http://ac-unmt7l5d.clouddn.com/e1ed619294a427cc.PNG']
  s.license      = "MIT"
  s.license      = { :type => "MIT", :file => "LICENSE" }
  s.author             = { "Mr.jiang" => "414816566@qq.com" }

@@ -2,8 +2,7 @@
 [ZHChat](https://github.com/zhuozhuo/ZHChat) is a free open source chat UI components, support for sending voice, pictures, words, expressions, location, video messages. ZHChat can help developers to quickly integrate IM service, easy chat, provides totally free licensing agreement, support for secondary development. Welcome to pull Request.
 ![Screenshot0][img0] &nbsp;&nbsp; ![Screenshot1][img1] &nbsp;&nbsp;
 
-![Screenshot2][img2] &nbsp;&nbsp; ![Screenshot3][img3]
-![Screenshot4][img4] &nbsp;&nbsp; ![Gif][gif0] 
+![Screenshot2][img2] &nbsp;&nbsp; ![Gif][gif0] 
 
 ##Features
 * Interface to imitate Apple with a messaging application interface.
@@ -26,7 +25,7 @@ Easy integrated chat feature.
 ## Usage
 ### [CocoaPods](https://cocoapods.org/) (recommended)
 
-pod 'ZHChat', '~> 0.1.4'
+pod 'ZHChat', '~> 0.1.5'
 
 ### Copy the folder ZHCMessagesViewController to your project
 
@@ -105,10 +104,7 @@ This code is distributed under the terms and conditions of the [MIT license](LIC
 
 
 
-[img0]:http://ac-unmt7l5d.clouddn.com/9c9a4040dce03adb.PNG
-[img1]:http://ac-unmt7l5d.clouddn.com/997f7a7a767fa873.PNG
-[img2]:http://ac-unmt7l5d.clouddn.com/1f84fb1e70b3753e.PNG
-[img3]:http://ac-unmt7l5d.clouddn.com/6a9a2c2a8dcb899f.PNG
-[img4]:http://ac-unmt7l5d.clouddn.com/b13d915b9c91eb1a.PNG
-
-[gif0]:http://ac-unmt7l5d.clouddn.com/1e394395d85171a1.gif
+[img0]:http://ac-unmt7l5d.clouddn.com/39fd9320ae6315b2.PNG
+[img1]:http://ac-unmt7l5d.clouddn.com/e1ed619294a427cc.PNG
+[img2]:http://ac-unmt7l5d.clouddn.com/051832e16b4a5df2.PNG
+[gif0]:http://ac-unmt7l5d.clouddn.com/a2e173ec4d2ec3da.gif
