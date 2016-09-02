@@ -49,12 +49,12 @@
   * Implement the required methods in the `ZHCMessagesMoreViewDelegate` protocol.
   * Implement the required methods in the `ZHCMessagesMoreViewDataSource` protocol.
  
- * **Audio Module**
+* **Audio Module**
   * You can see 'ZHCMessagesVoiceRecorder','ZHCMessagesAudioProgressHUD' .
   * 'ZHCMessagesAudioProgressHUD' is a recording voice animation view.
   * 'ZHCMessagesVoiceRecorder' is recorder. It implement the required methods in the `ZHCMessagesVoiceDelegate` protocol.
   
- * **Emoji Module**
+* **Emoji Module**
   * You can see 'ZHCMessagesEmojiView' .
   * Implement the required methods in the `ZHCEmojiViewDelegate` protocol.
   * The emoji resource in "ZHCEmojiList.plist".
