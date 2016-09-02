@@ -41,6 +41,7 @@
 {
     [super awakeFromNib];
     [self zhc_configureTableView];
+    
 }
 
 - (void)zhc_configureTableView
@@ -50,6 +51,7 @@
     self.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
     self.alwaysBounceVertical = YES;
     self.bounces = YES;
+    self.tableHeaderView = [UIView new];
     
     [self registerNib:[ZHCMessagesTableViewCellIncoming nib] forCellReuseIdentifier:[ZHCMessagesTableViewCellIncoming cellReuseIdentifier]];
     [self registerNib:[ZHCMessagesTableViewCellOutcoming nib] forCellReuseIdentifier:[ZHCMessagesTableViewCellOutcoming cellReuseIdentifier]];

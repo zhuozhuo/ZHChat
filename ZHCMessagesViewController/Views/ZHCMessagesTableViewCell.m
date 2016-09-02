@@ -279,6 +279,23 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
 
 #pragma mark - Setters
 
+
+-(void)setCellsSpaceLabelHeight:(CGFloat)cellsSpaceLabelHeight
+{
+     NSParameterAssert(cellsSpaceLabelHeight >= 0.0f);
+    if (cellsSpaceLabelHeight == 0.0f) {
+        self.cellsSpaceLabel.text = nil;
+    }
+    if (self.cellsSpaceConstraint.constant == cellsSpaceLabelHeight) {
+        return;
+    }
+    _cellsSpaceLabelHeight = cellsSpaceLabelHeight;
+    [self zhc_updateConstraint:self.cellsSpaceConstraint withConstant:cellsSpaceLabelHeight];
+    
+}
+
+
+
 -(void)setCellTopLabelHeight:(CGFloat)cellTopLabelHeight
 {
     NSParameterAssert(cellTopLabelHeight >= 0.0f);
@@ -311,7 +328,7 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
 {
     NSParameterAssert(cellBottomLabelHeight >= 0.0f);
     if (cellBottomLabelHeight == 0.0f) {
-        self.cellTopLabel.text = nil;
+        self.cellBottomLabel.text = nil;
     }
     if (self.cellBottomLabelHeightConstraint.constant == cellBottomLabelHeight) {
         return;

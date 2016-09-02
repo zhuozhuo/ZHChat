@@ -28,7 +28,7 @@ Easy integrated chat feature.
 
 pod 'ZHChat', '~> 0.1.4'
 
-### 复制文件夹ZHCMessagesViewController至你的工程中
+### Copy the folder ZHCMessagesViewController to your project
 
 ## Getting Started
 *Getting started guide for ZHChat*

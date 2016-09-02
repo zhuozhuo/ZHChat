@@ -22,77 +22,8 @@
 #import "UIColor+ZHCMessages.h"
 #import "UIView+ZHCMessages.h"
 
-
-
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <objc/runtime.h>
-
-
-static IMP ZHCReplaceMethodWithBlock(Class c, SEL origSEL, id block) {
-    NSCParameterAssert(block);
-    
-    // get original method
-    Method origMethod = class_getInstanceMethod(c, origSEL);
-    NSCParameterAssert(origMethod);
-    
-    // convert block to IMP trampoline and replace method implementation
-    IMP newIMP = imp_implementationWithBlock(block);
-    
-    // Try adding the method if not yet in the current class
-    if (!class_addMethod(c, origSEL, newIMP, method_getTypeEncoding(origMethod))) {
-        return method_setImplementation(origMethod, newIMP);
-    } else {
-        return method_getImplementation(origMethod);
-    }
-}
-
-static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
-    __block void (^removeWorkaround)(void) = ^{};
-    const void (^installWorkaround)(void) = ^{
-        const SEL presentSEL = @selector(presentViewController:animated:completion:);
-        __block IMP origIMP = ZHCReplaceMethodWithBlock(UIViewController.class, presentSEL, ^(UIViewController *self, id vC, BOOL animated, id completion) {
-            UIViewController *targetVC = self;
-            while (targetVC.presentedViewController) {
-                targetVC = targetVC.presentedViewController;
-            }
-            ((void (*)(id, SEL, id, BOOL, id))origIMP)(targetVC, presentSEL, vC, animated, completion);
-        });
-        removeWorkaround = ^{
-            Method origMethod = class_getInstanceMethod(UIViewController.class, presentSEL);
-            NSCParameterAssert(origMethod);
-            class_replaceMethod(UIViewController.class,
-                                presentSEL,
-                                origIMP,
-                                method_getTypeEncoding(origMethod));
-        };
-    };
-    
-    const SEL presentSheetSEL = NSSelectorFromString(@"presentSheetFromRect:");
-    const void (^swizzleOnClass)(Class k) = ^(Class klass) {
-        const __block IMP origIMP = ZHCReplaceMethodWithBlock(klass, presentSheetSEL, ^(id self, CGRect rect) {
-            // Before calling the original implementation, we swizzle the presentation logic on UIViewController
-            installWorkaround();
-            // UIKit later presents the sheet on [view.window rootViewController];
-            // See https://github.com/WebKit/webkit/blob/1aceb9ed7a42d0a5ed11558c72bcd57068b642e7/Source/WebKit2/UIProcess/ios/WKActionSheet.mm#L102
-            // Our workaround forwards this to the topmost presentedViewController instead.
-            ((void (*)(id, SEL, CGRect))origIMP)(self, presentSheetSEL, rect);
-            // Cleaning up again - this workaround would swallow bugs if we let it be there.
-            removeWorkaround();
-        });
-    };
-    
-    // _UIRotatingAlertController
-    Class alertClass = NSClassFromString([NSString stringWithFormat:@"%@%@%@", @"_U", @"IRotat", @"ingAlertController"]);
-    if (alertClass) {
-        swizzleOnClass(alertClass);
-    }
-    
-    // WKActionSheet
-    Class actionSheetClass = NSClassFromString([NSString stringWithFormat:@"%@%@%@", @"W", @"KActio", @"nSheet"]);
-    if (actionSheetClass) {
-        swizzleOnClass(actionSheetClass);
-    }
-}
 
 @interface ZHCMessagesViewController ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet ZHCMessagesTableView *messageTableView;
@@ -122,16 +53,8 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
                                           bundle:[NSBundle bundleForClass:[ZHCMessagesViewController class]]];
 }
 
-+ (void)initialize {
-    [super initialize];
-    if (self == [ZHCMessagesViewController self]) {
-        ZHCInstallWorkaroundForSheetPresentationIssue26295020();
-    }
-}
-
 
 #pragma mark - Initialization
-
 - (void)zhc_configureMessagesViewController
 {
     
@@ -401,9 +324,7 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
         return;
     }
     NSInteger rows = [self.messageTableView numberOfRowsInSection:0];
-    NSLog(@"rows:%ld",(long)rows);
     NSIndexPath *lastCellIndexPath = [NSIndexPath indexPathForItem:(rows - 1) inSection:0];
-    
     [self scrollToIndexPath:lastCellIndexPath animated:animated];
 }
 
@@ -425,7 +346,6 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     if (isContentTooSmall) {
         //  workaround for the first few messages not scrolling
         //  when the TableView view content size is too small, `scrollToItemAtIndexPath:` doesn't work properly
-        //  this seems to be a UIKit bug, see #256 on GitHub
         [self.messageTableView scrollRectToVisible:CGRectMake(0.0, tableViewContentHeight - 1.0f, 1.0f, 1.0f)
                                         animated:animated];
         return;
@@ -434,7 +354,6 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     indexPath = [NSIndexPath indexPathForRow:row inSection:0];
     //  workaround for really long messages not scrolling
     //  if last message is too long, use scroll position bottom for better appearance, else use top
-    //  possibly a UIKit bug, see #480 on GitHub
     CGFloat cellHeight = [self tableView:self.messageTableView heightForRowAtIndexPath:indexPath];
     CGFloat maxHeightForVisibleMessage = CGRectGetHeight(self.messageTableView.bounds)
     - self.messageTableView.contentInset.top
@@ -490,19 +409,15 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     }else{
         avatarHeight = tableView.tableViewLayout.incomingAvatarViewSize.height;
     }
-    if (size.height<=avatarHeight) {
-        NSLog(@"1111");
-    }else{
-        NSLog(@"0000");
-    }
+    
     CGFloat bubbleHeight = size.height>avatarHeight?size.height:avatarHeight;
     
-    CGFloat cellTopLabelHeight = [tableView.dataSource tableView:tableView heightForMessageBubbleTopLabelAtIndexPath:indexPath];
+    CGFloat cellsSpaceLabelHeight = [tableView.dataSource tableView:tableView tableViewCellSeparatorHeightAtIndexpath:indexPath];
+    CGFloat cellTopLabelHeight = [tableView.dataSource tableView:tableView heightForCellTopLabelAtIndexPath:indexPath];
     CGFloat cellBubbleTopLabelHeight = [tableView.dataSource tableView:tableView  heightForMessageBubbleTopLabelAtIndexPath:indexPath];
     CGFloat cellBottomLabelHeight = [tableView.dataSource tableView:tableView heightForCellBottomLabelAtIndexPath:indexPath];
     
-    height = kZHCMessagesTableViewCellSpaceDefault + cellTopLabelHeight + cellBubbleTopLabelHeight + cellBottomLabelHeight + bubbleHeight + 2.0*[UIScreen mainScreen].scale;
-    NSLog(@"cellHeight:%f",height);
+    height = cellsSpaceLabelHeight + cellTopLabelHeight + cellBubbleTopLabelHeight + cellBottomLabelHeight + bubbleHeight + 2.0*[UIScreen mainScreen].scale;
     return height;
 
 }
@@ -567,11 +482,12 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
     cell.cellTopLabel.attributedText = [tableView.dataSource tableView:tableView attributedTextForCellTopLabelAtIndexPath:indexPath];
     cell.messageBubbleTopLabel.attributedText = [tableView.dataSource tableView:tableView attributedTextForMessageBubbleTopLabelAtIndexPath:indexPath];
     cell.cellBottomLabel.attributedText = [tableView.dataSource tableView:tableView attributedTextForCellBottomLabelAtIndexPath:indexPath];
-    
-    CGFloat cellTopLabelHeight = [tableView.dataSource tableView:tableView heightForMessageBubbleTopLabelAtIndexPath:indexPath];
+     CGFloat cellsSpaceLabelHeight = [tableView.dataSource tableView:tableView tableViewCellSeparatorHeightAtIndexpath:indexPath];
+    CGFloat cellTopLabelHeight = [tableView.dataSource tableView:tableView heightForCellTopLabelAtIndexPath:indexPath];
     CGFloat cellBubbleTopLabelHeight = [tableView.dataSource tableView:tableView  heightForMessageBubbleTopLabelAtIndexPath:indexPath];
     CGFloat cellBottomLabelHeight = [tableView.dataSource tableView:tableView heightForCellBottomLabelAtIndexPath:indexPath];
     
+    cell.cellsSpaceLabelHeight = cellsSpaceLabelHeight;
     cell.cellTopLabelHeight = cellTopLabelHeight;
     cell.messageBubbleTopLabelHeight = cellBubbleTopLabelHeight;
     cell.cellBottomLabelHeight = cellBottomLabelHeight;
@@ -708,6 +624,17 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 }
 
 #pragma mark - Adjusting cell label heights
+
+-(CGFloat)tableView:(ZHCMessagesTableView *)tableView tableViewCellSeparatorHeightAtIndexpath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        return 5.0f;
+    }else{
+        return kZHCMessagesTableViewCellSpaceDefault;
+    }
+}
+
+
 -(CGFloat)tableView:(ZHCMessagesTableView *)tableView heightForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath
 {
     return 0.0f;
@@ -878,7 +805,6 @@ static void ZHCInstallWorkaroundForSheetPresentationIssue26295020(void) {
 - (void)zhc_setTableViewInsetsTopValue:(CGFloat)top bottomValue:(CGFloat)bottom
 {
     bottom = bottom +10;
-    NSLog(@"Bottom Value:%f",bottom);
     UIEdgeInsets insets = UIEdgeInsetsMake(top, 0.0f, bottom, 0.0f);
     self.messageTableView.contentInset = insets;
     self.messageTableView.scrollIndicatorInsets = insets;

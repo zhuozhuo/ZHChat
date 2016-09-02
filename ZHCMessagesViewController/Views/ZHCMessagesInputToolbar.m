@@ -101,7 +101,6 @@ static void * kZHCMessagesInputToolbarKeyValueObservingContext = &kZHCMessagesIn
  */
 -(void)zhc_startRecordVoice:(UIButton *)sender
 {
-    NSLog(@"startRecord");
     sender.highlighted = YES;
     [ZHCMessagesAudioProgressHUD zhc_show];
     [_recorder zhc_startRecording];
@@ -112,7 +111,6 @@ static void * kZHCMessagesInputToolbarKeyValueObservingContext = &kZHCMessagesIn
  */
 -(void)zhc_cancelRecordVoice:(UIButton *)sender
 {
-    NSLog(@"cancelRecord");
     sender.highlighted = NO;
     [ZHCMessagesAudioProgressHUD zhc_dismissWithMessage:[NSBundle zhc_localizedStringForKey:@"Cancel_Recording"]];
     [_recorder zhc_cancelRecord];
@@ -123,7 +121,6 @@ static void * kZHCMessagesInputToolbarKeyValueObservingContext = &kZHCMessagesIn
  */
 -(void)zhc_confirmRecordVoice:(UIButton *)sender
 {
-     NSLog(@"confirmRecord");
      sender.highlighted = NO;
     [_recorder zhc_stopRecording];
 }

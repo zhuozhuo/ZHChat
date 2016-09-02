@@ -94,6 +94,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) id<ZHCMessagesTableViewCellDelegate> delegate;
 
 
+
+/**
+ *  The height of the `cellsSpaceLabel` of a `ZHCMessagesTableviewCell`.
+ *  This value should be greater than or equal to `0.0`.
+ *
+ *  @see ZHCMessagesTableviewCell.
+ */
+@property (assign, nonatomic) CGFloat cellsSpaceLabelHeight;
+
 /**
  *  The height of the `cellTopLabel` of a `ZHCMessagesTableviewCell`.
  *  This value should be greater than or equal to `0.0`.

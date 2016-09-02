@@ -78,13 +78,11 @@
 {
     NSValue *cachedSize = [self.cache objectForKey:@([messageData messageHash])];
     if (cachedSize != nil) {
-        NSLog(@"hit cache Size");
         return [cachedSize CGSizeValue];
     }
      CGSize finalSize = CGSizeZero;
     if ([messageData isMediaMessage]) {
         finalSize = [[messageData media] mediaViewDisplaySize];
-        NSLog(@"mediaSize:width:%f---height:%f",finalSize.width,finalSize.height);
     }else{
         ZHCMessagesTableviewLayoutAttributes *attributes = tableView.tableViewLayout;
         

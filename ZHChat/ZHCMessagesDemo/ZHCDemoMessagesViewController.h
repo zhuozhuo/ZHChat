@@ -11,7 +11,7 @@
 
 
 
-@interface ZHCDemoMessagesViewController : ZHCMessagesViewController<UIActionSheetDelegate>
+@interface ZHCDemoMessagesViewController : ZHCMessagesViewController
 @property (strong, nonatomic) ZHCModelData *demoData;
 @property (assign, nonatomic) BOOL presentBool;
 @end

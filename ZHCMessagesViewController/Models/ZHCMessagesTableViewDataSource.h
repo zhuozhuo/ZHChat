@@ -133,7 +133,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  Asks the delegate for the height of the `messageBubbleTopLabel` for the cell at the specified indexPath.
  *
  *  @param tableView       The tableView object displaying the flow layout.
- *  @param indexPath            The index path of the cell.
+ *  @param indexPath       The index path of the cell.
  *
  *  @return The height of the `messageBubbleTopLabel` for the cell at indexPath.
  *
@@ -143,10 +143,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
+ *  Asks the delegate for the height of the `cellsSpaceLabel` for the cell at the specified indexPath.
+ *
+ *  @param tableView The tableView object displaying the flow layout.
+ *  @param indexPath The index path of the cell.
+ *
+ *  @return The height of the `cellsSpaceLabel` for the cell at indexPath.
+ */
+-(CGFloat)tableView:(ZHCMessagesTableView *)tableView tableViewCellSeparatorHeightAtIndexpath:(NSIndexPath *)indexPath;
+
+/**
  *  Asks the delegate for the height of the `cellBottomLabel` for the cell at the specified indexPath.
  *
  *  @param tableView       The tableView object displaying the flow layout.
- *  @param indexPath            The index path of the cell.
+ *  @param indexPath       The index path of the cell.
  *
  *  @return The height of the `cellBottomLabel` for the cell at indexPath.
  *
