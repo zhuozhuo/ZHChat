@@ -26,17 +26,17 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cell top Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HX7-0h-z6r" customClass="ZHCMessagesLabel">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="17"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="VFA-we-QYR"/>
+                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="20" id="VFA-we-QYR"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bubble top Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fic-Hc-208" customClass="ZHCMessagesLabel">
-                        <rect key="frame" x="0.0" y="20" width="320" height="17"/>
+                        <rect key="frame" x="0.0" y="17" width="320" height="17"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="20" id="IBx-pP-RYY"/>
@@ -73,13 +73,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFt-sQ-v6q">
-                        <rect key="frame" x="32" y="37" width="231" height="101"/>
+                        <rect key="frame" x="32" y="34" width="231" height="104"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sbx-FP-qUK">
-                                <rect key="frame" x="0.0" y="0.0" width="231" height="101"/>
+                                <rect key="frame" x="0.0" y="0.0" width="231" height="104"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6I0-MX-RPY" customClass="ZHCMessagesCellTextView">
-                                <rect key="frame" x="0.0" y="0.0" width="218" height="101"/>
+                                <rect key="frame" x="0.0" y="0.0" width="218" height="104"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

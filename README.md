@@ -57,8 +57,8 @@ pod 'ZHChat', '~> 0.1.4'
 
 * **Avatar Model**
   * Your avatar model objects should conform to the `ZHCMessageBubbleImageDataSource` protocol.
-  * However, you may use the provided `JSQMessagesAvatarImage` class.
-  * Also see `JSQMessagesAvatarImageFactory` for easily generating custom avatars.
+  * However, you may use the provided `ZHCMessagesAvatarImage` class.
+  * Also see `ZHCMessagesAvatarImageFactory` for easily generating custom avatars.
 
 * **Message Bubble Model**
   * Your message bubble model objects should conform to the `ZHCMessageAvatarImageDataSource` protocol.
