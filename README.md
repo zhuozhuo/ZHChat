@@ -72,24 +72,24 @@ pod 'ZHChat', '~> 0.1.4'
   
 * **Media Attachment Model**
   * Your media attachment model objects should conform to the `ZHCMessageMediaData` protocol.
-  * However, you may use the provided classes: `ZHCAudioMediaItem', `ZHCLocationMediaItem`, `ZHCPhotoMediaItem`.
+  * However, you may use the provided classes: `ZHCAudioMediaItem`, `ZHCLocationMediaItem`, `ZHCPhotoMediaItem`.
   * Creating your own custom media items is easy! Simply follow the pattern used by the built-in media types.
   * Also see `ZHCMessagesMediaPlaceholderView` for masking your custom media views as message bubbles.
 
 * **More Module**
-  * You can see 'ZHCMessagesMoreView' .
+  * You can see `ZHCMessagesMoreView` .
   * Implement the required methods in the `ZHCMessagesMoreViewDelegate` protocol.
   * Implement the required methods in the `ZHCMessagesMoreViewDataSource` protocol.
  
 * **Audio Module**
-  * You can see 'ZHCMessagesVoiceRecorder','ZHCMessagesAudioProgressHUD' .
-  * 'ZHCMessagesAudioProgressHUD' is a recording voice animation view.
-  * 'ZHCMessagesVoiceRecorder' is recorder. It implement the required methods in the `ZHCMessagesVoiceDelegate` protocol.
+  * You can see `ZHCMessagesVoiceRecorder`,`ZHCMessagesAudioProgressHUD` .
+  * `ZHCMessagesAudioProgressHUD` is a recording voice animation view.
+  * `ZHCMessagesVoiceRecorder` is recorder. It implement the required methods in the `ZHCMessagesVoiceDelegate` protocol.
   
 * **Emoji Module**
-  * You can see 'ZHCMessagesEmojiView' .
+  * You can see `ZHCMessagesEmojiView` .
   * Implement the required methods in the `ZHCEmojiViewDelegate` protocol.
-  * The emoji resource in "ZHCEmojiList.plist".
+  * The emoji resource in `ZHCEmojiList.plist`.
 
 
 ## To Do
