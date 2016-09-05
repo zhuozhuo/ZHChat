@@ -49,5 +49,11 @@
 #endif
 
 
+/**
+ * References about his weak variable.
+ */
+#ifndef ZHCWeakSelf
+#define ZHCWeakSelf  typeof(self) __weak weakSelf = self;
+#endif
 
 #endif /* ZHCMessagesCommonParameter_h */

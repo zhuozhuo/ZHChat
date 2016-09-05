@@ -21,7 +21,7 @@
 #import "NSString+ZHCMessages.h"
 #import "UIColor+ZHCMessages.h"
 #import "UIView+ZHCMessages.h"
-
+#import "ZHCMessagesCommonParameter.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <objc/runtime.h>
 
@@ -70,9 +70,9 @@
     self.messageTableView.delegate = self;
     self.messageTableView.dataSource = self;
     self.showFunctionViewBool = NO;
-   
     
-
+    
+    
     self.inputViewHeightConstraint.constant = self.inputMessageBarView.preferredDefaultHeight;
     self.inputMessageBarView.delegate = self;
     self.inputMessageBarView.contentView.textView.placeHolder = [NSBundle zhc_localizedStringForKey:@"new_message"];
@@ -85,7 +85,7 @@
     self.incomingMediaCellIdentifier = [ZHCMessagesTableViewCellIncoming mediaCellReuseIdentifier];
     self.outgoingMediaCellIdentifier = [ZHCMessagesTableViewCellOutcoming mediaCellReuseIdentifier];
     //self.messageTableView.estimatedRowHeight = 100.0;//This can't set
-
+    
     self.topContentAdditionalInset = 0.0f;
     
     [self zhc_updateTableViewInsets];
@@ -171,9 +171,9 @@
         [self.view addConstraint:constraint];
         [_messageEmojiView zhc_pinSelfToEdge:NSLayoutAttributeHeight withConstant:kZHCMessagesFunctionViewHeight];
         self.messagesEmojiViewBottomContraint = constraint;
-
+        
     }
-
+    
 }
 
 
@@ -191,9 +191,10 @@
     [super viewWillAppear:animated];
     self.inputViewHeightConstraint.constant = self.inputMessageBarView.preferredDefaultHeight;
     [self.view layoutIfNeeded];
+    ZHCWeakSelf;
     if (self.automaticallyScrollsToMostRecentMessage) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self scrollToBottomAnimated:NO];
+            [weakSelf scrollToBottomAnimated:NO];
         });
     }
 }
@@ -347,7 +348,7 @@
         //  workaround for the first few messages not scrolling
         //  when the TableView view content size is too small, `scrollToItemAtIndexPath:` doesn't work properly
         [self.messageTableView scrollRectToVisible:CGRectMake(0.0, tableViewContentHeight - 1.0f, 1.0f, 1.0f)
-                                        animated:animated];
+                                          animated:animated];
         return;
     }
     NSInteger row = MAX(MIN(indexPath.row, numberOfItems - 1), 0);
@@ -359,11 +360,11 @@
     - self.messageTableView.contentInset.top
     - self.messageTableView.contentInset.bottom
     - CGRectGetHeight(self.inputMessageBarView.bounds);
-     UITableViewScrollPosition scrollPosition = (cellHeight > maxHeightForVisibleMessage) ? UITableViewScrollPositionBottom : UITableViewScrollPositionTop;
-
-
+    UITableViewScrollPosition scrollPosition = (cellHeight > maxHeightForVisibleMessage) ? UITableViewScrollPositionBottom : UITableViewScrollPositionTop;
+    
+    
     [self.messageTableView scrollToRowAtIndexPath:indexPath atScrollPosition:scrollPosition animated:animated];
-
+    
 }
 
 
@@ -419,13 +420,13 @@
     
     height = cellsSpaceLabelHeight + cellTopLabelHeight + cellBubbleTopLabelHeight + cellBottomLabelHeight + bubbleHeight + 2.0*[UIScreen mainScreen].scale;
     return height;
-
+    
 }
 
 
 -(UITableViewCell *)tableView:(ZHCMessagesTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  
+    
     
     id<ZHCMessageData> messagecell = [tableView.dataSource tableView:tableView messageDataForCellAtIndexPath:indexPath];
     NSParameterAssert(messagecell != nil);
@@ -482,7 +483,7 @@
     cell.cellTopLabel.attributedText = [tableView.dataSource tableView:tableView attributedTextForCellTopLabelAtIndexPath:indexPath];
     cell.messageBubbleTopLabel.attributedText = [tableView.dataSource tableView:tableView attributedTextForMessageBubbleTopLabelAtIndexPath:indexPath];
     cell.cellBottomLabel.attributedText = [tableView.dataSource tableView:tableView attributedTextForCellBottomLabelAtIndexPath:indexPath];
-     CGFloat cellsSpaceLabelHeight = [tableView.dataSource tableView:tableView tableViewCellSeparatorHeightAtIndexpath:indexPath];
+    CGFloat cellsSpaceLabelHeight = [tableView.dataSource tableView:tableView tableViewCellSeparatorHeightAtIndexpath:indexPath];
     CGFloat cellTopLabelHeight = [tableView.dataSource tableView:tableView heightForCellTopLabelAtIndexPath:indexPath];
     CGFloat cellBubbleTopLabelHeight = [tableView.dataSource tableView:tableView  heightForMessageBubbleTopLabelAtIndexPath:indexPath];
     CGFloat cellBottomLabelHeight = [tableView.dataSource tableView:tableView heightForCellBottomLabelAtIndexPath:indexPath];
@@ -592,7 +593,7 @@
 {
     NSAssert(NO, @"ERROR: required method not implemented: %s", __PRETTY_FUNCTION__);
     return nil;
-
+    
 }
 
 - (nullable id<ZHCMessageAvatarImageDataSource>)tableView:(ZHCMessagesTableView *)tableView avatarImageDataForCellAtIndexPath:(NSIndexPath *)indexPath
@@ -620,7 +621,7 @@
 {
     NSAssert(NO, @"ERROR: required method not implemented: %s", __PRETTY_FUNCTION__);
     return nil;
-
+    
 }
 
 #pragma mark - Adjusting cell label heights
@@ -644,14 +645,14 @@
 -(CGFloat)tableView:(ZHCMessagesTableView *)tableView  heightForMessageBubbleTopLabelAtIndexPath:(NSIndexPath *)indexPath
 {
     return 0.0f;
-
+    
 }
 
 
 -(CGFloat)tableView:(ZHCMessagesTableView *)tableView  heightForCellBottomLabelAtIndexPath:(NSIndexPath *)indexPath
 {
     
-   return 0.0f;
+    return 0.0f;
 }
 
 
@@ -664,21 +665,21 @@
 
 -(void)tableView:(ZHCMessagesTableView *)tableView didTapMessageBubbleAtIndexPath:(NSIndexPath *)indexPath
 {
-     [self recoverMessageInputToolBar];
+    [self recoverMessageInputToolBar];
     
-
+    
 }
 
 
 -(void)tableView:(ZHCMessagesTableView *)tableView didTapCellAtIndexPath:(NSIndexPath *)indexPath touchLocation:(CGPoint)touchLocation
 {
-     [self recoverMessageInputToolBar];
+    [self recoverMessageInputToolBar];
 }
 
 
 -(void)tableView:(ZHCMessagesTableView *)tableView performAction:(SEL)action forcellAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
 {
-
+    
     
 }
 
@@ -698,12 +699,12 @@
         [self zhc_updateInputViewBottomConstraint:0];
         
     }
-    
+    ZHCWeakSelf;
     [UIView animateWithDuration:0.25 animations:^{
-        [self zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top bottomValue:self.inputMessageBarView.preferredDefaultHeight];
-        [self.view layoutIfNeeded];
+        [weakSelf zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top bottomValue:self.inputMessageBarView.preferredDefaultHeight];
+        [weakSelf.view layoutIfNeeded];
     }];
-
+    
 }
 
 
@@ -717,30 +718,32 @@
     if (self.messagesMoreViewBottomConstraint.constant != kZHCMessagesFunctionViewHeight) {
         self.messagesMoreViewBottomConstraint.constant = kZHCMessagesFunctionViewHeight;
     }
+    ZHCWeakSelf;
     [UIView animateWithDuration:0.25
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
-                         [self zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
-                                                  bottomValue:(kZHCMessagesFunctionViewHeight+self.inputMessageBarView.preferredDefaultHeight)];
-                         [self.view layoutIfNeeded];
+                         [weakSelf zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
+                                                      bottomValue:(kZHCMessagesFunctionViewHeight+self.inputMessageBarView.preferredDefaultHeight)];
+                         [weakSelf.view layoutIfNeeded];
                      }
                      completion:^(BOOL finished){
-                         self.showFunctionViewBool = NO;
-                         [self scrollToBottomAnimated:YES];
+                         weakSelf.showFunctionViewBool = NO;
+                         [weakSelf scrollToBottomAnimated:YES];
                      }];
-
+    
 }
 
 -(void)hiddenEmojiView
 {
     if (_messageEmojiView && self.messagesEmojiViewBottomContraint.constant != kZHCMessagesFunctionViewHeight) {
         self.messagesEmojiViewBottomContraint.constant = kZHCMessagesFunctionViewHeight;
+        ZHCWeakSelf;
         [UIView animateWithDuration:0.25 animations:^{
-            [self.view layoutIfNeeded];
+            [weakSelf.view layoutIfNeeded];
         }];
     }
-
+    
 }
 
 
@@ -754,17 +757,18 @@
     if (self.messagesEmojiViewBottomContraint.constant != kZHCMessagesFunctionViewHeight) {
         self.messagesEmojiViewBottomContraint.constant = kZHCMessagesFunctionViewHeight;
     }
+    ZHCWeakSelf;
     [UIView animateWithDuration:0.25
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
-                         [self zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
-                                                  bottomValue:(kZHCMessagesFunctionViewHeight+self.inputMessageBarView.preferredDefaultHeight)];
-                            [self.view layoutIfNeeded];
+                         [weakSelf zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
+                                                      bottomValue:(kZHCMessagesFunctionViewHeight+self.inputMessageBarView.preferredDefaultHeight)];
+                         [weakSelf.view layoutIfNeeded];
                      }
                      completion:^(BOOL finished){
-                         self.showFunctionViewBool = NO;
-                         [self scrollToBottomAnimated:YES];
+                         weakSelf.showFunctionViewBool = NO;
+                         [weakSelf scrollToBottomAnimated:YES];
                      }];
 }
 
@@ -772,8 +776,9 @@
 {
     if (_messageMoreView &&  self.messagesMoreViewBottomConstraint.constant != kZHCMessagesFunctionViewHeight) {
         self.messagesMoreViewBottomConstraint.constant = kZHCMessagesFunctionViewHeight;
+        ZHCWeakSelf;
         [UIView animateWithDuration:0.25 animations:^{
-            [self.view layoutIfNeeded];
+            [weakSelf.view layoutIfNeeded];
         }];
     }
 }
@@ -799,7 +804,7 @@
 - (void)zhc_updateTableViewInsets
 {
     [self zhc_setTableViewInsetsTopValue:self.topLayoutGuide.length + self.topContentAdditionalInset
-                                  bottomValue:CGRectGetMaxY(self.messageTableView.frame) - CGRectGetMinY(self.inputMessageBarView.frame)];
+                             bottomValue:CGRectGetMaxY(self.messageTableView.frame) - CGRectGetMinY(self.inputMessageBarView.frame)];
 }
 
 - (void)zhc_setTableViewInsetsTopValue:(CGFloat)top bottomValue:(CGFloat)bottom
@@ -830,7 +835,7 @@
         [self.inputMessageBarView.contentView.textView becomeFirstResponder];
     }
     
-
+    
 }
 
 - (void)messagesInputToolbar:(ZHCMessagesInputToolbar *)toolbar didPressLeftBarButton:(UIButton *)sender
@@ -852,7 +857,7 @@
 -(void)messagesInputToolbar:(ZHCMessagesInputToolbar *)toolbar sendVoice:(NSString *)voiceFilePath seconds:(NSTimeInterval)senconds
 {
     
-     NSAssert(NO, @"ERROR: required method not implemented: %s", __PRETTY_FUNCTION__);
+    NSAssert(NO, @"ERROR: required method not implemented: %s", __PRETTY_FUNCTION__);
 }
 
 - (NSString *)zhc_currentlyComposedMessageText
@@ -898,7 +903,7 @@
 -(void)messagesMoreView:(ZHCMessagesMoreView *)moreView selectedMoreViewItemWithIndex:(NSInteger)index
 {
     NSAssert(NO, @"ERROR: required method not implemented: %s", __PRETTY_FUNCTION__);
-
+    
 }
 
 
@@ -913,9 +918,9 @@
 {
     if (self.inputMessageBarView.contentView.textView.text.length > 0) {
         NSRange lastRange = [self.inputMessageBarView.contentView.textView.text rangeOfComposedCharacterSequenceAtIndex:(self.inputMessageBarView.contentView.textView.text.length-1)];
-       self.inputMessageBarView.contentView.textView.text = [self.inputMessageBarView.contentView.textView.text substringToIndex:lastRange.location];
+        self.inputMessageBarView.contentView.textView.text = [self.inputMessageBarView.contentView.textView.text substringToIndex:lastRange.location];
     }
-
+    
 }
 
 -(void)emojiView:(ZHCMessagesEmojiView *)emojiView didPressSendButton:(UIButton *)sendButton
@@ -927,8 +932,8 @@
                senderDisplayName:[self.messageTableView.dataSource senderDisplayName]
                             date:[NSDate date]];
     }
-
-
+    
+    
 }
 
 
@@ -971,10 +976,10 @@
     if ([text isEqualToString:@"\n"]) {
         if ([textView.text zhc_stringByTrimingWhitespace].length>0) {
             [self didPressSendButton:nil
-                              withMessageText:[self zhc_currentlyComposedMessageText]
-                                     senderId:[self.messageTableView.dataSource senderId]
-                            senderDisplayName:[self.messageTableView.dataSource senderDisplayName]
-                                         date:[NSDate date]];
+                     withMessageText:[self zhc_currentlyComposedMessageText]
+                            senderId:[self.messageTableView.dataSource senderId]
+                   senderDisplayName:[self.messageTableView.dataSource senderDisplayName]
+                                date:[NSDate date]];
         }
         
         return NO;
@@ -997,7 +1002,7 @@
     UIMenuController *menu = [notification object];
     [menu setMenuVisible:NO animated:NO];
     
-   ZHCMessagesTableViewCell *selectedCell = (ZHCMessagesTableViewCell *)[self.messageTableView cellForRowAtIndexPath:self.selectedIndexPathForMenu];
+    ZHCMessagesTableViewCell *selectedCell = (ZHCMessagesTableViewCell *)[self.messageTableView cellForRowAtIndexPath:self.selectedIndexPathForMenu];
     CGRect selectedCellMessageBubbleFrame = [selectedCell convertRect:selectedCell.messageBubbleContainerView.frame toView:self.view];
     
     [menu setTargetRect:selectedCellMessageBubbleFrame inView:self.view];
@@ -1053,7 +1058,7 @@
         [[NSNotificationCenter defaultCenter] removeObserver:self
                                                         name:UIKeyboardWillHideNotification
                                                       object:nil];
-
+        
         
         [[NSNotificationCenter defaultCenter] removeObserver:self
                                                         name:UIKeyboardWillChangeFrameNotification
@@ -1083,19 +1088,19 @@
     NSInteger animationCurveOption = (animationCurve << 16);
     
     double animationDuration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    
+    ZHCWeakSelf;
     [UIView animateWithDuration:animationDuration
                           delay:0.0
                         options:animationCurveOption
                      animations:^{
-                         [self zhc_updateInputViewBottomConstraint:size.height];
-                         [self zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
-                                                  bottomValue:self.inputMessageBarView.preferredDefaultHeight+size.height];
-                           [self.view layoutIfNeeded];
+                         [weakSelf zhc_updateInputViewBottomConstraint:size.height];
+                         [weakSelf zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
+                                                      bottomValue:self.inputMessageBarView.preferredDefaultHeight+size.height];
+                         [weakSelf.view layoutIfNeeded];
                          
                      }
                      completion:nil];
-
+    
 }
 
 
@@ -1112,20 +1117,20 @@
         return;
     }
     
-   UIViewAnimationCurve animationCurve = [userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-   NSInteger animationCurveOption = (animationCurve << 16);
+    UIViewAnimationCurve animationCurve = [userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    NSInteger animationCurveOption = (animationCurve << 16);
     
     double animationDuration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    
+    ZHCWeakSelf;
     [UIView animateWithDuration:animationDuration
                           delay:0.0
                         options:animationCurveOption
                      animations:^{
-                         [self zhc_updateInputViewBottomConstraint:0];
-                         [self zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
+                         [weakSelf zhc_updateInputViewBottomConstraint:0];
+                         [weakSelf zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
                                                   bottomValue:self.inputMessageBarView.preferredDefaultHeight];
-                         [self.view layoutIfNeeded];
-
+                         [weakSelf.view layoutIfNeeded];
+                         
                      }
                      completion:nil];
 }
@@ -1147,28 +1152,28 @@
     NSInteger animationCurveOption = (animationCurve << 16);
     
     double animationDuration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    
+    ZHCWeakSelf;
     [UIView animateWithDuration:animationDuration
                           delay:0.0
                         options:animationCurveOption
                      animations:^{
-                         [self zhc_updateInputViewBottomConstraint:CGRectGetHeight(keyboardEndFrame)];
-                         [self zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
-                                                       bottomValue:CGRectGetHeight(keyboardEndFrame)];
-                         [self.view layoutIfNeeded];
+                         [weakSelf zhc_updateInputViewBottomConstraint:CGRectGetHeight(keyboardEndFrame)];
+                         [weakSelf zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
+                                                  bottomValue:CGRectGetHeight(keyboardEndFrame)];
+                         [weakSelf.view layoutIfNeeded];
                      }
                      completion:nil];
 }
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

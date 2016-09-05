@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4EE999056840ED1C0B4486BA /* libPods-ZHChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D52FC94A5C3C6F85AC123C /* libPods-ZHChatTests.a */; };
 		87FA1F8B3FCF10E4EC38267D /* libPods-ZHChatUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 997BF6C7A6A62528738E5809 /* libPods-ZHChatUITests.a */; };
+		9E56B90F1D7D173C00F8A727 /* ZHCMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9E56B90E1D7D173C00F8A727 /* ZHCMessagesAssets.bundle */; };
 		9E92B2CC1D58219F00736447 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E92B2CB1D58219F00736447 /* main.m */; };
 		9E92B2CF1D58219F00736447 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E92B2CE1D58219F00736447 /* AppDelegate.m */; };
 		9E92B2D51D58219F00736447 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E92B2D31D58219F00736447 /* Main.storyboard */; };
@@ -17,7 +18,6 @@
 		9E92B2E51D58219F00736447 /* ZHChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E92B2E41D58219F00736447 /* ZHChatTests.m */; };
 		9E92B2F01D58219F00736447 /* ZHChatUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E92B2EF1D58219F00736447 /* ZHChatUITests.m */; };
 		9E93FB391D7531F7002654AD /* zhc_messages_sample.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9E93FB381D7531F7002654AD /* zhc_messages_sample.m4a */; };
-		9E93FD721D77C8B6002654AD /* ZHCMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9E93FD0B1D77C8B6002654AD /* ZHCMessagesAssets.bundle */; };
 		9E93FD731D77C8B6002654AD /* NSArray+ZHCMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E93FD0E1D77C8B6002654AD /* NSArray+ZHCMessages.m */; };
 		9E93FD741D77C8B6002654AD /* NSBundle+ZHCMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E93FD101D77C8B6002654AD /* NSBundle+ZHCMessages.m */; };
 		9E93FD751D77C8B6002654AD /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E93FD121D77C8B6002654AD /* NSString+Emoji.m */; };
@@ -106,6 +106,13 @@
 		70262FCBC217FB74C3E99AD3 /* Pods-ZHChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHChatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZHChatTests/Pods-ZHChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8648F9A3FD3B724601AB47C1 /* Pods-ZHChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHChatUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZHChatUITests/Pods-ZHChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		997BF6C7A6A62528738E5809 /* libPods-ZHChatUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZHChatUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E56B90E1D7D173C00F8A727 /* ZHCMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZHCMessagesAssets.bundle; sourceTree = "<group>"; };
+		9E56B9101D7D18AD00F8A727 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9E56B9111D7D18B400F8A727 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9E56B9121D7D18BA00F8A727 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9E56B9131D7D18C800F8A727 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9E56B9141D7D18CF00F8A727 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9E56B9151D7D18F900F8A727 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9E92B2C71D58219F00736447 /* ZHChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZHChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E92B2CB1D58219F00736447 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9E92B2CD1D58219F00736447 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -121,7 +128,6 @@
 		9E92B2EF1D58219F00736447 /* ZHChatUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHChatUITests.m; sourceTree = "<group>"; };
 		9E92B2F11D58219F00736447 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E93FB381D7531F7002654AD /* zhc_messages_sample.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = zhc_messages_sample.m4a; sourceTree = "<group>"; };
-		9E93FD0B1D77C8B6002654AD /* ZHCMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZHCMessagesAssets.bundle; sourceTree = "<group>"; };
 		9E93FD0D1D77C8B6002654AD /* NSArray+ZHCMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ZHCMessages.h"; sourceTree = "<group>"; };
 		9E93FD0E1D77C8B6002654AD /* NSArray+ZHCMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ZHCMessages.m"; sourceTree = "<group>"; };
 		9E93FD0F1D77C8B6002654AD /* NSBundle+ZHCMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+ZHCMessages.h"; sourceTree = "<group>"; };
@@ -354,7 +360,7 @@
 		9E93FD0A1D77C8B6002654AD /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				9E93FD0B1D77C8B6002654AD /* ZHCMessagesAssets.bundle */,
+				9E56B90E1D7D173C00F8A727 /* ZHCMessagesAssets.bundle */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -679,6 +685,12 @@
 				Base,
 				"zh-Hans",
 				"zh-Hant",
+				es,
+				ja,
+				de,
+				it,
+				ru,
+				uk,
 			);
 			mainGroup = 9E92B2BE1D58219F00736447;
 			productRefGroup = 9E92B2C81D58219F00736447 /* Products */;
@@ -698,7 +710,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E93FD9F1D77C8B6002654AD /* ZHCMessagesToolbarContentView.xib in Resources */,
-				9E93FD721D77C8B6002654AD /* ZHCMessagesAssets.bundle in Resources */,
 				9EB371D51D704CF000FDFF1B /* chat_bar_icons_camera@2x.png in Resources */,
 				9EC8D5DB1D6ED56B0020C40B /* Localizable.strings in Resources */,
 				9E93FD9D1D77C8B6002654AD /* ZHCMessagesTableViewCellOutcoming.xib in Resources */,
@@ -710,6 +721,7 @@
 				9E93FD7B1D77C8B6002654AD /* ZHCMessagesViewController.xib in Resources */,
 				9EB371DA1D704CF000FDFF1B /* chat_bar_icons_pic.png in Resources */,
 				9EB371D71D704CF000FDFF1B /* chat_bar_icons_location.png in Resources */,
+				9E56B90F1D7D173C00F8A727 /* ZHCMessagesAssets.bundle in Resources */,
 				9E93FD9B1D77C8B6002654AD /* ZHCMessagesTableViewCellIncoming.xib in Resources */,
 				9E97EC741D5ACB67009B7482 /* data.json in Resources */,
 				9EB371D41D704CF000FDFF1B /* chat_bar_icons_camera.png in Resources */,
@@ -969,6 +981,12 @@
 				9EC8D5DE1D6ED56E0020C40B /* en */,
 				9EC8D5DF1D6ED57E0020C40B /* zh-Hans */,
 				9EC8D5E01D6ED5860020C40B /* zh-Hant */,
+				9E56B9101D7D18AD00F8A727 /* es */,
+				9E56B9111D7D18B400F8A727 /* ja */,
+				9E56B9121D7D18BA00F8A727 /* de */,
+				9E56B9131D7D18C800F8A727 /* it */,
+				9E56B9141D7D18CF00F8A727 /* ru */,
+				9E56B9151D7D18F900F8A727 /* uk */,
 			);
 			name = Localizable.strings;
 			path = ZHCMessagesDemo;

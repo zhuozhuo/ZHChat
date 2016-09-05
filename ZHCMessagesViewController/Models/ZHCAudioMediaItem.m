@@ -9,7 +9,7 @@
 #import "ZHCAudioMediaItem.h"
 #import "ZHCMessagesMediaPlaceholderView.h"
 #import "ZHCMessagesMediaViewBubbleImageMasker.h"
-
+#import "ZHCMessagesCommonParameter.h"
 #import "UIImage+ZHCMessages.h"
 #import "UIColor+ZHCMessages.h"
 
@@ -171,11 +171,12 @@
     }
     else {
         // fade the button from play to pause
+        ZHCWeakSelf;
         [UIView transitionWithView:self.playButton
                           duration:.2
                            options:UIViewAnimationOptionTransitionCrossDissolve
                         animations:^{
-                            self.playButton.selected = YES;
+                            weakSelf.playButton.selected = YES;
                         }
                         completion:nil];
         
@@ -192,14 +193,15 @@
     // set progress to full, then fade back to the default state
     [self stopProgressTimer];
     self.progressView.progress = 1;
+    ZHCWeakSelf;
     [UIView transitionWithView:self.cachedMediaView
                       duration:.2
                        options:UIViewAnimationOptionTransitionCrossDissolve
                     animations:^{
-                        self.progressView.progress = 0;
-                        self.playButton.selected = NO;
-                        self.progressLabel.text = [self timestampString:self.audioPlayer.duration
-                                                            forDuration:self.audioPlayer.duration];
+                        weakSelf.progressView.progress = 0;
+                        weakSelf.playButton.selected = NO;
+                        weakSelf.progressLabel.text = [weakSelf timestampString:weakSelf.audioPlayer.duration
+                                                            forDuration:weakSelf.audioPlayer.duration];
                     }
                     completion:nil];
 }

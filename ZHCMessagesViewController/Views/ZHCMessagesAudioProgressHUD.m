@@ -10,7 +10,7 @@
 #import "UIImage+ZHCMessages.h"
 #import "NSString+ZHCMessages.h"
 #import "NSBundle+ZHCMessages.h"
-
+#import "ZHCMessagesCommonParameter.h"
 
 @interface ZHCMessagesAudioProgressHUD()
 @property (assign, nonatomic) CGFloat angle;
@@ -42,6 +42,14 @@
 }
 
 #pragma mark - Private Methods
+-(void)initialSubViews
+{
+    [self addSubview:self.edgeImageView];
+    [self addSubview:self.centerLabel];
+    [self addSubview:self.subTitleLabel];
+    [self addSubview:self.titleLabel];
+    
+}
 
 - (void)show {
     self.angle = 0.0f;
@@ -50,13 +58,14 @@
     self.centerLabel.text = @"60";
     self.titleLabel.text = [NSBundle zhc_localizedStringForKey:@"Recording_Time"];
     [self timer];
+    ZHCWeakSelf;
     dispatch_async(dispatch_get_main_queue(), ^{
-        if(!self.superview)
-            [self.overlayWindow addSubview:self];
+        if(!weakSelf.superview)
+            [weakSelf.overlayWindow addSubview:self];
         [UIView animateWithDuration:.5 animations:^{
-            self.alpha = 1;
+            weakSelf.alpha = 1;
         } completion:nil];
-        [self setNeedsDisplay];
+        [weakSelf setNeedsDisplay];
     });
 }
 
@@ -87,15 +96,16 @@
 
 
 - (void)dismiss{
+    ZHCWeakSelf;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.timer invalidate];
-        self.timer = nil;
-        self.subTitleLabel.text = nil;
-        self.titleLabel.text = nil;
-        self.centerLabel.textColor = [UIColor whiteColor];
+        [weakSelf.timer invalidate];
+        weakSelf.timer = nil;
+        weakSelf.subTitleLabel.text = nil;
+        weakSelf.titleLabel.text = nil;
+        weakSelf.centerLabel.textColor = [UIColor whiteColor];
         
         CGFloat timeLonger;
-        if (self.progressState == ZHCAudioProgressShort) {
+        if (weakSelf.progressState == ZHCAudioProgressShort) {
             timeLonger = 1;
         } else {
             timeLonger = 0.6;
@@ -104,11 +114,11 @@
                               delay:0
                             options:UIViewAnimationCurveEaseIn | UIViewAnimationOptionAllowUserInteraction
                          animations:^{
-                             self.alpha = 0;
+                             weakSelf.alpha = 0;
                          }
                          completion:^(BOOL finished){
-                             if(self.alpha == 0) {
-                                 [self removeFromSuperview];
+                             if(weakSelf.alpha == 0) {
+                                 [weakSelf removeFromSuperview];
                                  
                                  NSMutableArray *windows = [[NSMutableArray alloc] initWithArray:[UIApplication sharedApplication].windows];
                                  [windows removeObject:self.overlayWindow];
@@ -125,17 +135,6 @@
 }
 
 
-
-#pragma mark - Private Methods
--(void)initialSubViews
-{
-    [self addSubview:self.edgeImageView];
-    [self addSubview:self.centerLabel];
-    [self addSubview:self.subTitleLabel];
-    [self addSubview:self.titleLabel];
-
-}
-
 #pragma mark - Setters
 -(void)setProgressState:(ZHCAudioProgressState)progressState
 {
@@ -144,13 +143,13 @@
             self.centerLabel.text = [NSBundle zhc_localizedStringForKey:@"Recording_Success"];
             break;
         case ZHCAudioProgressShort:
-             self.centerLabel.text = [NSBundle zhc_localizedStringForKey:@"Recording_Time_TooShort"];
+            self.centerLabel.text = [NSBundle zhc_localizedStringForKey:@"Recording_Time_TooShort"];
             break;
         case ZHCAudioProgressMessage:
-             self.centerLabel.text = nil;
+            self.centerLabel.text = nil;
             break;
         case ZHCAudioProgressError:
-             self.centerLabel.text = [NSBundle zhc_localizedStringForKey:@"Recording_Fail"];
+            self.centerLabel.text = [NSBundle zhc_localizedStringForKey:@"Recording_Fail"];
             break;
         default:
             break;
@@ -177,11 +176,12 @@
     if (!_centerLabel) {
         _centerLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 150, 40)];
         _centerLabel.backgroundColor = [UIColor clearColor];
+        _centerLabel.numberOfLines = 0;
         _centerLabel
         .center = CGPointMake([[UIScreen mainScreen] bounds].size.width/2,[[UIScreen mainScreen] bounds].size.height/2);
         _centerLabel.text = @"60";
         _centerLabel.textAlignment = NSTextAlignmentCenter;
-        _centerLabel.font = [UIFont systemFontOfSize:30];
+        _centerLabel.font = [UIFont systemFontOfSize:18];
         _centerLabel.textColor = [UIColor yellowColor];
         
     }
@@ -203,12 +203,13 @@
 
 - (UILabel *)titleLabel{
     if (!_titleLabel) {
-        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 20)];
-        _titleLabel.center = CGPointMake([[UIScreen mainScreen] bounds].size.width/2,[[UIScreen mainScreen] bounds].size.height/2 - 30);
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 40)];
+        _titleLabel.center = CGPointMake([[UIScreen mainScreen] bounds].size.width/2,[[UIScreen mainScreen] bounds].size.height/2 - 40);
+        _titleLabel.numberOfLines = 0;
         _titleLabel.text =  [NSBundle zhc_localizedStringForKey:@"Recording_Time"];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
-        _titleLabel.font = [UIFont boldSystemFontOfSize:18];
-        _titleLabel.textColor = [UIColor whiteColor];
+        _titleLabel.font = [UIFont boldSystemFontOfSize:16];
+        _titleLabel.textColor = [UIColor redColor];
     }
     return _titleLabel;
 }
@@ -249,7 +250,7 @@
         sharedView.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.5];
     });
     return sharedView;
-
+    
 }
 
 
@@ -276,11 +277,11 @@
 
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end
