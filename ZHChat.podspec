@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
  s.license      = "MIT"
  s.license      = { :type => "MIT", :file => "LICENSE" }
  s.author             = { "Mr.jiang" => "414816566@qq.com" }
- s.platform     = :ios, "7.1"
+ s.platform     = :ios, "7.0"
  s.source       = { :git => "https://github.com/zhuozhuo/ZHChat.git", :tag => s.version }
  s.source_files  = "ZHCMessagesViewController/**/*.{h,m}"
  s.resources = ['ZHCMessagesViewController/Assets/ZHCMessagesAssets.bundle', 'ZHCMessagesViewController/**/*.{xib}']

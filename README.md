@@ -1,9 +1,13 @@
 ##ZHChat
 [ZHChat](https://github.com/zhuozhuo/ZHChat) is a free open source chat UI components, support for sending voice, pictures, words, expressions, location, video messages. ZHChat can help developers to quickly integrate IM service, easy chat, provides totally free licensing agreement, support for secondary development. Welcome to pull Request.
 
+
 ![Screenshot0][img0] &nbsp;&nbsp; ![Screenshot1][img1] &nbsp;&nbsp;
 
 ![Screenshot2][img2] &nbsp;&nbsp; ![Gif][gif0] 
+
+##[Russian README LINK](http://gargo.of.by/ui-библиотека-сообщений-для-ios/)
+Thanks [Gargo](https://github.com/Gargo) translation.
 
 ##Features
 * Interface to imitate Apple with a messaging application interface.
@@ -18,7 +22,7 @@ Easy integrated chat feature.
 
 ## Requirements
 
-* iOS 7.1+
+* iOS 7.0+
 * ARC
 
 
@@ -40,10 +44,10 @@ pod 'ZHChat', '~> 0.1.6'
 * ** Demo Project**
   * There's a sweet demo project: 'ZHChat.xcworkspace'
     * Run 'pod install' first
-    
+
 * **Customizing**
   * The demo project is well-commented. Please use this as a guide.
-  
+
   * **View Controller**
   * Subclass `ZHCMessagesViewController`.
   * Implement the required methods in the `ZHCMessagesTableViewDataSource` protocol.
@@ -64,12 +68,11 @@ pod 'ZHChat', '~> 0.1.6'
   * Your message bubble model objects should conform to the `ZHCMessageAvatarImageDataSource` protocol.
   * However, you may use the provided `ZHCMessagesAvatarImage` class.
   * Also see `ZHCMessagesBubbleImageFactory` and `UIImage+ZHCMessages` for easily generating custom bubbles.
-  
+
 * **Message Model**
   * Your message model objects should conform to the `ZHCMessageData` protocol.
   * However, you may use the provided `ZHCMessage` class.
-  
-  
+
 * **Media Attachment Model**
   * Your media attachment model objects should conform to the `ZHCMessageMediaData` protocol.
   * However, you may use the provided classes: `ZHCAudioMediaItem`, `ZHCLocationMediaItem`, `ZHCPhotoMediaItem`.
@@ -80,12 +83,12 @@ pod 'ZHChat', '~> 0.1.6'
   * You can see `ZHCMessagesMoreView` .
   * Implement the required methods in the `ZHCMessagesMoreViewDelegate` protocol.
   * Implement the required methods in the `ZHCMessagesMoreViewDataSource` protocol.
- 
+
 * **Audio Module**
   * You can see `ZHCMessagesVoiceRecorder`,`ZHCMessagesAudioProgressHUD` .
   * `ZHCMessagesAudioProgressHUD` is a recording voice animation view.
   * `ZHCMessagesVoiceRecorder` is recorder. It implement the required methods in the `ZHCMessagesVoiceDelegate` protocol.
-  
+
 * **Emoji Module**
   * You can see `ZHCMessagesEmojiView` .
   * Implement the required methods in the `ZHCEmojiViewDelegate` protocol.
@@ -105,7 +108,7 @@ This code is distributed under the terms and conditions of the [MIT license](LIC
 
 
 
-[img0]:http://ac-unmt7l5d.clouddn.com/39fd9320ae6315b2.PNG
-[img1]:http://ac-unmt7l5d.clouddn.com/e1ed619294a427cc.PNG
-[img2]:http://ac-unmt7l5d.clouddn.com/051832e16b4a5df2.PNG
-[gif0]:http://ac-unmt7l5d.clouddn.com/a2e173ec4d2ec3da.gif
+[img0]: http://ac-unmt7l5d.clouddn.com/39fd9320ae6315b2.PNG
+[img1]: http://ac-unmt7l5d.clouddn.com/e1ed619294a427cc.PNG
+[img2]: http://ac-unmt7l5d.clouddn.com/051832e16b4a5df2.PNG
+[gif0]: http://ac-unmt7l5d.clouddn.com/a2e173ec4d2ec3da.gif
