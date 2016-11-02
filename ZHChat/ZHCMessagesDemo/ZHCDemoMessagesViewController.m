@@ -205,8 +205,13 @@
 -(CGFloat)tableView:(ZHCMessagesTableView *)tableView  heightForCellBottomLabelAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    CGFloat labelHeight = 0.0f;
-    return labelHeight;
+    NSAttributedString *string = [self tableView:tableView attributedTextForCellBottomLabelAtIndexPath:indexPath];
+    if (string) {
+        return kZHCMessagesTableViewCellSpaceDefault;
+    }else{
+        return 0.0;
+    }
+
 }
 
 #pragma mark - ZHCMessagesTableViewDelegate

@@ -127,6 +127,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (assign, nonatomic) CGFloat cellBottomLabelHeight;
 
+
+/**
+ *  Returns the label that space between the cell.
+ *  This label is indicate the space between the cell.
+ */
+@property (weak, nonatomic, readonly) ZHCMessagesLabel *cellsSpaceLabel;
+
 /**
  *  Returns the label that is pinned to the top of the cell.
  *  This label is most commonly used to display message timestamps.

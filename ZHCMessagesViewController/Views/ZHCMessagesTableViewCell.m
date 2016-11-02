@@ -287,6 +287,7 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
         self.cellsSpaceLabel.text = nil;
     }
     if (self.cellsSpaceConstraint.constant == cellsSpaceLabelHeight) {
+         
         return;
     }
     _cellsSpaceLabelHeight = cellsSpaceLabelHeight;

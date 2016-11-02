@@ -43,6 +43,7 @@ static const CGFloat EmojiFontSize = 30;
 
 -(void)awakeFromNib
 {
+    [super awakeFromNib];
     [self initialSubViews];
 }
 

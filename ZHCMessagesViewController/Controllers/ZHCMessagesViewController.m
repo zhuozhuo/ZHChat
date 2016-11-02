@@ -483,6 +483,8 @@
     cell.cellTopLabel.attributedText = [tableView.dataSource tableView:tableView attributedTextForCellTopLabelAtIndexPath:indexPath];
     cell.messageBubbleTopLabel.attributedText = [tableView.dataSource tableView:tableView attributedTextForMessageBubbleTopLabelAtIndexPath:indexPath];
     cell.cellBottomLabel.attributedText = [tableView.dataSource tableView:tableView attributedTextForCellBottomLabelAtIndexPath:indexPath];
+     cell.cellsSpaceLabel.text = @"   ";
+    
     CGFloat cellsSpaceLabelHeight = [tableView.dataSource tableView:tableView tableViewCellSeparatorHeightAtIndexpath:indexPath];
     CGFloat cellTopLabelHeight = [tableView.dataSource tableView:tableView heightForCellTopLabelAtIndexPath:indexPath];
     CGFloat cellBubbleTopLabelHeight = [tableView.dataSource tableView:tableView  heightForMessageBubbleTopLabelAtIndexPath:indexPath];
