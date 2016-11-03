@@ -30,7 +30,7 @@ Easy integrated chat feature.
 ## Usage
 ### [CocoaPods](https://cocoapods.org/) (recommended)
 
-pod 'ZHChat', '~> 0.1.7'
+pod 'ZHChat', '~> 0.1.9'
 
 ### Copy the folder ZHCMessagesViewController to your project
 
