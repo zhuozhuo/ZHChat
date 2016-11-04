@@ -1161,7 +1161,7 @@
                      animations:^{
                          [weakSelf zhc_updateInputViewBottomConstraint:CGRectGetHeight(keyboardEndFrame)];
                          [weakSelf zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
-                                                  bottomValue:CGRectGetHeight(keyboardEndFrame)];
+                                                  bottomValue:CGRectGetHeight(keyboardEndFrame)+self.inputMessageBarView.preferredDefaultHeight];
                          [weakSelf.view layoutIfNeeded];
                      }
                      completion:nil];
