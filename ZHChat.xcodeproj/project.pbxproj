@@ -482,14 +482,14 @@
 			children = (
 				9E93FD5F1D77C8B6002654AD /* ZHCMessagesMediaPlaceholderView.h */,
 				9E93FD601D77C8B6002654AD /* ZHCMessagesMediaPlaceholderView.m */,
-				9E93FD651D77C8B6002654AD /* ZHCMessagesTableView.h */,
-				9E93FD661D77C8B6002654AD /* ZHCMessagesTableView.m */,
-				9E93FD671D77C8B6002654AD /* ZHCMessagesTableViewCell.h */,
-				9E93FD681D77C8B6002654AD /* ZHCMessagesTableViewCell.m */,
 				9E93FD551D77C8B6002654AD /* ZHCMessagesCellTextView.h */,
 				9E93FD561D77C8B6002654AD /* ZHCMessagesCellTextView.m */,
 				9E93FD5D1D77C8B6002654AD /* ZHCMessagesLabel.h */,
 				9E93FD5E1D77C8B6002654AD /* ZHCMessagesLabel.m */,
+				9E93FD651D77C8B6002654AD /* ZHCMessagesTableView.h */,
+				9E93FD661D77C8B6002654AD /* ZHCMessagesTableView.m */,
+				9E93FD671D77C8B6002654AD /* ZHCMessagesTableViewCell.h */,
+				9E93FD681D77C8B6002654AD /* ZHCMessagesTableViewCell.m */,
 				9E93FD691D77C8B6002654AD /* ZHCMessagesTableViewCellIncoming.h */,
 				9E93FD6A1D77C8B6002654AD /* ZHCMessagesTableViewCellIncoming.m */,
 				9E93FD6B1D77C8B6002654AD /* ZHCMessagesTableViewCellIncoming.xib */,
@@ -762,7 +762,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		2E8BF3FAD992FB554304A489 /* [CP] Copy Pods Resources */ = {
@@ -792,7 +792,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		6EE559014087FA5C2659D8F7 /* [CP] Check Pods Manifest.lock */ = {
@@ -807,7 +807,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		7401BFF0BD5CBF6C5A3818BB /* [CP] Embed Pods Frameworks */ = {

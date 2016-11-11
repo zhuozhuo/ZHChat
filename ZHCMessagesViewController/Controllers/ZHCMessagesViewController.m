@@ -410,15 +410,14 @@
     }else{
         avatarHeight = tableView.tableViewLayout.incomingAvatarViewSize.height;
     }
-    
-    CGFloat bubbleHeight = size.height>avatarHeight?size.height:avatarHeight;
-    
+    CGFloat bubbleHeight = size.height;
     CGFloat cellsSpaceLabelHeight = [tableView.dataSource tableView:tableView tableViewCellSeparatorHeightAtIndexpath:indexPath];
     CGFloat cellTopLabelHeight = [tableView.dataSource tableView:tableView heightForCellTopLabelAtIndexPath:indexPath];
     CGFloat cellBubbleTopLabelHeight = [tableView.dataSource tableView:tableView  heightForMessageBubbleTopLabelAtIndexPath:indexPath];
     CGFloat cellBottomLabelHeight = [tableView.dataSource tableView:tableView heightForCellBottomLabelAtIndexPath:indexPath];
     
     height = cellsSpaceLabelHeight + cellTopLabelHeight + cellBubbleTopLabelHeight + cellBottomLabelHeight + bubbleHeight + 2.0*[UIScreen mainScreen].scale;
+    height = height>avatarHeight?height:avatarHeight;
     return height;
     
 }
@@ -446,6 +445,7 @@
     [cell applyLayoutAttributes];
     if (!isMediaMessage) {
         cell.textView.text = [messagecell text];
+        cell.textView.contentOffset = CGPointMake(0,  -[UIScreen mainScreen].scale);
         NSParameterAssert(cell.textView.text != nil);
         id<ZHCMessageBubbleImageDataSource> bubbleImageDataSource = [tableView.dataSource tableView:tableView messageBubbleImageDataForCellAtIndexPath:indexPath];
         cell.messageBubbleImageView.image = [bubbleImageDataSource messageBubbleImage];

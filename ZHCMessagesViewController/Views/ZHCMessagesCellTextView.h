@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ZHCMessagesCellTextView : UITextView
+@property (nonatomic) CGFloat stringHeight;
 
 @end

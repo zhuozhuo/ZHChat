@@ -346,7 +346,6 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
     self.cellTopLabel.backgroundColor = backgroundColor;
     self.messageBubbleTopLabel.backgroundColor = backgroundColor;
     self.cellBottomLabel.backgroundColor = backgroundColor;
-    
     self.messageBubbleContainerView.backgroundColor = backgroundColor;
     self.messageBubbleImageView.backgroundColor = backgroundColor;
     self.avatarContainerView.backgroundColor = backgroundColor;
