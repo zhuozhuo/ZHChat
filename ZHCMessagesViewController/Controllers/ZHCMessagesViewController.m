@@ -1035,7 +1035,6 @@
 - (void)zhc_registerForNotifications:(BOOL)registerForNotifications
 {
     if (registerForNotifications) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(zhc_keyboardWillShown:) name:UIKeyboardWillShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(zhc_keyboardWillHiden:) name:UIKeyboardWillHideNotification object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -1055,9 +1054,6 @@
     }
     else {
         [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                        name:UIKeyboardWillShowNotification
-                                                      object:nil];
-        [[NSNotificationCenter defaultCenter] removeObserver:self
                                                         name:UIKeyboardWillHideNotification
                                                       object:nil];
         
@@ -1075,36 +1071,6 @@
                                                       object:nil];
     }
 }
-
--(void)zhc_keyboardWillShown:(NSNotification *)notification
-{
-    NSDictionary *userInfo = [notification userInfo];
-    
-    CGRect keyboardEndFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    CGSize size = keyboardEndFrame.size;
-    if (CGRectIsNull(keyboardEndFrame)) {
-        return;
-    }
-    
-    UIViewAnimationCurve animationCurve = [userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-    NSInteger animationCurveOption = (animationCurve << 16);
-    
-    double animationDuration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    ZHCWeakSelf;
-    [UIView animateWithDuration:animationDuration
-                          delay:0.0
-                        options:animationCurveOption
-                     animations:^{
-                         [weakSelf zhc_updateInputViewBottomConstraint:size.height];
-                         [weakSelf zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
-                                                      bottomValue:self.inputMessageBarView.preferredDefaultHeight+size.height];
-                         [weakSelf.view layoutIfNeeded];
-                         
-                     }
-                     completion:nil];
-    
-}
-
 
 -(void)zhc_keyboardWillHiden:(NSNotification *)notification
 {
@@ -1124,15 +1090,14 @@
     
     double animationDuration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     ZHCWeakSelf;
+    [self zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
+                                 bottomValue:self.inputMessageBarView.preferredDefaultHeight];
     [UIView animateWithDuration:animationDuration
                           delay:0.0
                         options:animationCurveOption
                      animations:^{
                          [weakSelf zhc_updateInputViewBottomConstraint:0];
-                         [weakSelf zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
-                                                  bottomValue:self.inputMessageBarView.preferredDefaultHeight];
                          [weakSelf.view layoutIfNeeded];
-                         
                      }
                      completion:nil];
 }
@@ -1142,6 +1107,7 @@
     if (self.showFunctionViewBool) {
         return;
     }
+    
     NSDictionary *userInfo = [notification userInfo];
     
     CGRect keyboardEndFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
@@ -1155,18 +1121,19 @@
     
     double animationDuration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     ZHCWeakSelf;
+    
+    [self zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
+                             bottomValue:CGRectGetHeight(keyboardEndFrame)+(self.inputMessageBarView.preferredDefaultHeight)];
+    [self scrollToBottomAnimated:NO];
     [UIView animateWithDuration:animationDuration
                           delay:0.0
                         options:animationCurveOption
                      animations:^{
                          [weakSelf zhc_updateInputViewBottomConstraint:CGRectGetHeight(keyboardEndFrame)];
-                         [weakSelf zhc_setTableViewInsetsTopValue:self.messageTableView.contentInset.top
-                                                  bottomValue:CGRectGetHeight(keyboardEndFrame)+self.inputMessageBarView.preferredDefaultHeight];
                          [weakSelf.view layoutIfNeeded];
                      }
                      completion:nil];
 }
-
 
 /*
  #pragma mark - Navigation
