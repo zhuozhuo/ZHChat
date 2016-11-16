@@ -22,8 +22,6 @@
     self.showsHorizontalScrollIndicator = NO;
     self.scrollEnabled = NO;
     self.backgroundColor = [UIColor clearColor];
-    
-
     self.contentInset = UIEdgeInsetsZero;
     self.scrollIndicatorInsets = UIEdgeInsetsZero;
     self.contentOffset = CGPointZero;
