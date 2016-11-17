@@ -367,7 +367,7 @@
 
 -(NSArray *)messagesMoreViewImgNames:(ZHCMessagesMoreView *)moreView
 {
-    return @[@"chat_bar_icons_camera",@"chat_bar_icons_location",@"chat_bar_icons_pic"];
+    return @[@"chat_bar_icons_camera",@"chat_bar_icons_pic",@"chat_bar_icons_location"];
 }
 
 
