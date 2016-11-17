@@ -186,7 +186,7 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
     [self zhc_updateConstraint:self.textViewTopVerticalSpaceConstraint withConstant:attributes.textViewTextFrameInsets.top];
     [self zhc_updateConstraint:self.textViewBottomVerticalSpaceConstraint withConstant:attributes.textViewTextFrameInsets.bottom];
     [self zhc_updateConstraint:self.textViewMarginHorizontalSpaceConstraint withConstant:attributes.textViewTextFrameInsets.left];
-    [self layoutIfNeeded];
+    //[self layoutIfNeeded];
     
 }
 
