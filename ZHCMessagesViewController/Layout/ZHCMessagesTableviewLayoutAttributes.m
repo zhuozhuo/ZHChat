@@ -28,7 +28,7 @@
     self = [super init];
     if (self) {
         _messageBubbleFont = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-        _textViewTextContainerInsets = UIEdgeInsetsMake(5.0f, 5.0f, 5.0f, 5.0f);
+        _textViewTextContainerInsets = UIEdgeInsetsMake(5.0f, 15.0f, 5.0f, 15.0f);
         _textViewTextFrameInsets = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 6.0f);
         _incomingAvatarViewSize = CGSizeMake(kZHCMessagesTableViewCellAvatarSizeDefault, kZHCMessagesTableViewCellAvatarSizeDefault);
         _outgoingAvatarViewSize = CGSizeMake(kZHCMessagesTableViewCellAvatarSizeDefault, kZHCMessagesTableViewCellAvatarSizeDefault);

@@ -106,12 +106,12 @@
         CGFloat verticalContainerInsets = attributes.textViewTextFrameInsets.top + attributes.textViewTextFrameInsets.bottom  + attributes.textViewTextContainerInsets.bottom + attributes.textViewTextContainerInsets.top;
         
         //  same as above, an extra 2 points of magix
-        CGFloat verticalInsets = verticalContainerInsets + self.additionalInset;
+        CGFloat verticalInsets = verticalContainerInsets + 2 * [UIScreen mainScreen].scale;
         
         CGFloat horizontalInsetsTotal = attributes.textViewTextFrameInsets.right + attributes.textViewTextFrameInsets.left + attributes.textViewTextContainerInsets.left + attributes.textViewTextContainerInsets.right;
         
         
-        CGFloat finalWidth = MAX(stringSize.width + horizontalInsetsTotal, self.minimumBubbleWidth) + self.additionalInset;
+        CGFloat finalWidth = MAX(stringSize.width + horizontalInsetsTotal, self.minimumBubbleWidth);
         
          finalSize = CGSizeMake(finalWidth, stringSize.height + verticalInsets);
          

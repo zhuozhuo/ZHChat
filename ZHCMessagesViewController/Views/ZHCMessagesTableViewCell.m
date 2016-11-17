@@ -160,7 +160,7 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
 }
 
 #pragma mark - Update All Constraints
--(void)applyLayoutAttributes
+-(void)applyLayoutAttributesWithBubbleContainerSize:(CGSize)size
 {
    
     NSAssert(self.delegate != nil, @"cellDelegate Can not is nill");
@@ -168,7 +168,6 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
     ZHCMessagesTableviewLayoutAttributes *attributes = self.delegate.messagesTableViewCellAttributes;
     self.textView.textContainerInset = UIEdgeInsetsMake(attributes.textViewTextContainerInsets.top + [UIScreen mainScreen].scale, attributes.textViewTextContainerInsets.left, attributes.textViewTextContainerInsets.bottom, attributes.textViewTextContainerInsets.right);//attributes.textViewTextContainerInsets;
     self.textView.font = attributes.messageBubbleFont;
-    
     [self zhc_updateConstraint:self.cellTopLabelHeightConstraint withConstant:attributes.cellTopLabelHeight];
     [self zhc_updateConstraint:self.messageBubbleTopLabelHeightConstraint withConstant:attributes.messageBubbleTopLabelHeight];
     [self zhc_updateConstraint:self.cellBottomLabelHeightConstraint withConstant:attributes.cellBottomLabelHeight];
@@ -180,14 +179,14 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
     
     
     [self zhc_updateConstraint:self.avatarContainerViewHorizontallyWithSuperViewConstraint withConstant:attributes.messageAvatarHorizontallySpaceWithSuperView];
-    [self zhc_updateConstraint:self.messageBubbleContainerWidth withConstant:attributes.messageBubbleContainerViewWidth];
+    [self zhc_updateConstraint:self.messageBubbleContainerWidth withConstant:size.width];
     [self zhc_updateConstraint:self.messageBubbleContainerSpaceWithAvatarView withConstant:attributes.messageBubbleSpaceWithAvatar];
     
     [self zhc_updateConstraint:self.textViewAvatarHorizontalSpaceConstraint withConstant:attributes.textViewTextFrameInsets.right];
     [self zhc_updateConstraint:self.textViewTopVerticalSpaceConstraint withConstant:attributes.textViewTextFrameInsets.top];
     [self zhc_updateConstraint:self.textViewBottomVerticalSpaceConstraint withConstant:attributes.textViewTextFrameInsets.bottom];
     [self zhc_updateConstraint:self.textViewMarginHorizontalSpaceConstraint withConstant:attributes.textViewTextFrameInsets.left];
-    
+    [self layoutIfNeeded];
     
 }
 

@@ -416,7 +416,7 @@
     CGFloat cellBubbleTopLabelHeight = [tableView.dataSource tableView:tableView  heightForMessageBubbleTopLabelAtIndexPath:indexPath];
     CGFloat cellBottomLabelHeight = [tableView.dataSource tableView:tableView heightForCellBottomLabelAtIndexPath:indexPath];
     
-    height = cellsSpaceLabelHeight + cellTopLabelHeight + cellBubbleTopLabelHeight + cellBottomLabelHeight + bubbleHeight + 2 * [UIScreen mainScreen].scale;
+    height = cellsSpaceLabelHeight + cellTopLabelHeight + cellBubbleTopLabelHeight + cellBottomLabelHeight + bubbleHeight ;
     height = height>avatarHeight?height:avatarHeight;
     return height;
     
@@ -446,7 +446,6 @@
         NSParameterAssert(cell.textView.text != nil);
         cell.textView.text = [messagecell text];
         cell.textView.dataDetectorTypes = UIDataDetectorTypeAll;
-        [cell applyLayoutAttributes];
         id<ZHCMessageBubbleImageDataSource> bubbleImageDataSource = [tableView.dataSource tableView:tableView messageBubbleImageDataForCellAtIndexPath:indexPath];
         cell.messageBubbleImageView.image = [bubbleImageDataSource messageBubbleImage];
         cell.messageBubbleImageView.highlightedImage = [bubbleImageDataSource messageBubbleHighlightedImage];
@@ -479,6 +478,8 @@
             
         }
     }
+    CGSize size = [self.bubbleSizeCalculator messageBubbleSizeForMessageData:messagecell atIndexPath:indexPath withTableView:tableView];
+    [cell applyLayoutAttributesWithBubbleContainerSize:size];
     
     cell.cellTopLabel.attributedText = [tableView.dataSource tableView:tableView attributedTextForCellTopLabelAtIndexPath:indexPath];
     cell.messageBubbleTopLabel.attributedText = [tableView.dataSource tableView:tableView attributedTextForMessageBubbleTopLabelAtIndexPath:indexPath];

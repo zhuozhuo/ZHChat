@@ -224,7 +224,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Update layout
  */
--(void)applyLayoutAttributes;
+-(void)applyLayoutAttributesWithBubbleContainerSize:(CGSize)size;
 
 
 /**
