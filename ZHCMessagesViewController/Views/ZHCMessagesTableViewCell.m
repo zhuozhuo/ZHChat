@@ -166,8 +166,7 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
     NSAssert(self.delegate != nil, @"cellDelegate Can not is nill");
     
     ZHCMessagesTableviewLayoutAttributes *attributes = self.delegate.messagesTableViewCellAttributes;
-    
-    self.textView.textContainerInset = attributes.textViewTextContainerInsets;
+    self.textView.textContainerInset = UIEdgeInsetsMake(attributes.textViewTextContainerInsets.top + [UIScreen mainScreen].scale, attributes.textViewTextContainerInsets.left, attributes.textViewTextContainerInsets.bottom, attributes.textViewTextContainerInsets.right);//attributes.textViewTextContainerInsets;
     self.textView.font = attributes.messageBubbleFont;
     
     [self zhc_updateConstraint:self.cellTopLabelHeightConstraint withConstant:attributes.cellTopLabelHeight];

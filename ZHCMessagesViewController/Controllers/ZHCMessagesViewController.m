@@ -416,7 +416,7 @@
     CGFloat cellBubbleTopLabelHeight = [tableView.dataSource tableView:tableView  heightForMessageBubbleTopLabelAtIndexPath:indexPath];
     CGFloat cellBottomLabelHeight = [tableView.dataSource tableView:tableView heightForCellBottomLabelAtIndexPath:indexPath];
     
-    height = cellsSpaceLabelHeight + cellTopLabelHeight + cellBubbleTopLabelHeight + cellBottomLabelHeight + bubbleHeight;
+    height = cellsSpaceLabelHeight + cellTopLabelHeight + cellBubbleTopLabelHeight + cellBottomLabelHeight + bubbleHeight + 2 * [UIScreen mainScreen].scale;
     height = height>avatarHeight?height:avatarHeight;
     return height;
     
@@ -442,10 +442,11 @@
     
     ZHCMessagesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.delegate = tableView;
-    [cell applyLayoutAttributes];
     if (!isMediaMessage) {
-        cell.textView.text = [messagecell text];
         NSParameterAssert(cell.textView.text != nil);
+        cell.textView.text = [messagecell text];
+        cell.textView.dataDetectorTypes = UIDataDetectorTypeAll;
+        [cell applyLayoutAttributes];
         id<ZHCMessageBubbleImageDataSource> bubbleImageDataSource = [tableView.dataSource tableView:tableView messageBubbleImageDataForCellAtIndexPath:indexPath];
         cell.messageBubbleImageView.image = [bubbleImageDataSource messageBubbleImage];
         cell.messageBubbleImageView.highlightedImage = [bubbleImageDataSource messageBubbleHighlightedImage];
@@ -500,7 +501,6 @@
     }else{
         cell.messageBubbleTopLabel.textInsets = UIEdgeInsetsMake(0.0f, bubbleTopLableInset, 0.0f, 0.0f);
     }
-    cell.textView.dataDetectorTypes = UIDataDetectorTypeAll;
     cell.backgroundColor = [UIColor clearColor];
     cell.contentView.backgroundColor = [UIColor whiteColor];
     cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
