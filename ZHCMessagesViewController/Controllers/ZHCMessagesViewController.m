@@ -189,14 +189,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.inputViewHeightConstraint.constant = self.inputMessageBarView.preferredDefaultHeight;
-    [self.view layoutIfNeeded];
-    ZHCWeakSelf;
-    if (self.automaticallyScrollsToMostRecentMessage) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf scrollToBottomAnimated:NO];
-        });
-    }
 }
 
 

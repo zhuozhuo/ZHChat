@@ -21,6 +21,14 @@
      */
     self.demoData = [[ZHCModelData alloc] init];
     self.title = @"ZHCMessages";
+    ZHCWeakSelf;
+    if (self.automaticallyScrollsToMostRecentMessage) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf scrollToBottomAnimated:NO];
+        });
+    }
+
+    
     // Do any additional setup after loading the view.
 }
 
@@ -39,6 +47,7 @@
                                                                                               target:self
                                                                                               action:@selector(closePressed:)];
     }
+    
 }
 
 
@@ -211,7 +220,7 @@
     }else{
         return 0.0;
     }
-
+    
 }
 
 #pragma mark - ZHCMessagesTableViewDelegate
@@ -301,7 +310,7 @@
     [self.demoData.messages addObject:message];
     
     [self finishSendingMessageAnimated:YES];
-
+    
 }
 
 
@@ -317,39 +326,39 @@
     [self.demoData.messages addObject:audioMessage];
     
     [self finishSendingMessageAnimated:YES];
-
+    
 }
 
 #pragma mark - ZHCMessagesMoreViewDelegate
 
 -(void)messagesMoreView:(ZHCMessagesMoreView *)moreView selectedMoreViewItemWithIndex:(NSInteger)index
 {
-   
+    
     switch (index) {
-        case 0:{//Camera
-            [self.demoData addVideoMediaMessage];
-            [self.messageTableView reloadData];
-            [self finishSendingMessage];
-        }
+            case 0:{//Camera
+                [self.demoData addVideoMediaMessage];
+                [self.messageTableView reloadData];
+                [self finishSendingMessage];
+            }
             break;
             
-        case 1:{//Photos
-            [self.demoData addPhotoMediaMessage];
-            [self.messageTableView reloadData];
-            [self finishSendingMessage];
-        }
+            case 1:{//Photos
+                [self.demoData addPhotoMediaMessage];
+                [self.messageTableView reloadData];
+                [self finishSendingMessage];
+            }
             break;
             
-        case 2:{//Location
-            typeof(self) __weak weakSelf = self;
-            __weak ZHCMessagesTableView *weakView = self.messageTableView;
-            [self.demoData addLocationMediaMessageCompletion:^{
-                [weakView reloadData];
-                [weakSelf finishSendingMessage];
-                
-            }];
-        }
-
+            case 2:{//Location
+                typeof(self) __weak weakSelf = self;
+                __weak ZHCMessagesTableView *weakView = self.messageTableView;
+                [self.demoData addLocationMediaMessageCompletion:^{
+                    [weakView reloadData];
+                    [weakSelf finishSendingMessage];
+                    
+                }];
+            }
+            
             break;
             
         default:
@@ -377,13 +386,13 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
