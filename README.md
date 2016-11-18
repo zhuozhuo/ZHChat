@@ -1,7 +1,7 @@
 ##ZHChat
 [ZHChat](https://github.com/zhuozhuo/ZHChat) is a free open source chat UI components, support for sending voice, pictures, words, expressions, location, video messages. ZHChat can help developers to quickly integrate IM service, easy chat, provides totally free licensing agreement, support for secondary development. Welcome to pull Request.
 
-![Gif][gif0] 
+ <div align="center">![Gif][gif0]</div>
 
 ##[Russian README LINK](http://gargo.of.by/ui-библиотека-сообщений-для-ios/)
 Thanks [Gargo](https://github.com/Gargo) translation.
