@@ -43,7 +43,7 @@
     UIImage *voiceImage = [UIImage zhc_defaultVoiceImage];
     UIImage *keyboardImage = [UIImage zhc_defaultKeyboardImage];
     
-    UIButton *voiceButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 34, 32)];
+    UIButton *voiceButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
     [voiceButton setImage:voiceImage forState:UIControlStateNormal];
     [voiceButton setImage:keyboardImage forState:UIControlStateSelected];
     voiceButton.contentMode = UIViewContentModeScaleAspectFit;
@@ -58,7 +58,7 @@
 {
     UIImage *moreImage = [UIImage zhc_defaultMoreImage];
     
-    UIButton *moreButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 34, 32)];
+    UIButton *moreButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
     [moreButton setImage:moreImage forState:UIControlStateNormal];
     [moreButton setImage:moreImage forState:UIControlStateSelected];
     moreButton.contentMode = UIViewContentModeScaleAspectFit;
@@ -74,7 +74,7 @@
     UIImage *emotionImage = [UIImage zhc_defaultEmotionImage];
     UIImage *keyboardImage = [UIImage zhc_defaultKeyboardImage];
     
-    UIButton *emotionButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 34, 32)];
+    UIButton *emotionButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
     [emotionButton setBackgroundImage:emotionImage forState:UIControlStateNormal];
     [emotionButton setBackgroundImage:keyboardImage forState:UIControlStateSelected];
     emotionButton.contentMode = UIViewContentModeScaleAspectFit;
@@ -82,7 +82,7 @@
     emotionButton.tintColor = [UIColor lightGrayColor];
     emotionButton.titleLabel.font = self.buttonFont;
     return emotionButton;
-
+    
 }
 
 -(UIButton *)defaultInputViewVoiceLongPressButtonItem
