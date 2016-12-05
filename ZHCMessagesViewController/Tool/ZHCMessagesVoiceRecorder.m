@@ -7,7 +7,12 @@
 //
 
 #import "ZHCMessagesVoiceRecorder.h"
-@interface ZHCMessagesVoiceRecorder()
+#define MaxRecordTime 60
+
+@interface ZHCMessagesVoiceRecorder(){
+    BOOL isFinishRecordBool;//Record finish Bool
+    BOOL isAutoFinishRecordBool;//Auto finish and stop record
+}
 
 @end
 @implementation ZHCMessagesVoiceRecorder
@@ -35,8 +40,10 @@
 
 #pragma mark - Public Methods
 - (void)zhc_startRecording {
-     NSString *filePath = [self getTempVoicePath];
+    NSString *filePath = [self getTempVoicePath];
     recordTime = 0;
+    isFinishRecordBool = NO;
+    isAutoFinishRecordBool = NO;
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     BOOL audioHWAvailable = audioSession.inputAvailable;
     if (! audioHWAvailable) {
@@ -90,6 +97,7 @@
     
     err = nil;
     AudioRecorder = [[ AVAudioRecorder alloc] initWithURL:url settings:recordSetting error:&err];
+    AudioRecorder.delegate = self;
     if(!AudioRecorder){
         NSLog(@"recorder: %@ %ld %@", [err domain], (long)[err code], [[err userInfo] description]);
         UIAlertView *alert =
@@ -103,7 +111,7 @@
     }
     
     [AudioRecorder setDelegate:self];
-    [AudioRecorder recordForDuration:(NSTimeInterval) 60];
+    [AudioRecorder recordForDuration:(NSTimeInterval) MaxRecordTime];
     [AudioRecorder prepareToRecord];
     [AudioRecorder record];
     
@@ -111,8 +119,12 @@
 
 - (void)zhc_stopRecording {
     recordTime = AudioRecorder.currentTime;
+    isAutoFinishRecordBool = YES;
     if (AudioRecorder.isRecording) {
         [AudioRecorder stop];
+    }
+    if (isFinishRecordBool) {
+        return;
     }
     if (recordTime > 1 ) {
         if ([self.delegate respondsToSelector:@selector(zhc_voiceRecorded:length:)]) {
@@ -124,16 +136,39 @@
             [self.delegate zhc_failRecord];
         }
     }
-
+    
 }
 
 -(void)zhc_cancelRecord
 {
-   
+    isAutoFinishRecordBool = YES;
     [AudioRecorder stop];
     [AudioRecorder deleteRecording];
 }
 
 
+#pragma mark  AVAudioRecorderDelegate
+
+- (void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag
+{
+    if (flag && ! isAutoFinishRecordBool) {
+        recordTime = MaxRecordTime;
+        isFinishRecordBool = YES;
+        if ([self.delegate respondsToSelector:@selector(zhc_voiceRecorded:length:)]) {
+            [self.delegate zhc_voiceRecorded:recorderFilePath length:recordTime];
+        }
+        
+    }
+    
+}
+
+- (void)audioRecorderEncodeErrorDidOccur:(AVAudioRecorder *)recorder error:(NSError * __nullable)error
+{
+    [AudioRecorder deleteRecording];
+    if ([self.delegate respondsToSelector:@selector(zhc_failRecord)]) {
+        [self.delegate zhc_failRecord];
+    }
+    
+}
 
 @end
