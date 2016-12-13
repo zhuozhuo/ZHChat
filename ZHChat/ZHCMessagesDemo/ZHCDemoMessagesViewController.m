@@ -327,7 +327,15 @@
     
     [self finishSendingMessageAnimated:YES];
     
+    
+//    NSFileManager *manager = [NSFileManager defaultManager];
+//    NSDictionary *dic = [manager attributesOfItemAtPath:voiceFilePath error:nil];
+//    long long size = [dic fileSize];
+//    NSLog(@"fileSize:%@",voiceFilePath);
+//    NSLog(@"fileSize:%lld",size/1024);
 }
+
+
 
 #pragma mark - ZHCMessagesMoreViewDelegate
 
