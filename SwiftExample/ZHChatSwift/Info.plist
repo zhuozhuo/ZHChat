@@ -2,14 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Open registration function localization services experiences</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Opens the recording function create a better experience</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Allows applications to use photo album a better experience</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Allows applications to open a camera a better experience</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allows applications to use photo album a better experience</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Opens the recording function create a better experience</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Open registration function localization services experiences</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -24,8 +24,6 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -38,8 +36,6 @@
 	<array>
 		<string>armv7</string>
 	</array>
-	<key>UIRequiresFullScreen</key>
-	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
