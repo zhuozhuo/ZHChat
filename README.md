@@ -6,6 +6,8 @@
 ##[Russian README LINK](http://gargo.of.by/ui-библиотека-сообщений-для-ios/)
 Thanks [Gargo](https://github.com/Gargo) translation.
 
+##[Chinese README LINK](https://github.com/zhuozhuo/ZHChat/blob/master/README_CN.md)
+
 ##Features
 * Interface to imitate Apple with a messaging application interface.
 * Contains text, pictures, voice, location, sends a video message features.
