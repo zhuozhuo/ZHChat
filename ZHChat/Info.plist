@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Open registration function localization services experiences</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Allows you to use camera a better experience</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allows applications to use photo album a better experience</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Allows applications to open a camera a better experience</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

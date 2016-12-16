@@ -177,7 +177,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @see ZHCMessagestableViewCell.
  */
-- (NSAttributedString *)tableView:(ZHCMessagesTableView *)tableView attributedTextForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath;
+- (nullable NSAttributedString *)tableView:(ZHCMessagesTableView *)tableView attributedTextForCellTopLabelAtIndexPath:(NSIndexPath *)indexPath;
 
 /**
  *  Asks the data source for the text to display in the `messageBubbleTopLabel` for the specified

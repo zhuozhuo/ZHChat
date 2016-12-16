@@ -180,7 +180,7 @@
      *  Show a timestamp for every 3rd message
      */
     CGFloat labelHeight = 0.0f;
-    if (indexPath.item % 3 == 0) {
+    if (indexPath.row % 3 == 0) {
         labelHeight = kZHCMessagesTableViewCellLabelHeightDefault;
     }
     return labelHeight;
@@ -194,13 +194,13 @@
      *  iOS7-style sender name labels
      */
     CGFloat labelHeight = kZHCMessagesTableViewCellLabelHeightDefault;
-    ZHCMessage *currentMessage = [self.demoData.messages objectAtIndex:indexPath.item];
+    ZHCMessage *currentMessage = [self.demoData.messages objectAtIndex:indexPath.row];
     if ([[currentMessage senderId] isEqualToString:self.senderId]) {
         labelHeight = 0.0f;
     }
     
-    if (indexPath.item - 1 > 0) {
-        ZHCMessage *previousMessage = [self.demoData.messages objectAtIndex:indexPath.item - 1];
+    if (indexPath.row - 1 > 0) {
+        ZHCMessage *previousMessage = [self.demoData.messages objectAtIndex:indexPath.row - 1];
         if ([[previousMessage senderId] isEqualToString:[currentMessage senderId]]) {
             labelHeight = 0.0f;
         }
