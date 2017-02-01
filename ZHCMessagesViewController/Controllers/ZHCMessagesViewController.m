@@ -790,7 +790,10 @@
 #pragma mark - InputView utilities
 -(void)zhc_updateInputViewBottomConstraint:(CGFloat)constant
 {
-    self.inputViewBottomLayoutGuide.constant = constant;
+    if (self.tabBarController != nil) {
+        constant -= CGRectGetHeight(self.tabBarController.tabBar.frame);
+    }
+    self.inputViewBottomLayoutGuide.constant = MAX(constant, 0.0);
 }
 
 #pragma mark - TableView utilities
