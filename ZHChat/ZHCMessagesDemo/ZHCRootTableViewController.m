@@ -81,6 +81,7 @@
             messagesVC.presentBool = NO;
             UITabBarController *tabBarVC = [[UITabBarController alloc] init];
             UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:messagesVC];
+            tabBarVC.tabBar.translucent = NO;
             tabBarVC.viewControllers = @[nav];
             [self.navigationController pushViewController:tabBarVC animated:YES];
         }
