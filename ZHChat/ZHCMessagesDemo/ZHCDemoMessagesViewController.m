@@ -233,6 +233,20 @@
 -(void)tableView:(ZHCMessagesTableView *)tableView didTapMessageBubbleAtIndexPath:(NSIndexPath *)indexPath
 {
     [super tableView:tableView didTapMessageBubbleAtIndexPath:indexPath];
+    // Do something
+    
+    ZHCMessage *message = [self.demoData.messages objectAtIndex:indexPath.row];
+    if (message.isMediaMessage) {
+        if ([message.media isKindOfClass:[ZHCPhotoMediaItem class]]) {
+//            ZHCPhotoMediaItem *photoMedia = (ZHCPhotoMediaItem *)message.media;
+//            UIImage *img = photoMedia.image;
+            NSLog(@"Photo");
+        }else if ([message.media isKindOfClass:[ZHCVideoMediaItem class]]){
+//            ZHCVideoMediaItem *videoMedia = (ZHCVideoMediaItem *)message.media;
+//            NSURL *videoUrl = videoMedia.fileURL;
+            NSLog(@"Video");
+        }
+    }
 }
 
 
