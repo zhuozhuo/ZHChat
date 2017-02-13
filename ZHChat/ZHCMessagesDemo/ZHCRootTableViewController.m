@@ -24,7 +24,7 @@
     [super viewDidLoad];
     self.tableView.tableFooterView = [UIView new];
     
-    dataArray = @[@"Push",@"Present"];
+    dataArray = @[@"Push",@"Present", @"Tab bar"];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -76,6 +76,16 @@
             [self presentViewController:nav animated:YES completion:nil];
         }
             break;
+        case 2:{
+            ZHCDemoMessagesViewController *messagesVC = [[ZHCDemoMessagesViewController alloc]init];
+            messagesVC.presentBool = NO;
+            UITabBarController *tabBarVC = [[UITabBarController alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:messagesVC];
+            tabBarVC.viewControllers = @[nav];
+            [self.navigationController pushViewController:tabBarVC animated:YES];
+        }
+            break;
+
         default:
             break;
     }
