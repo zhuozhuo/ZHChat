@@ -114,8 +114,10 @@
      *  Override the defaults in `viewDidLoad`
      */
     
-    ZHCMessage *message = [self.demoData.messages objectAtIndex:indexPath.row];
-    return [self.demoData.avatars objectForKey:message.senderId];
+    return nil;
+    
+//    ZHCMessage *message = [self.demoData.messages objectAtIndex:indexPath.row];
+//    return [self.demoData.avatars objectForKey:message.senderId];
 }
 
 
@@ -278,6 +280,7 @@
 -(UITableViewCell *)tableView:(ZHCMessagesTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ZHCMessagesTableViewCell *cell = (ZHCMessagesTableViewCell *)[super tableView:tableView cellForRowAtIndexPath:indexPath];
+
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
