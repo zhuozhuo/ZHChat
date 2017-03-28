@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		4EE999056840ED1C0B4486BA /* libPods-ZHChatTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D52FC94A5C3C6F85AC123C /* libPods-ZHChatTests.a */; };
 		87FA1F8B3FCF10E4EC38267D /* libPods-ZHChatUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 997BF6C7A6A62528738E5809 /* libPods-ZHChatUITests.a */; };
+		9E4F0F341E89FA9900A3232F /* ZHPhotoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F0F331E89FA9900A3232F /* ZHPhotoItem.m */; };
+		9E4F0F391E89FEDD00A3232F /* ZHCNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F0F381E89FEDD00A3232F /* ZHCNetManager.m */; };
+		9E4F0F3B1E8A066600A3232F /* photomediaitem_download@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E4F0F3A1E8A066600A3232F /* photomediaitem_download@2x.png */; };
+		9E4F0F3D1E8A068B00A3232F /* ibd_message_failed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E4F0F3C1E8A068B00A3232F /* ibd_message_failed@2x.png */; };
 		9E56B90F1D7D173C00F8A727 /* ZHCMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9E56B90E1D7D173C00F8A727 /* ZHCMessagesAssets.bundle */; };
 		9E92B2CC1D58219F00736447 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E92B2CB1D58219F00736447 /* main.m */; };
 		9E92B2CF1D58219F00736447 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E92B2CE1D58219F00736447 /* AppDelegate.m */; };
@@ -106,6 +110,13 @@
 		70262FCBC217FB74C3E99AD3 /* Pods-ZHChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHChatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZHChatTests/Pods-ZHChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8648F9A3FD3B724601AB47C1 /* Pods-ZHChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHChatUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZHChatUITests/Pods-ZHChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		997BF6C7A6A62528738E5809 /* libPods-ZHChatUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZHChatUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E4F0F321E89FA9900A3232F /* ZHPhotoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPhotoItem.h; sourceTree = "<group>"; };
+		9E4F0F331E89FA9900A3232F /* ZHPhotoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPhotoItem.m; sourceTree = "<group>"; };
+		9E4F0F361E89FB0A00A3232F /* ZHCPublicStucture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHCPublicStucture.h; sourceTree = "<group>"; };
+		9E4F0F371E89FEDD00A3232F /* ZHCNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCNetManager.h; sourceTree = "<group>"; };
+		9E4F0F381E89FEDD00A3232F /* ZHCNetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCNetManager.m; sourceTree = "<group>"; };
+		9E4F0F3A1E8A066600A3232F /* photomediaitem_download@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photomediaitem_download@2x.png"; sourceTree = "<group>"; };
+		9E4F0F3C1E8A068B00A3232F /* ibd_message_failed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ibd_message_failed@2x.png"; sourceTree = "<group>"; };
 		9E56B90E1D7D173C00F8A727 /* ZHCMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZHCMessagesAssets.bundle; sourceTree = "<group>"; };
 		9E56B9101D7D18AD00F8A727 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9E56B9111D7D18B400F8A727 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -276,6 +287,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E4F0F351E89FADF00A3232F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				9E4F0F361E89FB0A00A3232F /* ZHCPublicStucture.h */,
+				9E4F0F371E89FEDD00A3232F /* ZHCNetManager.h */,
+				9E4F0F381E89FEDD00A3232F /* ZHCNetManager.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		9E92B2BE1D58219F00736447 = {
 			isa = PBXGroup;
 			children = (
@@ -519,6 +540,7 @@
 			isa = PBXGroup;
 			children = (
 				9EB371C91D704CF000FDFF1B /* Resources */,
+				9E4F0F351E89FADF00A3232F /* Helper */,
 				9EB394571E893B4A006D567A /* Models */,
 				9EB3945C1E893B4A006D567A /* Views */,
 				9EB394521E893B4A006D567A /* Controllers */,
@@ -539,6 +561,8 @@
 		9EB371CA1D704CF000FDFF1B /* Imgs */ = {
 			isa = PBXGroup;
 			children = (
+				9E4F0F3C1E8A068B00A3232F /* ibd_message_failed@2x.png */,
+				9E4F0F3A1E8A066600A3232F /* photomediaitem_download@2x.png */,
 				9EB371CB1D704CF000FDFF1B /* chat_bar_icons_camera.png */,
 				9EB371CC1D704CF000FDFF1B /* chat_bar_icons_camera@2x.png */,
 				9EB371CD1D704CF000FDFF1B /* chat_bar_icons_camera@3x.png */,
@@ -586,6 +610,8 @@
 				9EB394591E893B4A006D567A /* ZHCModelData.m */,
 				9EB3945A1E893B4A006D567A /* ZHUseFDModel.h */,
 				9EB3945B1E893B4A006D567A /* ZHUseFDModel.m */,
+				9E4F0F321E89FA9900A3232F /* ZHPhotoItem.h */,
+				9E4F0F331E89FA9900A3232F /* ZHPhotoItem.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -752,6 +778,7 @@
 				9EB371D61D704CF000FDFF1B /* chat_bar_icons_camera@3x.png in Resources */,
 				9EB394501E893B3B006D567A /* data.json in Resources */,
 				9EB371DC1D704CF000FDFF1B /* chat_bar_icons_pic@3x.png in Resources */,
+				9E4F0F3B1E8A066600A3232F /* photomediaitem_download@2x.png in Resources */,
 				9EB371D91D704CF000FDFF1B /* chat_bar_icons_location@3x.png in Resources */,
 				9E93FD7B1D77C8B6002654AD /* ZHCMessagesViewController.xib in Resources */,
 				9EB371DA1D704CF000FDFF1B /* chat_bar_icons_pic.png in Resources */,
@@ -760,6 +787,7 @@
 				9E93FD9B1D77C8B6002654AD /* ZHCMessagesTableViewCellIncoming.xib in Resources */,
 				9EB371D41D704CF000FDFF1B /* chat_bar_icons_camera.png in Resources */,
 				9E92B2D71D58219F00736447 /* Assets.xcassets in Resources */,
+				9E4F0F3D1E8A068B00A3232F /* ibd_message_failed@2x.png in Resources */,
 				9E92B2D51D58219F00736447 /* Main.storyboard in Resources */,
 				9EB371D81D704CF000FDFF1B /* chat_bar_icons_location@2x.png in Resources */,
 			);
@@ -941,8 +969,10 @@
 				9E93FD831D77C8B6002654AD /* ZHCMessagesBubbleCalculator.m in Sources */,
 				9E93FD881D77C8B6002654AD /* ZHCMessage.m in Sources */,
 				9EB3945F1E893B4A006D567A /* ZHCModelData.m in Sources */,
+				9E4F0F391E89FEDD00A3232F /* ZHCNetManager.m in Sources */,
 				9E93FD7E1D77C8B6002654AD /* ZHCMessagesEmojiFactory.m in Sources */,
 				9E92B2CC1D58219F00736447 /* main.m in Sources */,
+				9E4F0F341E89FA9900A3232F /* ZHPhotoItem.m in Sources */,
 				9E93FD901D77C8B6002654AD /* ZHCMessagesCellTextView.m in Sources */,
 				9E93FD771D77C8B6002654AD /* UIColor+ZHCMessages.m in Sources */,
 				9E93FD8C1D77C8B6002654AD /* ZHCVideoMediaItem.m in Sources */,

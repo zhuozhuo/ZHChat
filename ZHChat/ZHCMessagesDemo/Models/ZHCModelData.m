@@ -13,6 +13,7 @@
 #import "ZHCLocationMediaItem.h"
 #import "ZHCVideoMediaItem.h"
 #import "ZHCAudioMediaItem.h"
+#import "ZHPhotoItem.h"
 
 
 
@@ -96,10 +97,24 @@
 
 -(void)addPhotoMediaMessage
 {
-    ZHCPhotoMediaItem *photoItem = [[ZHCPhotoMediaItem alloc]initWithImage:[UIImage imageNamed:@"goldengate"]];
+    /*ZHCPhotoMediaItem *photoItem = [[ZHCPhotoMediaItem alloc]initWithImage:[UIImage imageNamed:@"goldengate"]];
+    photoItem.appliesMediaViewMaskAsOutgoing = NO;
+    ZHCMessage *photoMessage = [ZHCMessage messageWithSenderId:kZHCDemoAvatarIdCook displayName:kZHCDemoAvatarDisplayNameCook media:photoItem];
+    [self.messages addObject:photoMessage];*/
+    
+    NSString *imgUrl1 = @"http://img16.3lian.com/gif2016/q2/1/81.jpg";
+    NSString *imgUrl2 = @"http://h8.86.cc/walls/20160406/mid_91aee3d038ede35.jpg";
+    static BOOL chooseBool = NO;
+    NSString *imgUrl = imgUrl1;
+    if (!chooseBool) {
+        imgUrl = imgUrl2;
+    }
+    chooseBool =!chooseBool;
+    ZHPhotoItem  *photoItem = [[ZHPhotoItem alloc]initWithImgUrl:imgUrl withWidth:200 withHeight:200];
     photoItem.appliesMediaViewMaskAsOutgoing = NO;
     ZHCMessage *photoMessage = [ZHCMessage messageWithSenderId:kZHCDemoAvatarIdCook displayName:kZHCDemoAvatarDisplayNameCook media:photoItem];
     [self.messages addObject:photoMessage];
+    
 }
 
 - (void)addLocationMediaMessageCompletion:(ZHCLocationMediaItemCompletionBlock)completion
