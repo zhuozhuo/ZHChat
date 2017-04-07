@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8075318843F02EB8E660CB5B /* Pods_ZHChatSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05F723659B3E519B16810008 /* Pods_ZHChatSwiftTests.framework */; };
 		9A2E4A776E711069A72D0455 /* Pods_ZHChatSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D5A51BD38BE699F9B72F02 /* Pods_ZHChatSwift.framework */; };
+		9E4F0F461E8A31DE00A3232F /* ZHCPublicStucture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F0F451E8A31DE00A3232F /* ZHCPublicStucture.swift */; };
+		9E4F0F481E8A33E400A3232F /* ZHPhotoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F0F471E8A33E400A3232F /* ZHPhotoItem.swift */; };
 		9E52E0191E0283E40022D647 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E52E0181E0283E40022D647 /* AppDelegate.swift */; };
 		9E52E01E1E0283E40022D647 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E52E01C1E0283E40022D647 /* Main.storyboard */; };
 		9E52E0201E0283E40022D647 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E52E01F1E0283E40022D647 /* Assets.xcassets */; };
@@ -56,6 +58,8 @@
 		38D88FB4BD2B2B1F3FB7A6B9 /* Pods-ZHChatSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHChatSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZHChatSwiftTests/Pods-ZHChatSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		569AC0F2E38FDE11B44827FB /* Pods_ZHChatSwiftUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZHChatSwiftUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86569F73476C528DFD1EC16D /* Pods-ZHChatSwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHChatSwiftUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZHChatSwiftUITests/Pods-ZHChatSwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9E4F0F451E8A31DE00A3232F /* ZHCPublicStucture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHCPublicStucture.swift; sourceTree = "<group>"; };
+		9E4F0F471E8A33E400A3232F /* ZHPhotoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZHPhotoItem.swift; sourceTree = "<group>"; };
 		9E52E0151E0283E40022D647 /* ZHChatSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZHChatSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E52E0181E0283E40022D647 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E52E01D1E0283E40022D647 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -168,7 +172,9 @@
 				9E52E04C1E0385A00022D647 /* Data */,
 				9E52E04F1E0385A00022D647 /* Resources */,
 				9E52E0181E0283E40022D647 /* AppDelegate.swift */,
+				9E4F0F451E8A31DE00A3232F /* ZHCPublicStucture.swift */,
 				9E52E04A1E02BDCF0022D647 /* ZHUserModel.swift */,
+				9E4F0F471E8A33E400A3232F /* ZHPhotoItem.swift */,
 				9E52E0651E0385C80022D647 /* ZHModelData.swift */,
 				9E52E0481E02B66A0022D647 /* ZHRootTableViewController.swift */,
 				9E52E0671E039BA80022D647 /* ZHCDemoMessagesViewController.swift */,
@@ -525,6 +531,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E52E0491E02B66A0022D647 /* ZHRootTableViewController.swift in Sources */,
+				9E4F0F481E8A33E400A3232F /* ZHPhotoItem.swift in Sources */,
+				9E4F0F461E8A31DE00A3232F /* ZHCPublicStucture.swift in Sources */,
 				9E52E0661E0385C80022D647 /* ZHModelData.swift in Sources */,
 				9E52E04B1E02BDCF0022D647 /* ZHUserModel.swift in Sources */,
 				9E52E0191E0283E40022D647 /* AppDelegate.swift in Sources */,

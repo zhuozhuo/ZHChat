@@ -43,9 +43,7 @@
 - (instancetype)init
 {
     UIColor *tintColor = [UIColor zhc_messagesBubbleBlueColor];
-    AVAudioSessionCategoryOptions options = AVAudioSessionCategoryOptionDuckOthers
-    | AVAudioSessionCategoryOptionDefaultToSpeaker
-    | AVAudioSessionCategoryOptionAllowBluetooth;
+    AVAudioSessionCategoryOptions options = AVAudioSessionCategoryOptionDuckOthers;
     
     return [self initWithPlayButtonImage:[[UIImage zhc_defaultPlayImage] zhc_imageMaskedWithColor:tintColor]
                         pauseButtonImage:[[UIImage zhc_defaultPauseImage] zhc_imageMaskedWithColor:tintColor]

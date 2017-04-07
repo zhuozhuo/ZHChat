@@ -9,9 +9,7 @@
 #import "ZHCMessages.h"
 #import "ZHCModelData.h"
 
-
-
-@interface ZHCDemoMessagesViewController : ZHCMessagesViewController
+@interface ZHCDemoMessagesViewController : ZHCMessagesViewController<ZHCAudioMediaItemDelegate>
 @property (strong, nonatomic) ZHCModelData *demoData;
 @property (assign, nonatomic) BOOL presentBool;
 @end

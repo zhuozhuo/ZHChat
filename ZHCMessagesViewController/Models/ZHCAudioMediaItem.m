@@ -101,6 +101,16 @@
     _cachedMediaView = nil;
 }
 
+#pragma mark - Public
+- (void)stopPlay
+{
+    if (self.audioPlayer && self.audioPlayer.playing) {
+        self.playButton.selected = NO;
+        [self stopProgressTimer];
+        [self.audioPlayer stop];
+    }
+}
+
 #pragma mark - Private
 
 - (void)startProgressTimer

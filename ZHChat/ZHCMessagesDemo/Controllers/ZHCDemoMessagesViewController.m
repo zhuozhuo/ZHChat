@@ -7,7 +7,9 @@
 //
 
 #import "ZHCDemoMessagesViewController.h"
-@interface ZHCDemoMessagesViewController ()
+@interface ZHCDemoMessagesViewController (){
+     ZHCAudioMediaItem *currentAudioItem;
+}
 
 @end
 
@@ -56,6 +58,15 @@
     [super viewDidAppear:animated];
 }
 
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if (currentAudioItem) {
+        [currentAudioItem stopPlay];
+    }
+    
+}
 
 #pragma mark - ZHCMessagesTableViewDataSource
 
@@ -114,10 +125,10 @@
      *  Override the defaults in `viewDidLoad`
      */
     
-    return nil;
+    //return nil;
     
-//    ZHCMessage *message = [self.demoData.messages objectAtIndex:indexPath.row];
-//    return [self.demoData.avatars objectForKey:message.senderId];
+    ZHCMessage *message = [self.demoData.messages objectAtIndex:indexPath.row];
+    return [self.demoData.avatars objectForKey:message.senderId];
 }
 
 
@@ -336,10 +347,11 @@
 {
     NSData * audioData = [NSData dataWithContentsOfFile:voiceFilePath];
     ZHCAudioMediaItem *audioItem = [[ZHCAudioMediaItem alloc] initWithData:audioData];
-    
+    audioItem.delegate = self;
     ZHCMessage *audioMessage = [ZHCMessage messageWithSenderId:self.senderId
                                                    displayName:self.senderDisplayName
                                                          media:audioItem];
+   
     [self.demoData.messages addObject:audioMessage];
     
     [self finishSendingMessageAnimated:YES];
@@ -391,6 +403,21 @@
     }
 }
 
+
+#pragma mark - ZHAudioMediaItemDelegate
+- (void)audioMediaItem:(ZHCAudioMediaItem *)audioMediaItem
+didChangeAudioCategory:(NSString *)category
+               options:(AVAudioSessionCategoryOptions)options
+                 error:(nullable NSError *)error{
+    if (!error) {
+        if (currentAudioItem && ![audioMediaItem isEqual:currentAudioItem]) {
+            [currentAudioItem stopPlay];
+        }
+        currentAudioItem = audioMediaItem;
+    }else{
+        NSLog(@"Play Audio error:%@",error.localizedDescription);
+    }
+}
 
 
 #pragma mark - ZHCMessagesMoreViewDataSource
