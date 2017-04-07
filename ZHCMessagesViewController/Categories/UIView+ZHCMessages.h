@@ -41,7 +41,7 @@
 /**
  *  Pins all edges of the specified subview to the receiver.
  *
- *  @param subview The subview to which the receiver will be pinned.
+ *  @param subView The subview to which the receiver will be pinned.
  */
 -(void)zhc_pinFrameOfSubView:(UIView *)subView withFrame:(CGRect)frame;
 

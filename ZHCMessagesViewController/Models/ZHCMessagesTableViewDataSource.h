@@ -121,7 +121,6 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @param tableView       The tableView object displaying the flow layout.
  *  @param indexPath        The index path of the cell.
- *  @param cell             The cell.
  *  @return The height of the `cellTopLabel` for the cell at indexPath.
  *
  *  @see ZHCMessagestableViewCell.
