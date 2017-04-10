@@ -14,14 +14,14 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  get bundle from ZHCMessagesViewController
  *
- *  @return Bundle
+ *  @return NSBundle
  */
 +(NSBundle *)zhc_messagesBundle;
 
 /**
  *  get bundle for Assets from ZHCMessagesViewController
  *
- *  @return
+ *  @return NSBundle
  */
 +(NSBundle *)zhc_getmessagesAssetBundle;
 
