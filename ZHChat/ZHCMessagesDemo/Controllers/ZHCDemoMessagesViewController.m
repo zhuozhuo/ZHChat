@@ -7,6 +7,8 @@
 //
 
 #import "ZHCDemoMessagesViewController.h"
+#import <AVFoundation/AVFoundation.h>
+
 @interface ZHCDemoMessagesViewController (){
      ZHCAudioMediaItem *currentAudioItem;
 }
@@ -18,6 +20,12 @@
 #pragma mark - life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[AVAudioSession sharedInstance]requestRecordPermission:^(BOOL granted){
+        if (!granted) {
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Remind" message:@"The microphone cannot access will affect the recording function!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alertView show];
+        }
+    }];
     /**
      *  Load up our fake data for the demo
      */
