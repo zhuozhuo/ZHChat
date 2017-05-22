@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
  s.name         = "ZHChat"
- s.version      = "0.2.5"
+ s.version      = "0.2.6"
  s.summary      = "An elegant messages UI library for iOS."
  s.homepage     = "https://github.com/zhuozhuo"
  s.screenshots  = ['http://ac-unmt7l5d.clouddn.com/39fd9320ae6315b2.PNG','http://ac-unmt7l5d.clouddn.com/e1ed619294a427cc.PNG','http://ac-unmt7l5d.clouddn.com/e1ed619294a427cc.PNG']
