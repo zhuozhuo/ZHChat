@@ -66,6 +66,7 @@
         case 0:{
             ZHCDemoMessagesViewController *messagesVC = [[ZHCDemoMessagesViewController alloc]init];
             messagesVC.presentBool = NO;
+            [messagesVC setHidesBottomBarWhenPushed:YES];
             [self.navigationController pushViewController:messagesVC animated:YES];
         }
             break;

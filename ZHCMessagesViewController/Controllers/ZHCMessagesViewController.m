@@ -790,7 +790,7 @@
 #pragma mark - InputView utilities
 -(void)zhc_updateInputViewBottomConstraint:(CGFloat)constant
 {
-    if (self.tabBarController != nil) {
+    if (self.tabBarController != nil && !self.hidesBottomBarWhenPushed) {
         constant -= CGRectGetHeight(self.tabBarController.tabBar.frame);
     }
     self.inputViewBottomLayoutGuide.constant = MAX(constant, 0.0);
