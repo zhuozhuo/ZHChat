@@ -10,7 +10,8 @@
 #import <AVFoundation/AVFoundation.h>
 
 @interface ZHCDemoMessagesViewController (){
-     ZHCAudioMediaItem *currentAudioItem;
+    ZHCAudioMediaItem *currentAudioItem;
+    NSTimer *timer;
 }
 
 @end
@@ -37,7 +38,6 @@
             [weakSelf scrollToBottomAnimated:NO];
         });
     }
-
     
     // Do any additional setup after loading the view.
 }
@@ -64,6 +64,24 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    
+    // Test if there is a lot of information, whether it will cause a meal.
+    
+    /*timer = [NSTimer scheduledTimerWithTimeInterval:0.1 repeats:YES block:^(NSTimer *timer){
+        static long long  index = 0;
+        NSString *string = [NSString stringWithFormat:@"Hello Word 您好，你先定一个小目标，比如先赚他个%lld万,那就成功了！",index++];
+        ZHCMessage *message = [[ZHCMessage alloc] initWithSenderId:kZHCDemoAvatarIdCook
+                                                 senderDisplayName:kZHCDemoAvatarDisplayNameCook
+                                                              date:[NSDate date]
+                                                              text:string];
+        
+        [self.demoData.messages addObject:message];
+        
+        [self finishSendingMessageAnimated:NO];
+        
+    }];*/
+
 }
 
 
@@ -445,6 +463,9 @@ didChangeAudioCategory:(NSString *)category
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
+
+
+
 /*
  #pragma mark - Navigation
  

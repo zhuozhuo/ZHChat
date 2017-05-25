@@ -55,7 +55,7 @@ class ZHModelData: NSObject {
                 avatarId = kZHCDemoAvatarIdJobs as NSString?;
                 displayName = kZHCDemoAvatarDisplayNameJobs as NSString?;
             }
-            let message: ZHCMessage = ZHCMessage.init(senderId: avatarId as! String, displayName: displayName as! String, text: model.content!)
+            let message: ZHCMessage = ZHCMessage.init(senderId: avatarId! as String, displayName: displayName! as String, text: model.content!)
             messages.add(message);
         }
         

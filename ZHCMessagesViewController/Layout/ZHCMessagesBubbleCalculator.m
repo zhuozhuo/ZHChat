@@ -80,7 +80,8 @@
     if (cachedSize != nil) {
         return [cachedSize CGSizeValue];
     }
-     CGSize finalSize = CGSizeZero;
+   
+    CGSize finalSize = CGSizeZero;
     if ([messageData isMediaMessage]) {
         finalSize = [[messageData media] mediaViewDisplaySize];
     }else{
@@ -106,7 +107,7 @@
         CGFloat verticalContainerInsets = attributes.textViewTextFrameInsets.top + attributes.textViewTextFrameInsets.bottom  + attributes.textViewTextContainerInsets.bottom + attributes.textViewTextContainerInsets.top;
         
         //  same as above, an extra 2 points of magix
-        CGFloat verticalInsets = verticalContainerInsets + 2 * [UIScreen mainScreen].scale;
+        CGFloat verticalInsets = verticalContainerInsets + 2 * [UIScreen mainScreen].scale + 2;
         
         CGFloat horizontalInsetsTotal = attributes.textViewTextFrameInsets.right + attributes.textViewTextFrameInsets.left + attributes.textViewTextContainerInsets.left + attributes.textViewTextContainerInsets.right;
         
