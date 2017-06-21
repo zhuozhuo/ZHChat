@@ -21,6 +21,7 @@
 #pragma mark - life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.messageTableView.estimatedRowHeight = 50.0;
     [[AVAudioSession sharedInstance]requestRecordPermission:^(BOOL granted){
         if (!granted) {
             UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Remind" message:@"The microphone cannot access will affect the recording function!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

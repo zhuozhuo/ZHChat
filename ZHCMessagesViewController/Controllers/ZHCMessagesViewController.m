@@ -317,6 +317,7 @@
         return;
     }
     NSInteger rows = [self.messageTableView numberOfRowsInSection:0];
+    //[self.messageTableView setContentOffset:CGPointMake(0, self.messageTableView.contentSize.height - self.messageTableView.frame.size.height) animated:animated];
     NSIndexPath *lastCellIndexPath = [NSIndexPath indexPathForItem:(rows - 1) inSection:0];
     [self scrollToIndexPath:lastCellIndexPath animated:animated];
 }
