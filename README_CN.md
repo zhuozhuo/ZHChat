@@ -1,10 +1,10 @@
-#ZHChat
+# ZHChat
 [ZHChat](https://github.com/zhuozhuo/ZHChat)是一个开源的聊天组件,能够帮助iOS开发者快速集成开发即时聊天模块。支持 声音，视频，图片，文字，表情，地理位置消息模块，易扩展，支持二次开发.Welcome to pull Request.
 
  <div align="center">![Gif][gif0]</div>
 
 
-##Features
+## Features
 1. 界面模仿苹果消息应用。
 2. 支持高度自定义,例如聊天气泡自定义,聊天消息模块自定义。
 3. 支持的消息种类满足大部分及时通讯需求。
