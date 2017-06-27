@@ -22,7 +22,7 @@
 ## Usage
 ### [CocoaPods](https://cocoapods.org/) (recommended)
 
-pod 'ZHChat', '~> 0.2.2'
+`pod 'ZHChat'`
 
 ### *拷贝整个ZHCMessagesViewController文件夹至你工程中。(二次开发最佳选择方式)*
 
