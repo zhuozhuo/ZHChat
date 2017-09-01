@@ -496,7 +496,7 @@
         cell.messageBubbleTopLabel.textInsets = UIEdgeInsetsMake(0.0f, bubbleTopLableInset, 0.0f, 0.0f);
     }
     cell.backgroundColor = [UIColor clearColor];
-    cell.contentView.backgroundColor = [UIColor whiteColor];
+    cell.contentView.backgroundColor = [UIColor clearColor];
     cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
     cell.layer.shouldRasterize = YES;
     return cell;

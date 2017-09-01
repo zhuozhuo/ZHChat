@@ -110,7 +110,7 @@ static NSMutableSet *zhcMessagesTableViewCellActions = nil;
     self.avatarImageView.translatesAutoresizingMaskIntoConstraints = NO;
    
     
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor clearColor];
     
     self.cellTopLabelHeightConstraint.constant = 0.0f;
     self.messageBubbleTopLabelHeightConstraint.constant = 0.0f;
