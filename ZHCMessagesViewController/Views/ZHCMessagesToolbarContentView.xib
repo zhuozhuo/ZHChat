@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,13 +16,8 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wJP-Cy-tqp" customClass="ZHCMessagesComposerTextView">
-                    <rect key="frame" x="51" y="7" width="175" height="30"/>
+                    <rect key="frame" x="51" y="5" width="175" height="34"/>
                     <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="aQL-O5-M53"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="r97-I5-KPA"/>
-                        <constraint firstAttribute="height" constant="30" id="vPT-RH-5OQ"/>
-                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
@@ -53,14 +48,15 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="wJP-Cy-tqp" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2LD-hS-74a"/>
                 <constraint firstItem="ckC-xA-7HE" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="44X-ev-hkH"/>
                 <constraint firstItem="3K6-tC-y9x" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="By2-4Z-b0k"/>
                 <constraint firstAttribute="trailing" secondItem="ckC-xA-7HE" secondAttribute="trailing" constant="8" id="JXo-JG-Lsl"/>
                 <constraint firstItem="3K6-tC-y9x" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Jt2-2Z-UBk"/>
                 <constraint firstItem="ckC-xA-7HE" firstAttribute="leading" secondItem="iHo-qd-XdV" secondAttribute="trailing" constant="8" id="Kfp-IT-vQW"/>
-                <constraint firstAttribute="bottom" secondItem="wJP-Cy-tqp" secondAttribute="bottom" constant="7" id="PyI-Kz-7eQ"/>
+                <constraint firstAttribute="bottom" secondItem="wJP-Cy-tqp" secondAttribute="bottom" constant="5" id="PyI-Kz-7eQ"/>
                 <constraint firstItem="iHo-qd-XdV" firstAttribute="leading" secondItem="wJP-Cy-tqp" secondAttribute="trailing" constant="8" id="Z6E-Lo-NOi"/>
-                <constraint firstItem="wJP-Cy-tqp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="gXM-ls-1oU"/>
+                <constraint firstItem="wJP-Cy-tqp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="gXM-ls-1oU"/>
                 <constraint firstItem="wJP-Cy-tqp" firstAttribute="leading" secondItem="3K6-tC-y9x" secondAttribute="trailing" constant="8" id="uaK-jr-kIq"/>
                 <constraint firstItem="iHo-qd-XdV" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="zXz-WT-1B5"/>
             </constraints>

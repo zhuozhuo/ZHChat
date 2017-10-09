@@ -89,6 +89,11 @@
     self.topContentAdditionalInset = 0.0f;
     
     [self zhc_updateTableViewInsets];
+    self.messageTableView.delaysContentTouches = NO;
+    self.messageTableView.canCancelContentTouches = NO;
+    self.navigationController.interactivePopGestureRecognizer.delaysTouchesBegan=NO;
+    
+    
 }
 
 - (void)dealloc

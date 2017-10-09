@@ -37,7 +37,8 @@
     
     self.scrollIndicatorInsets = UIEdgeInsetsMake(cornerRadius, 0.0f, cornerRadius, 0.0f);
     
-    self.textContainerInset = UIEdgeInsetsMake(4.0f, 2.0f, 4.0f, 2.0f);
+    self.textContainerInset = UIEdgeInsetsMake(6.0f, 2.0f, 6.0f, 2.0f);
+    self.textAlignment = NSTextAlignmentCenter;
     self.contentInset = UIEdgeInsetsMake(1.0f, 0.0f, 1.0f, 0.0f);
     
     self.scrollEnabled = YES;
