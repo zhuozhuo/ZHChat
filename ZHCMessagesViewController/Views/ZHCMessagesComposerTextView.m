@@ -20,7 +20,7 @@
 
 @end
 @implementation ZHCMessagesComposerTextView
-
+@dynamic pasteDelegate;
 
 #pragma mark - Initialization
 
