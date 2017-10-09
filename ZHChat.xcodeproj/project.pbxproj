@@ -723,7 +723,7 @@
 				TargetAttributes = {
 					9E92B2C61D58219F00736447 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 64QZ5ZPJ44;
+						DevelopmentTeam = 638EB3H4SQ;
 					};
 					9E92B2DF1D58219F00736447 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -1181,7 +1181,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 64QZ5ZPJ44;
+				DEVELOPMENT_TEAM = 638EB3H4SQ;
 				INFOPLIST_FILE = ZHChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1200,7 +1200,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 64QZ5ZPJ44;
+				DEVELOPMENT_TEAM = 638EB3H4SQ;
 				INFOPLIST_FILE = ZHChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
